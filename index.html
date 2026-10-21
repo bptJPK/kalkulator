@@ -1237,7 +1237,12 @@
           .withFailureHandler(onDataLoadedFailure)
           .getMasterDataFromSheet();
       } else {
-        initMockData();
+        const GAS_URL = "https://script.google.com/macros/s/AKfycbyD9bx1g9OH11pP0UaoIEZ_Ri2RzjF7858hZoNlljg6yd0jUM0QUMJOr8AmfA3KCz3aDQ/exec";
+
+        fetch(GAS_URL + "?action=getMasterData")
+          .then(res => res.json())
+          .then(data => onDataLoadedSuccess(data))
+          .catch(err => initMockData());
       }
     };
 
