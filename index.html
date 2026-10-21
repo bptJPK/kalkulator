@@ -1237,12 +1237,18 @@
           .withFailureHandler(onDataLoadedFailure)
           .getMasterDataFromSheet();
       } else {
-        const GAS_URL = "https://script.google.com/macros/s/AKfycbyD9bx1g9OH11pP0UaoIEZ_Ri2RzjF7858hZoNlljg6yd0jUM0QUMJOr8AmfA3KCz3aDQ/exec";
+        // Panggilan terus ke Google Apps Script dari Netlify
+        const GAS_URL = "https://script.google.com/macros/s/AKfycbyD9bx1g9OH11pP0UaoIEZ_Ri2RzjF7B58hZoNIIjg6yd0jUM0QUMJOr8AmfA3KCz3aDQ/exec";
 
         fetch(GAS_URL + "?action=getMasterData")
           .then(res => res.json())
-          .then(data => onDataLoadedSuccess(data))
-          .catch(err => initMockData());
+          .then(data => {
+            onDataLoadedSuccess(data);
+          })
+          .catch(err => {
+            console.error("Gagal tarik data dari Google Apps Script:", err);
+            initMockData();
+          });
       }
     };
 
