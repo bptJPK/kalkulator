@@ -264,21 +264,26 @@
       transform: translateX(22px);
     }
 
+    /* 4-Tab Navigation (Muat Skrin Tanpa Skrol) */
     .tabs-header-bar {
       display: flex;
       gap: 6px;
-      padding: 12px 28px 0;
+      padding: 12px 20px 0;
       background: #f1f5f9;
       border-bottom: 2px solid #e2e8f0;
-      overflow-x: auto;
+      overflow-x: hidden;
+      width: 100%;
+      box-sizing: border-box;
     }
 
     .tab-nav-btn {
-      padding: 12px 20px;
-      font-size: 0.8rem;
+      flex: 1 1 0;
+      min-width: 0;
+      padding: 12px 6px;
+      font-size: 0.78rem;
       font-weight: 800;
       text-transform: uppercase;
-      letter-spacing: 0.03em;
+      letter-spacing: 0.02em;
       border: 1px solid #cbd5e1;
       border-bottom: none;
       background: #e2e8f0;
@@ -287,9 +292,12 @@
       cursor: pointer;
       display: flex;
       align-items: center;
-      gap: 8px;
+      justify-content: center;
+      gap: 6px;
       transition: all 0.2s;
       white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
     }
 
     .tab-nav-btn:hover {
@@ -359,6 +367,7 @@
     .bg-row-cyan { background-color: #cffafe; }
     .bg-row-muted { background-color: #f1f5f9; }
 
+    /* Standardized matrix widths */
     .matrix-col-wa {
       width: 320px !important;
       min-width: 320px !important;
@@ -895,6 +904,7 @@
       </div>
     </div>
 
+    <!-- 4-Tab Navigation Bar (Muat Skrin) -->
     <div class="tabs-header-bar no-print">
       <button class="tab-nav-btn active" id="btnTab1" onclick="switchMainTab('tab1Content')">
         📖 1. STRUKTUR KURIKULUM
@@ -910,10 +920,11 @@
       </button>
     </div>
 
+    <!-- TAB 1: STRUKTUR KURIKULUM -->
     <div id="tab1Content" class="tab-content-panel active">
       <div class="print-section-header">PERKARA 1: STRUKTUR KURIKULUM PROGRAM</div>
       <div class="table-responsive">
-        <table class="data-table">
+        <table class="data-table" id="tableKurikulum">
           <thead>
             <tr>
               <th rowspan="2" class="th-navy-main" style="width:36%; text-align:left; padding-left:14px;">STRUKTUR KURIKULUM</th>
@@ -923,7 +934,7 @@
             <tr>
               <th class="th-navy-sub" style="width:16%;">JAM LATIHAN, &Sigma;</th>
               <th class="th-navy-sub col-pl" style="width:17%;">PUSAT LATIHAN (PL)</th>
-              <th class="th-navy-sub col-sy" style="width:17%;">SYARIKAT (SY)</th>
+              <th class="th-navy-sub col-sy-header" style="width:17%;">SYARIKAT (SY)</th>
             </tr>
           </thead>
           <tbody>
@@ -940,11 +951,16 @@
               </td>
             </tr>
             <tr>
-              <td style="text-align:left; padding-left:28px; font-weight:600; color:#1d4ed8;">2.1) CORE ABILITIES, CA</td>
+              <td style="text-align:left; padding-left:28px; font-weight:600;">
+                <a href="https://drive.google.com/drive/folders/1PCdV3Aq68LaYwVx2sydubed1nMs-70LL" target="_blank" 
+                   style="color:#1d4ed8; text-decoration:underline; font-weight:700;">
+                  2.1) CORE ABILITIES, CA ↗
+                </a>
+              </td>
               <td id="kreditCA" style="font-weight:700;">0</td>
               <td id="jamCA" style="font-weight:700;">0</td>
               <td id="plCA" class="col-pl" style="font-weight:700;">0</td>
-              <td id="syCA" class="col-sy" style="color:#94a3b8;">-</td>
+              <td id="syCA" class="col-sy col-sy-child" style="color:#94a3b8;">-</td>
             </tr>
             <tr>
               <td style="text-align:left; padding-left:28px;">
@@ -963,28 +979,28 @@
               <td id="kreditTVET" style="font-weight:700;">0</td>
               <td id="jamTVET" style="font-weight:700;">0</td>
               <td id="plTVET" class="col-pl" style="font-weight:700;">0</td>
-              <td id="syTVET" class="col-sy" style="font-weight:700;">0</td>
+              <td id="syTVET" class="col-sy col-sy-child" style="font-weight:700;">0</td>
             </tr>
             <tr class="bg-row-pink">
               <td style="text-align:left; padding-left:14px; font-weight:700;">3. PENDEDAHAN INDUSTRI*</td>
               <td id="kreditPI" style="font-weight:700;">0</td>
               <td style="color:#94a3b8;">-</td>
               <td id="plPI" class="col-pl" style="font-weight:700;">0</td>
-              <td id="syPI" class="col-sy" style="color:#94a3b8;">-</td>
+              <td id="syPI" class="col-sy col-sy-child" style="color:#94a3b8;">-</td>
             </tr>
             <tr class="bg-row-pink">
               <td style="text-align:left; padding-left:14px; font-weight:700;">4. LATIHAN INDUSTRI**</td>
               <td id="kreditLI" style="font-weight:700;">-</td>
               <td style="color:#94a3b8;">-</td>
               <td id="plLI" class="col-pl" style="color:#94a3b8;">-</td>
-              <td id="syLI" class="col-sy" style="color:#94a3b8;">-</td>
+              <td id="syLI" class="col-sy col-sy-child" style="color:#94a3b8;">-</td>
             </tr>
             <tr class="bg-row-cyan">
               <td style="text-align:left; padding-left:14px; font-weight:700;">5. PROJEK AKHIR</td>
               <td id="kreditPA" style="font-weight:700;">-</td>
               <td style="color:#94a3b8;">-</td>
               <td id="plPA" class="col-pl" style="color:#94a3b8;">-</td>
-              <td id="syPA" class="col-sy" style="color:#94a3b8;">-</td>
+              <td id="syPA" class="col-sy col-sy-child" style="color:#94a3b8;">-</td>
             </tr>
           </tbody>
           <tfoot>
@@ -1000,6 +1016,7 @@
       </div>
     </div>
 
+    <!-- TAB 2: PENJAJARAN JAM LATIHAN -->
     <div id="tab2Content" class="tab-content-panel">
       <div class="print-section-header">PERKARA 2: JADUAL PENJAJARAN JAM LATIHAN (CU SAHAJA)</div>
       
@@ -1041,7 +1058,7 @@
             </tr>
           </thead>
           <tbody id="cuTableBody">
-            <!-- Populated dynamically -->
+            <!-- Populated dynamically (CU Teras Sahaja) -->
           </tbody>
           <tfoot>
             <tr style="background:#e0e7ff; font-weight:800; color:#1e1b4b;">
@@ -1061,23 +1078,51 @@
       </div>
     </div>
 
+    <!-- TAB 3: PEMETAAN SESI LATIHAN (RK/RS) -->
     <div id="tab3Content" class="tab-content-panel">
       <div class="print-section-header">PERKARA 3: JADUAL PENYATUAN TAJUK PELAN MENGAJAR TEORI (KP) & AMALI (KK)</div>
 
-      <div class="tab2-info-bar no-print">
-        <div class="range-indicator-text">
-          💡 <strong>Panduan Sesi:</strong> Teori dihadkan maksimum <strong>8 Jam / sesi</strong> (T01, T02...), Amali dihadkan <strong>40 Jam / blok</strong> (A01, A02...).
+      <div class="tab2-info-bar no-print" style="display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:12px;">
+        <div id="bannerPanduanSesi" class="range-indicator-text">
+          💡 <strong>Panduan Sesi:</strong> Teori dihadkan maksimum <strong id="lblJamSesiTeori" style="color:#1d4ed8;">8</strong> Jam / sesi (T01, T02...), Amali dihadkan <strong id="lblJamBlokAmali" style="color:#0d9488;">40</strong> Jam / blok (A01, A02...).
         </div>
-        <div style="display:flex; gap:8px;">
-          <button class="btn-action-light" onclick="toggleMatrixView('teori')">👁️ Papar Matriks Teori</button>
-          <button class="btn-action-light" onclick="toggleMatrixView('amali')">👁️ Papar Matriks Amali</button>
-          <button class="btn-action-light" onclick="resetTab3Distribution()">⚡ Auto-Agih Semula</button>
+
+        <!-- Kawalan Dropdown Pemboleh Ubah Dinamik Jam/Sesi & Jam/Blok -->
+        <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+          <div style="display:flex; align-items:center; gap:6px; background:#ffffff; border:1px solid #cbd5e1; border-radius:8px; padding:4px 8px;">
+            <label style="font-size:0.75rem; font-weight:800; color:#334155;">⏱️ Jam / Hari:</label>
+            <select id="selJamHari" class="custom-select highlight-select" style="width:auto; padding:2px 8px; font-size:0.75rem;" onchange="onSessionConfigChange()">
+              <option value="4">4 Jam</option>
+              <option value="5">5 Jam</option>
+              <option value="6">6 Jam</option>
+              <option value="7">7 Jam</option>
+              <option value="8" selected>8 Jam</option>
+            </select>
+          </div>
+
+          <div style="display:flex; align-items:center; gap:6px; background:#ffffff; border:1px solid #cbd5e1; border-radius:8px; padding:4px 8px;">
+            <label style="font-size:0.75rem; font-weight:800; color:#334155;">📅 Hari / Minggu:</label>
+            <select id="selHariMinggu" class="custom-select highlight-select" style="width:auto; padding:2px 8px; font-size:0.75rem;" onchange="onSessionConfigChange()">
+              <option value="3">3 Hari</option>
+              <option value="4">4 Hari</option>
+              <option value="5" selected>5 Hari</option>
+              <option value="6">6 Hari</option>
+            </select>
+          </div>
+
+          <div style="display:flex; gap:6px;">
+            <button class="btn-action-light" onclick="toggleMatrixView('teori')">👁️ Papar Matriks Teori</button>
+            <button class="btn-action-light" onclick="toggleMatrixView('amali')">👁️ Papar Matriks Amali</button>
+            <button class="btn-action-light" onclick="resetTab3Distribution()">⚡ Auto-Agih Semula</button>
+          </div>
         </div>
       </div>
 
       <!-- Teori Matrix Section (Screen Only) -->
       <div id="sectionTeoriMapping" style="display:none; margin-bottom:20px;">
-        <h4 style="font-size:0.88rem; font-weight:800; color:#1d4ed8; margin-bottom:8px;">📘 MATRIKS PEMETAAN SESI TEORI (MAKSIMUM 8 JAM / SESI)</h4>
+        <h4 style="font-size:0.88rem; font-weight:800; color:#1d4ed8; margin-bottom:8px;" id="titleMatriksTeori">
+          📘 MATRIKS PEMETAAN SESI TEORI (MAKSIMUM 8 JAM / SESI)
+        </h4>
         <div class="table-responsive">
           <table class="data-table" id="matrixTableTeori"></table>
         </div>
@@ -1085,7 +1130,9 @@
 
       <!-- Amali Matrix Section (Screen Only) -->
       <div id="sectionAmaliMapping" style="display:none; margin-bottom:20px;">
-        <h4 style="font-size:0.88rem; font-weight:800; color:#0d9488; margin-bottom:8px;">🛠️ MATRIKS PEMETAAN BLOK AMALI (MAKSIMUM 40 JAM / BLOK)</h4>
+        <h4 style="font-size:0.88rem; font-weight:800; color:#0d9488; margin-bottom:8px;" id="titleMatriksAmali">
+          🛠️ MATRIKS PEMETAAN BLOK AMALI (MAKSIMUM 40 JAM / BLOK)
+        </h4>
         <div class="table-responsive">
           <table class="data-table" id="matrixTableAmali"></table>
         </div>
@@ -1112,6 +1159,7 @@
       </div>
     </div>
 
+    <!-- TAB 4: JSU PENILAIAN OBJEKTIF INDIVIDU -->
     <div id="tab4Content" class="tab-content-panel">
       <div class="print-section-header">PERKARA 4: JADUAL SPESIFIKASI UJIAN (JSU) PENILAIAN OBJEKTIF INDIVIDU</div>
 
@@ -1135,6 +1183,7 @@
 
   </div>
 
+  <!-- Modal PB -->
   <div class="modal-backdrop" id="pbModal">
     <div class="modal-box">
       <div class="modal-header">
@@ -1208,6 +1257,9 @@
     let jsuEdits = {};
     let jsuPerformanceTicks = {};
 
+    // Cache computed Bersemuka hours from Tab 2 for direct use in Tab 3 (PMT/PMA)
+    let waCalculatedHours = {};
+
     function safeGetStorage(key, fallback) {
       try {
         return localStorage.getItem(key) || fallback;
@@ -1227,17 +1279,51 @@
       address: safeGetStorage('jpk_pb_address', 'Shah Alam, Selangor')
     };
 
+    // Penapis Ketat CU Teras Sahaja (Kecualikan Kod Elektif -Exx)
+    function filterCoreCuList(list) {
+      if (!list || list.length === 0) return [];
+      let filtered = list.filter(cu => {
+        let code = (cu.code || "").toUpperCase();
+        if (/-E\d+/i.test(code) || code.includes("-E0") || code.includes("-E1")) return false;
+        return true;
+      });
+      return filtered.length > 0 ? filtered : list;
+    }
+
+    // Pemboleh Ubah Dinamik Jam/Sesi & Jam/Blok
+    function getSessionLimits() {
+      const jamHari = parseInt(document.getElementById('selJamHari')?.value, 10) || 8;
+      const hariMinggu = parseInt(document.getElementById('selHariMinggu')?.value, 10) || 5;
+      const jamBlok = jamHari * hariMinggu;
+      return { jamHari, hariMinggu, jamBlok };
+    }
+
+    function onSessionConfigChange() {
+      const { jamHari, jamBlok } = getSessionLimits();
+      const lblTeori = document.getElementById('lblJamSesiTeori');
+      const lblAmali = document.getElementById('lblJamBlokAmali');
+      if (lblTeori) lblTeori.innerText = jamHari;
+      if (lblAmali) lblAmali.innerText = jamBlok;
+
+      const titleT = document.getElementById('titleMatriksTeori');
+      const titleA = document.getElementById('titleMatriksAmali');
+      if (titleT) titleT.innerText = `📘 MATRIKS PEMETAAN SESI TEORI (MAKSIMUM ${jamHari} JAM / SESI)`;
+      if (titleA) titleA.innerText = `🛠️ MATRIKS PEMETAAN BLOK AMALI (MAKSIMUM ${jamBlok} JAM / BLOK)`;
+
+      renderTab3All();
+    }
+
     window.onload = function() {
       initSessionTimer();
       updatePrintHeaderDisplay();
 
+      // Sambungan Jambatan Data (Google Script vs Netlify Fetch)
       if (typeof google !== 'undefined' && google.script && google.script.run) {
         google.script.run
           .withSuccessHandler(onDataLoadedSuccess)
           .withFailureHandler(onDataLoadedFailure)
           .getMasterDataFromSheet();
       } else {
-        // Panggilan terus ke Google Apps Script dari Netlify
         const GAS_URL = "https://script.google.com/macros/s/AKfycbyD9bx1g9OH11pP0UaoIEZ_Ri2RzjF7B58hZoNIIjg6yd0jUM0QUMJOr8AmfA3KCz3aDQ/exec";
 
         fetch(GAS_URL + "?action=getMasterData")
@@ -1246,7 +1332,7 @@
             onDataLoadedSuccess(data);
           })
           .catch(err => {
-            console.error("Gagal tarik data dari Google Apps Script:", err);
+            console.error("Gagal menarik data terus dari Google Apps Script:", err);
             initMockData();
           });
       }
@@ -1446,7 +1532,10 @@
       if (!tbody) return;
       tbody.innerHTML = '';
 
-      let cuList = dbJajar[programCode] || [];
+      let rawList = dbJajar[programCode] || [];
+      // Penapisan Ketat: Hanya CU Teras (-Cxx) sahaja
+      let cuList = filterCoreCuList(rawList);
+
       if (cuList.length === 0) {
         cuList = [
           { code: (programCode || "PROG") + "-C01", name: "PENYEDIAAN OPERASI UTAMA", asal: 80 },
@@ -1634,6 +1723,8 @@
     }
 
     function calculateAll() {
+      waCalculatedHours = {};
+
       const mod = document.getElementById('modPentauliahan')?.value || "ADI";
       const status = document.getElementById('statusTahap')?.value || "Bermula Tahap 2";
       const struct = matrixTahap[status] || matrixTahap["Bermula Tahap 2"];
@@ -1667,7 +1758,6 @@
       let plTerasVal = Math.round(jamTeras * (plPct / 100));
       let syTerasVal = Math.round(jamTeras * (syPct / 100));
       document.getElementById('plTeras').innerText = plTerasVal.toLocaleString();
-      document.getElementById('syTeras').innerText = mod === 'SLaPB' ? '-' : syTerasVal.toLocaleString();
 
       const jamCA = struct.ca * 40;
       document.getElementById('jamCA').innerText = jamCA;
@@ -1678,7 +1768,6 @@
       let plTvetVal = Math.round(jamTVET * (plPct / 100));
       let syTvetVal = mod === 'SLaPB' ? 0 : Math.round(jamTVET * (syPct / 100));
       document.getElementById('plTVET').innerText = plTvetVal;
-      document.getElementById('syTVET').innerText = mod === 'SLaPB' ? '-' : syTvetVal;
 
       const totalPL = plTerasVal + jamCA + plTvetVal;
       const totalSY = syTerasVal + syTvetVal;
@@ -1686,7 +1775,40 @@
 
       document.getElementById('jamJumlah').innerText = jamJumlah.toLocaleString();
       document.getElementById('plJumlah').innerText = totalPL.toLocaleString();
-      document.getElementById('syJumlah').innerText = mod === 'SLaPB' ? '-' : totalSY.toLocaleString();
+
+      // Penyesuaian Kolum SY Bagi Mod SLaPB (Disatukan Rowspan Memanjang)
+      const syTerasEl = document.getElementById('syTeras');
+      const wajibHeaderEl = document.getElementById('tdModulWajibHeader');
+      const syChildCells = document.querySelectorAll('.col-sy-child');
+
+      if (mod === 'SLaPB') {
+        if (syTerasEl) {
+          syTerasEl.rowSpan = 7;
+          syTerasEl.innerHTML = `
+            <div style="font-size:0.76rem; font-weight:700; color:#64748b; line-height:1.45; padding:8px 4px; max-width:125px; margin:0 auto; word-wrap:break-word;">
+              Hanya terpakai untuk<br>Pentauliahan ADI
+            </div>
+          `;
+          syTerasEl.style.backgroundColor = '#f1f5f9';
+          syTerasEl.style.verticalAlign = 'middle';
+        }
+        if (wajibHeaderEl) wajibHeaderEl.colSpan = 4;
+        syChildCells.forEach(el => el.style.display = 'none');
+        document.getElementById('syJumlah').innerText = '-';
+        document.getElementById('syJumlah').style.color = '#94a3b8';
+      } else {
+        if (syTerasEl) {
+          syTerasEl.rowSpan = 1;
+          syTerasEl.innerText = syTerasVal.toLocaleString();
+          syTerasEl.style.backgroundColor = '';
+          syTerasEl.style.verticalAlign = '';
+        }
+        if (wajibHeaderEl) wajibHeaderEl.colSpan = 5;
+        syChildCells.forEach(el => el.style.display = '');
+        document.getElementById('syTVET').innerText = syTvetVal;
+        document.getElementById('syJumlah').innerText = totalSY.toLocaleString();
+        document.getElementById('syJumlah').style.color = '#1e3a8a';
+      }
 
       let cleanTahap = status.replace('Bermula ', '');
       const isKendiri50 = document.getElementById('toggleKendiri50')?.checked || false;
@@ -1788,6 +1910,11 @@
               const semukaRK_round = Math.round(coptpaRK * semukaFactor);
               const semukaRS_round = Math.round(coptpaRS * semukaFactor);
 
+              waCalculatedHours[waKey] = {
+                rk: semukaRK_round,
+                rs: semukaRS_round
+              };
+
               const trSub = document.createElement('tr');
               trSub.innerHTML = `
                 <td style="font-weight:700; font-family:'JetBrains Mono',monospace;">${wa.noWa || 'CU' + (cuIdx+1) + '-WA' + (wIdx + 1)}</td>
@@ -1881,8 +2008,9 @@
     }
 
     function packSessions(cuList, progCode, type) {
+      const { jamHari, jamBlok } = getSessionLimits();
       const isTeori = type === 'T';
-      const maxCap = isTeori ? 8 : 40;
+      const maxCap = isTeori ? jamHari : jamBlok;
       const prefix = isTeori ? 'T' : 'A';
       const roman = ['i', 'ii', 'iii', 'iv', 'v', 'vi', 'vii', 'viii'];
 
@@ -1891,9 +2019,6 @@
       let active = null;
 
       cuList.forEach((cu, cuIdx) => {
-        /* PENGASINGAN MODUL CU: 
-           Setiap CU adalah unit kompetensi berasingan. Jangan campur aktiviti berbeza CU dalam satu sesi!
-           Jika ada baki sesi aktif daripada CU terdahulu, tutup sesi tersebut dan mulakan sesi baharu. */
         if (active && active.total > 0) {
           sessions.push(active);
           active = null;
@@ -1902,8 +2027,11 @@
 
         let waList = getWaListForCu(progCode, cu.code);
         waList.forEach((wa, waIdx) => {
-          let nominal = isTeori ? (wa.masa || 8) : ((wa.masa || 8) * 2);
+          let key = `${cu.code}_${waIdx}`;
+          let cached = waCalculatedHours[key] || { rk: (wa.masa || 8), rs: (wa.masa || 8) * 2 };
+          let nominal = isTeori ? cached.rk : cached.rs;
           let rem = nominal;
+          
           if (rem <= 0) return;
 
           if (rem > maxCap) {
@@ -1991,8 +2119,6 @@
           }
         });
 
-        /* Selepas tamat semua WA bagi CU ini, tutup sesi aktif serta-merta 
-           supaya CU seterusnya wajib bermula pada sesi/lajur baharu */
         if (active && active.total > 0) {
           sessions.push(active);
           active = null;
@@ -2006,20 +2132,28 @@
     function renderTab3All() {
       const progCode = document.getElementById('kodProgram')?.value.trim() || "";
       const mod = document.getElementById('modPentauliahan')?.value || "ADI";
-      const cuList = dbJajar[progCode] || [];
+      const rawCuList = dbJajar[progCode] || [];
+      const cuList = filterCoreCuList(rawCuList);
 
       const packedTeori = packSessions(cuList, progCode, 'T');
       const packedAmali = packSessions(cuList, progCode, 'A');
 
-      renderMatrixGeneric(progCode, cuList, packedTeori, 'T', 'matrixTableTeori', '#e0f2fe', 'code-badge-blue', 8);
-      renderMatrixGeneric(progCode, cuList, packedAmali, 'A', 'matrixTableAmali', '#ccfbf1', 'code-badge-green', 40);
+      const { jamHari, jamBlok } = getSessionLimits();
+
+      renderMatrixGeneric(progCode, cuList, packedTeori, 'T', 'matrixTableTeori', '#e0f2fe', 'code-badge-blue', jamHari, mod);
+      renderMatrixGeneric(progCode, cuList, packedAmali, 'A', 'matrixTableAmali', '#ccfbf1', 'code-badge-green', jamBlok, mod);
       renderCombinedPlan(progCode, cuList, mod, packedTeori, packedAmali);
     }
 
-    function renderMatrixGeneric(progCode, cuList, packedSessions, type, tableId, cuBg, badgeClass, maxCap) {
+    function renderMatrixGeneric(progCode, cuList, packedSessions, type, tableId, cuBg, badgeClass, maxCap, mod) {
       const table = document.getElementById(tableId);
       if (!table) return;
       table.innerHTML = '';
+
+      if (type === 'A' && mod === 'ADI') {
+        table.innerHTML = `<tr><td style="padding:40px; text-align:center; background:#f8fafc; color:#64748b; font-weight:700; border:1px solid #cbd5e1; border-radius:8px;">🏢 Dilaksanakan di Syarikat (Rujuk Proses Kerja)</td></tr>`;
+        return;
+      }
 
       let thead = `<thead><tr><th class="matrix-col-wa">CU - WORK ACTIVITY</th><th class="matrix-col-jam">JAM</th>`;
       packedSessions.forEach(s => {
@@ -2032,7 +2166,9 @@
         let waList = getWaListForCu(progCode, cu.code);
 
         waList.forEach((wa, waIdx) => {
-          let nominal = type === 'T' ? (wa.masa || 8) : ((wa.masa || 8) * 2);
+          let key = `${cu.code}_${waIdx}`;
+          let cached = waCalculatedHours[key] || { rk: (wa.masa || 8), rs: (wa.masa || 8) * 2 };
+          let nominal = type === 'T' ? cached.rk : cached.rs;
 
           thead += `<tr>
             <td class="matrix-col-wa"><span class="code-badge ${badgeClass}">CU${cuIdx+1}-WA${waIdx+1}</span> ${wa.namaWa}</td>
@@ -2067,8 +2203,9 @@
     }
 
     function stepSessionHour(type, cellKey, delta, defaultVal) {
+      const { jamHari, jamBlok } = getSessionLimits();
+      let limit = type === 'T' ? jamHari : jamBlok;
       let store = type === 'T' ? matrixManualEditsTeori : matrixManualEditsAmali;
-      let limit = type === 'T' ? 8 : 40;
       let cur = store[cellKey] !== undefined ? store[cellKey] : (defaultVal || 0);
       let next = Math.max(0, Math.min(limit, cur + delta));
       store[cellKey] = next;
@@ -2087,21 +2224,16 @@
 
       cuList.forEach((cu, cuIdx) => {
         let waList = getWaListForCu(progCode, cu.code);
-
-        // Kumpulkan sesi Teori & Amali bagi CU ini
         let cuTeoriSessions = packedTeori.filter(s => s.allocs.some(a => a.cuCode === cu.code));
         let cuAmaliSessions = packedAmali.filter(s => s.allocs.some(a => a.cuCode === cu.code));
-
         let processedWaTeori = new Set();
 
         waList.forEach((wa, waIdx) => {
           if (processedWaTeori.has(waIdx)) return;
 
-          // Cari sesi yang mengandungi waIdx ini
           let matchedSessionsT = cuTeoriSessions.filter(s => s.allocs.some(a => a.waIdx === waIdx));
 
           if (matchedSessionsT.length === 0) {
-            // Fallback baris tunggal jika tiada sesi
             let tr = document.createElement('tr');
             tr.innerHTML = `
               <td style="font-weight:600;"><span class="code-badge code-badge-blue">CU${cuIdx+1}-WA${waIdx+1}</span> ${wa.namaWa}</td>
@@ -2112,7 +2244,6 @@
             return;
           }
 
-          // Kes 1: Sesi berkongsi beberapa WA (contoh: WA1 & WA2 dalam T01)
           if (matchedSessionsT.length === 1 && matchedSessionsT[0].allocs.length > 1) {
             let sessionObj = matchedSessionsT[0];
             let sharedAllocs = sessionObj.allocs;
@@ -2156,7 +2287,6 @@
                     </td>
                   `;
                 } else {
-                  // Render Amali bagi baris pertama
                   let aSession = cuAmaliSessions.find(as => as.allocs.some(aa => aa.waIdx === al.waIdx));
                   if (aSession) {
                     let aCode = aSession.code;
@@ -2187,7 +2317,6 @@
             return;
           }
 
-          // Kes 2: WA dipecahkan kepada sub-sesi bersiri (contoh: WA3 12 jam -> T02i [8j] & T02ii [4j])
           let subCount = matchedSessionsT.length;
           processedWaTeori.add(waIdx);
 
@@ -2215,7 +2344,7 @@
             tr.innerHTML += `
               <td>
                 <div class="code-badge code-badge-blue mb-1">${displayCodeT}</div>
-                <input type="text" class="teaching-plan-input" placeholder="${phT}" value="${titleValT}"
+                <input type="text" class="teaching-plan-input" placeholder="${phT}" value="${titleValT}" data-serial-parent="T_${cu.code}_${sObj.baseCode}"
                        oninput="onSerialTitleInput('${cu.code}', '${sObj.baseCode}', ${subIdx}, this.value, 'T')">
               </td>
               <td style="text-align:center; font-weight:800;">${hoursT}</td>
@@ -2230,7 +2359,6 @@
                 `;
               }
             } else {
-              // Amali bagi sub baris
               let aSession = cuAmaliSessions[subIdx];
               if (aSession) {
                 let aCode = aSession.code;
@@ -2247,7 +2375,7 @@
                 tr.innerHTML += `
                   <td>
                     <div class="code-badge code-badge-green mb-1">${displayCodeA}</div>
-                    <input type="text" class="teaching-plan-input" placeholder="${phA}" value="${titleValA}"
+                    <input type="text" class="teaching-plan-input" placeholder="${phA}" value="${titleValA}" data-serial-parent="A_${cu.code}_${aSession.baseCode}"
                            oninput="onSerialTitleInput('${cu.code}', '${aSession.baseCode}', ${subIdx}, this.value, 'A')">
                   </td>
                   <td style="text-align:center; font-weight:800;">${hoursA}</td>
@@ -2278,11 +2406,8 @@
           let childKey = `${type}_${cuCode}_${baseCode}${roman[i] || (i+1)}`;
           combinedPlanTitles[childKey] = val;
         }
-        // Kemas kini nilai input bahagian bersiri secara langsung dalam DOM tanpa re-render penuh
         document.querySelectorAll(`input[data-serial-parent="${type}_${cuCode}_${baseCode}"]`).forEach((inp, idx) => {
-          if (idx > 0) {
-            inp.value = val;
-          }
+          if (idx > 0) inp.value = val;
         });
       }
     }
@@ -2301,7 +2426,8 @@
 
       const progCode = document.getElementById('kodProgram')?.value.trim() || "";
       const status = document.getElementById('statusTahap')?.value || "Tahap 2";
-      const cuList = dbJajar[progCode] || [];
+      const rawCuList = dbJajar[progCode] || [];
+      const cuList = filterCoreCuList(rawCuList);
 
       if (cuList.length === 0) {
         container.innerHTML = `<div style="padding:24px; text-align:center; color:#64748b; font-weight:700;">Sila pilih program di atas untuk memaparkan JSU.</div>`;
