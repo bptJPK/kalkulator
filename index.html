@@ -264,7 +264,7 @@
       transform: translateX(22px);
     }
 
-    /* 4-Tab Navigation (Muat Skrin Tanpa Skrol) */
+    /* 4-Tab Navigation */
     .tabs-header-bar {
       display: flex;
       gap: 6px;
@@ -367,7 +367,6 @@
     .bg-row-cyan { background-color: #cffafe; }
     .bg-row-muted { background-color: #f1f5f9; }
 
-    /* Standardized matrix widths */
     .matrix-col-wa {
       width: 320px !important;
       min-width: 320px !important;
@@ -708,11 +707,20 @@
       display: none;
     }
 
+    /* ========================================= */
+    /* PENGOPTIMUMAN CETAKAN (PERKARA 4)         */
+    /* ========================================= */
     @media print {
+      @page {
+        size: A4 portrait;
+        margin: 10mm;
+      }
+
       body {
         padding: 0 !important;
         background: white !important;
         color: black !important;
+        font-size: 8pt !important;
       }
 
       .no-print, 
@@ -721,7 +729,6 @@
       .tabs-header-bar, 
       .tab2-info-bar, 
       .credit-alert-box,
-      .wa-subrow,
       .btn-circle-toggle,
       #sectionTeoriMapping, 
       #sectionAmaliMapping,
@@ -735,37 +742,70 @@
         border: none !important;
         box-shadow: none !important;
         max-width: 100% !important;
+        width: 100% !important;
+      }
+
+      /* Pemecahan Halaman Utama */
+      #tab1Content {
+        display: block !important;
+        page-break-after: always !important;
+      }
+
+      #tab2Content {
+        display: block !important;
+        page-break-before: always !important;
+        page-break-after: always !important;
+      }
+
+      #tab3Content {
+        display: block !important;
+        page-break-before: always !important;
+        page-break-after: always !important;
+      }
+
+      #tab4Content {
+        display: block !important;
+        page-break-before: always !important;
       }
 
       .print-only-banner {
         display: block !important;
-        margin-bottom: 16px !important;
+        margin-bottom: 10px !important;
         border-bottom: 2px solid #0f172a !important;
-        padding-bottom: 8px !important;
+        padding-bottom: 4px !important;
       }
 
       .print-section-header {
         display: block !important;
-        font-size: 11pt !important;
+        font-size: 10pt !important;
         font-weight: 800 !important;
         color: #1e3a8a !important;
         border-bottom: 1.5px solid #cbd5e1 !important;
-        padding-bottom: 4px !important;
-        margin: 22px 0 10px 0 !important;
+        padding-bottom: 2px !important;
+        margin: 10px 0 6px 0 !important;
       }
 
-      .tab-content-panel,
-      #tab1Content, 
-      #tab2Content, 
-      #tab3Content, 
-      #tab4Content {
-        display: block !important;
-        opacity: 1 !important;
-        visibility: visible !important;
-        padding: 0 !important;
-        margin-bottom: 20px !important;
+      /* Pengoptimuman Jadual Lebar untuk A4 Portrait */
+      .table-responsive {
+        overflow-x: visible !important;
+        border: none !important;
+        box-shadow: none !important;
+        width: 100% !important;
       }
 
+      table.data-table {
+        width: 100% !important;
+        table-layout: auto !important; /* Biar browser tentukan lebar terbaik */
+        font-size: 7.5pt !important;
+        border-collapse: collapse !important;
+      }
+
+      table.data-table th, table.data-table td {
+        padding: 4px 3px !important; /* Padatkan ruang */
+        word-wrap: break-word !important;
+      }
+
+      /* Memastikan Sub-row sentiasa disembunyikan waktu cetak */
       .wa-subrow {
         display: none !important;
       }
@@ -776,13 +816,13 @@
 
       .cu-accordion-body {
         display: block !important;
-        padding: 8px 0 !important;
+        padding: 4px 0 !important;
       }
 
       .cu-accordion-card {
         border: 1px solid #cbd5e1 !important;
         page-break-inside: avoid !important;
-        margin-bottom: 16px !important;
+        margin-bottom: 10px !important;
       }
 
       .teaching-plan-input::placeholder {
@@ -802,10 +842,10 @@
         left: 0;
         right: 0;
         text-align: center;
-        font-size: 8pt;
+        font-size: 7pt;
         color: #475569;
         border-top: 1px solid #cbd5e1;
-        padding-top: 4px;
+        padding-top: 2px;
       }
     }
   </style>
@@ -817,12 +857,12 @@
     <div class="print-only-banner">
       <div style="display:flex; justify-content:space-between; align-items:flex-end;">
         <div>
-          <h2 style="font-size:14pt; font-weight:800; color:#0f172a;" id="printPbNameDisplay">PUSAT BERTAULIAH JPK</h2>
-          <div style="font-size:9pt; color:#475569;" id="printPbAddressDisplay">Alamat: Kuala Lumpur</div>
+          <h2 style="font-size:12pt; font-weight:800; color:#0f172a;" id="printPbNameDisplay">PUSAT BERTAULIAH JPK</h2>
+          <div style="font-size:8pt; color:#475569;" id="printPbAddressDisplay">Alamat: -</div>
         </div>
         <div style="text-align:right;">
-          <div style="font-size:10pt; font-weight:800; color:#1e3a8a;" id="printProgCodeDisplay">Kod: -</div>
-          <div style="font-size:9pt; font-weight:600;" id="printProgNameDisplay">Program: -</div>
+          <div style="font-size:9pt; font-weight:800; color:#1e3a8a;" id="printProgCodeDisplay">Kod: -</div>
+          <div style="font-size:8pt; font-weight:600;" id="printProgNameDisplay">Program: -</div>
         </div>
       </div>
     </div>
@@ -867,13 +907,14 @@
           <datalist id="programListDatalist"></datalist>
         </div>
 
+        <!-- PERKARA 1: Pelaksanaan Latihan Auto -->
         <div class="panel-box" id="panelPelaksanaanLatihan">
           <label class="panel-label">🕒 Pelaksanaan Latihan (%)</label>
-          <select id="pelaksanaan" class="custom-select highlight-select" onchange="onPelaksanaanChange()">
-            <option value="30-70" selected>30% (PL) & 70% (SY)</option>
-            <option value="20-80">20% (PL) & 80% (SY)</option>
-            <option value="40-60">40% (PL) & 60% (SY)</option>
-          </select>
+          <div id="pelaksanaanAutoDisplay" class="custom-select highlight-select" style="display:flex; align-items:center; cursor:default;">
+            30% (PL) & 70% (SY)
+          </div>
+          <!-- Menyimpan nilai sebenar untuk digunakan dalam logik pengiraan -->
+          <input type="hidden" id="pelaksanaanHidden" value="30-70">
         </div>
 
         <div class="panel-box">
@@ -904,19 +945,19 @@
       </div>
     </div>
 
-    <!-- 4-Tab Navigation Bar (Muat Skrin) -->
+    <!-- PERKARA 3: 4-Tab Navigation Bar (Teks Dipendekkan) -->
     <div class="tabs-header-bar no-print">
       <button class="tab-nav-btn active" id="btnTab1" onclick="switchMainTab('tab1Content')">
         📖 1. STRUKTUR KURIKULUM
       </button>
       <button class="tab-nav-btn" id="btnTab2" onclick="switchMainTab('tab2Content')">
-        🕒 2. PENJAJARAN JAM LATIHAN
+        🕒 2. PENJAJARAN JAM
       </button>
       <button class="tab-nav-btn" id="btnTab3" onclick="switchMainTab('tab3Content')">
-        🧩 3. PEMETAAN SESI LATIHAN (RK/RS)
+        🧩 3. PELAN MENGAJAR
       </button>
       <button class="tab-nav-btn" id="btnTab4" onclick="switchMainTab('tab4Content')">
-        📋 4. JSU PENILAIAN OBJEKTIF INDIVIDU
+        📋 4. JSU
       </button>
     </div>
 
@@ -965,15 +1006,25 @@
             <tr>
               <td style="text-align:left; padding-left:28px;">
                 <div style="font-weight:600; margin-bottom:4px;">2.2) MODUL PENYEDIA TVET</div>
-                <div style="display:flex; flex-wrap:wrap; gap:6px;">
+                <div style="display:flex; flex-wrap:wrap; gap:6px; align-items:center;">
+                  <!-- PERKARA 2: Senarai Dropdown TVET Terkini -->
                   <select id="modulTvetSelect" class="custom-select highlight-select no-print" style="width:auto; font-size:0.75rem;" onchange="onTvetModuleChange()">
                     <option value="i">i. CU Elektif*</option>
-                    <option value="ii">ii. Modul Tambahan Institusi</option>
-                    <option value="iii">iii. Modul Kemahiran Digital / IR4.0</option>
-                    <option value="iv">iv. Modul Technopreneurship</option>
-                    <option value="v">v. Modul Keselamatan & Kesihatan Pekerjaan (OSH)</option>
+                    <option value="ii">ii. Kombinasi WA*</option>
+                    <option value="iii">iii. National Competency Standard (NCS)*</option>
+                    <option value="iv">iv. Modul Keusahawanan</option>
+                    <option value="v">v. Mata Pelajaran Umum</option>
                     <option value="vi">vi. Modul Syarikat</option>
                   </select>
+                  
+                  <!-- PERKARA 2: Pilihan 100% PL atau Nisbah Program untuk (iv, v, vi) -->
+                  <div id="tvetRatioToggleWrapper" style="display:none; align-items:center; gap:4px;" class="no-print">
+                    <label class="switch-ui" style="width:36px; height:18px;">
+                      <input type="checkbox" id="toggleTvetRatio" onchange="onTvetRatioToggle()">
+                      <span class="switch-slider" style="background-color:#10b981;"></span>
+                    </label>
+                    <span id="lblTvetRatio" style="font-size:0.7rem; font-weight:700; color:#047857;">100% PL</span>
+                  </div>
                 </div>
               </td>
               <td id="kreditTVET" style="font-weight:700;">0</td>
@@ -1051,10 +1102,10 @@
               <th class="th-navy-sub" style="width:60px; background:#fbcfe8; color:#0f172a;">[C] KREDIT</th>
               <th class="th-navy-sub no-print" style="width:65px; background:#6ee7b7; color:#064e3b;">[D] PELARASAN</th>
               <th class="th-navy-sub" style="width:65px; background:#d1fae5; color:#064e3b;">KREDIT BAHARU</th>
-              <th class="th-navy-sub" style="width:130px; background:#1e3a8a; color:white;">BERSEMUKA</th>
-              <th class="th-navy-sub" style="width:130px; background:#d97706; color:white;">KENDIRI</th>
+              <th class="th-navy-sub" style="width:110px; background:#1e3a8a; color:white;">BERSEMUKA</th>
+              <th class="th-navy-sub" style="width:110px; background:#d97706; color:white;">KENDIRI</th>
               <th class="th-navy-sub" style="width:75px; background:#047857; color:white;">PENILAIAN</th>
-              <th class="th-navy-sub" style="width:80px; background:#0891b2; color:white;">[F] &Sigma; LATIHAN</th>
+              <th class="th-navy-sub" style="width:70px; background:#0891b2; color:white;">[F] &Sigma; LATIHAN</th>
             </tr>
           </thead>
           <tbody id="cuTableBody">
@@ -1087,7 +1138,6 @@
           💡 <strong>Panduan Sesi:</strong> Teori dihadkan maksimum <strong id="lblJamSesiTeori" style="color:#1d4ed8;">8</strong> Jam / sesi (T01, T02...), Amali dihadkan <strong id="lblJamBlokAmali" style="color:#0d9488;">40</strong> Jam / blok (A01, A02...).
         </div>
 
-        <!-- Kawalan Dropdown Pemboleh Ubah Dinamik Jam/Sesi & Jam/Blok -->
         <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
           <div style="display:flex; align-items:center; gap:6px; background:#ffffff; border:1px solid #cbd5e1; border-radius:8px; padding:4px 8px;">
             <label style="font-size:0.75rem; font-weight:800; color:#334155;">⏱️ Jam / Hari:</label>
@@ -1118,27 +1168,24 @@
         </div>
       </div>
 
-      <!-- Teori Matrix Section (Screen Only) -->
       <div id="sectionTeoriMapping" style="display:none; margin-bottom:20px;">
         <h4 style="font-size:0.88rem; font-weight:800; color:#1d4ed8; margin-bottom:8px;" id="titleMatriksTeori">
-          📘 MATRIKS PEMETAAN SESI TEORI (MAKSIMUM 8 JAM / SESI)
+          📘 MATRIKS PEMETAAN SESI TEORI
         </h4>
         <div class="table-responsive">
           <table class="data-table" id="matrixTableTeori"></table>
         </div>
       </div>
 
-      <!-- Amali Matrix Section (Screen Only) -->
       <div id="sectionAmaliMapping" style="display:none; margin-bottom:20px;">
         <h4 style="font-size:0.88rem; font-weight:800; color:#0d9488; margin-bottom:8px;" id="titleMatriksAmali">
-          🛠️ MATRIKS PEMETAAN BLOK AMALI (MAKSIMUM 40 JAM / BLOK)
+          🛠️ MATRIKS PEMETAAN BLOK AMALI
         </h4>
         <div class="table-responsive">
           <table class="data-table" id="matrixTableAmali"></table>
         </div>
       </div>
 
-      <!-- Combined Plan Table (Always printed) -->
       <div id="combinedPlanContainer">
         <div class="table-responsive">
           <table class="data-table" style="text-align:left;">
@@ -1257,7 +1304,6 @@
     let jsuEdits = {};
     let jsuPerformanceTicks = {};
 
-    // Cache computed Bersemuka hours from Tab 2 for direct use in Tab 3 (PMT/PMA)
     let waCalculatedHours = {};
 
     function safeGetStorage(key, fallback) {
@@ -1279,7 +1325,6 @@
       address: safeGetStorage('jpk_pb_address', 'Shah Alam, Selangor')
     };
 
-    // Penapis Ketat CU Teras Sahaja (Kecualikan Kod Elektif -Exx)
     function filterCoreCuList(list) {
       if (!list || list.length === 0) return [];
       let filtered = list.filter(cu => {
@@ -1290,7 +1335,6 @@
       return filtered.length > 0 ? filtered : list;
     }
 
-    // Pemboleh Ubah Dinamik Jam/Sesi & Jam/Blok
     function getSessionLimits() {
       const jamHari = parseInt(document.getElementById('selJamHari')?.value, 10) || 8;
       const hariMinggu = parseInt(document.getElementById('selHariMinggu')?.value, 10) || 5;
@@ -1317,7 +1361,6 @@
       initSessionTimer();
       updatePrintHeaderDisplay();
 
-      // Sambungan Jambatan Data (Google Script vs Netlify Fetch)
       if (typeof google !== 'undefined' && google.script && google.script.run) {
         google.script.run
           .withSuccessHandler(onDataLoadedSuccess)
@@ -1428,26 +1471,33 @@
       });
     }
 
+    // PERKARA 1: Logik Nisbah Automatik
+    function updatePelaksanaanAutoDisplay() {
+      const status = document.getElementById('statusTahap')?.value || "Bermula Tahap 2";
+      const display = document.getElementById('pelaksanaanAutoDisplay');
+      const hidden = document.getElementById('pelaksanaanHidden');
+      
+      const isHighLevel = status.includes('Tahap 4') || status.includes('Tahap 5');
+      
+      if (isHighLevel) {
+        if (display) display.innerText = "40% (PL) & 60% (SY)";
+        if (hidden) hidden.value = "40-60";
+      } else {
+        if (display) display.innerText = "30% (PL) & 70% (SY)";
+        if (hidden) hidden.value = "30-70";
+      }
+    }
+
     function onModPentauliahanChange() {
       const mod = document.getElementById('modPentauliahan')?.value || "ADI";
-      const pelSelect = document.getElementById('pelaksanaan');
       const toggleKendiri = document.getElementById('toggleKendiri50');
+      const panelAuto = document.getElementById('panelPelaksanaanLatihan');
 
       if (mod === 'SLaPB') {
-        if (pelSelect) {
-          pelSelect.disabled = true;
-          pelSelect.style.opacity = '0.5';
-          pelSelect.style.cursor = 'not-allowed';
-        }
-        if (toggleKendiri) {
-          toggleKendiri.disabled = !APP_CONFIG.slapbAllowKendiri50;
-        }
+        if (panelAuto) panelAuto.style.opacity = '0.5';
+        if (toggleKendiri) toggleKendiri.disabled = !APP_CONFIG.slapbAllowKendiri50;
       } else {
-        if (pelSelect) {
-          pelSelect.disabled = false;
-          pelSelect.style.opacity = '1';
-          pelSelect.style.cursor = 'pointer';
-        }
+        if (panelAuto) panelAuto.style.opacity = '1';
         if (toggleKendiri) {
           if (!APP_CONFIG.adiAllowKendiri50) {
             toggleKendiri.checked = false;
@@ -1459,6 +1509,7 @@
       }
 
       onToggleKendiriChange();
+      updatePelaksanaanAutoDisplay();
       calculateAll();
       renderTab3All();
       renderJsuTab();
@@ -1478,15 +1529,11 @@
         document.getElementById('namaProgramDisplay').innerText = code ? "PROGRAM KUSTOM / TAIP SENDIRI" : "Sila pilih program di atas...";
       }
 
+      updatePelaksanaanAutoDisplay(); // PERKARA 1 Kemaskini
       renderCuTableRows(code);
       calculateAll();
       renderTab3All();
       renderJsuTab();
-    }
-
-    function onPelaksanaanChange() {
-      calculateAll();
-      renderTab3All();
     }
 
     function onToggleKendiriChange() {
@@ -1504,7 +1551,30 @@
       calculateAll();
     }
 
+    // PERKARA 2: Kawalan Toggle 100% PL TVET
     function onTvetModuleChange() {
+      const val = document.getElementById('modulTvetSelect')?.value;
+      const wrapper = document.getElementById('tvetRatioToggleWrapper');
+      if (['iv', 'v', 'vi'].includes(val)) {
+        if (wrapper) wrapper.style.display = 'flex';
+      } else {
+        if (wrapper) wrapper.style.display = 'none';
+      }
+      calculateAll();
+    }
+
+    function onTvetRatioToggle() {
+      const toggle = document.getElementById('toggleTvetRatio');
+      const lbl = document.getElementById('lblTvetRatio');
+      if (toggle.checked) {
+        lbl.innerText = "Ikut Program";
+        lbl.style.color = "#0f766e";
+        toggle.nextElementSibling.style.backgroundColor = "#0d9488";
+      } else {
+        lbl.innerText = "100% PL";
+        lbl.style.color = "#047857";
+        toggle.nextElementSibling.style.backgroundColor = "#10b981";
+      }
       calculateAll();
     }
 
@@ -1533,7 +1603,6 @@
       tbody.innerHTML = '';
 
       let rawList = dbJajar[programCode] || [];
-      // Penapisan Ketat: Hanya CU Teras (-Cxx) sahaja
       let cuList = filterCoreCuList(rawList);
 
       if (cuList.length === 0) {
@@ -1627,8 +1696,8 @@
                       <th style="width:75px; background:#2563eb; color:white;">JAM AKHIR</th>
                       <th style="width:85px;">COPTPA (RK)</th>
                       <th style="width:85px;">COPTPA (RS)</th>
-                      <th style="width:130px; background:#1e3a8a; color:white;">BERSEMUKA (RK)</th>
-                      <th style="width:130px; background:#1e3a8a; color:white;">BERSEMUKA (RS)</th>
+                      <th style="width:110px; background:#1e3a8a; color:white;">BERSEMUKA (RK)</th>
+                      <th style="width:110px; background:#1e3a8a; color:white;">BERSEMUKA (RS)</th>
                     </tr>
                   </thead>
                   <tbody id="wa-body-${cuCode}"></tbody>
@@ -1743,8 +1812,9 @@
       let plPct = 30, syPct = 70;
       let waRkPct = 30, waRsPct = 70;
 
+      // PERKARA 1: Tarik nilai dari input tersembunyi
       if (mod === 'ADI') {
-        const ratioVal = document.getElementById('pelaksanaan')?.value || "30-70";
+        const ratioVal = document.getElementById('pelaksanaanHidden')?.value || "30-70";
         [plPct, syPct] = ratioVal.split('-').map(Number);
         waRkPct = plPct;
         waRsPct = syPct;
@@ -1765,8 +1835,30 @@
 
       const jamTVET = struct.tvet * 40;
       document.getElementById('jamTVET').innerText = jamTVET;
-      let plTvetVal = Math.round(jamTVET * (plPct / 100));
-      let syTvetVal = mod === 'SLaPB' ? 0 : Math.round(jamTVET * (syPct / 100));
+      
+      // PERKARA 2: Logik Pengiraan TVET Berdasarkan Dropdown & Toggle
+      let plTvetVal = 0, syTvetVal = 0;
+      const tvetModType = document.getElementById('modulTvetSelect')?.value || "i";
+      
+      if (mod === 'SLaPB') {
+        plTvetVal = jamTVET;
+        syTvetVal = 0;
+      } else {
+        if (['iv', 'v', 'vi'].includes(tvetModType)) {
+          const isIkutProgram = document.getElementById('toggleTvetRatio')?.checked || false;
+          if (isIkutProgram) {
+            plTvetVal = Math.round(jamTVET * (plPct / 100));
+            syTvetVal = Math.round(jamTVET * (syPct / 100));
+          } else {
+            plTvetVal = jamTVET; // 100% PL
+            syTvetVal = 0;
+          }
+        } else {
+          // Default i, ii, iii
+          plTvetVal = Math.round(jamTVET * (plPct / 100));
+          syTvetVal = Math.round(jamTVET * (syPct / 100));
+        }
+      }
       document.getElementById('plTVET').innerText = plTvetVal;
 
       const totalPL = plTerasVal + jamCA + plTvetVal;
@@ -1776,7 +1868,6 @@
       document.getElementById('jamJumlah').innerText = jamJumlah.toLocaleString();
       document.getElementById('plJumlah').innerText = totalPL.toLocaleString();
 
-      // Penyesuaian Kolum SY Bagi Mod SLaPB (Disatukan Rowspan Memanjang)
       const syTerasEl = document.getElementById('syTeras');
       const wajibHeaderEl = document.getElementById('tdModulWajibHeader');
       const syChildCells = document.querySelectorAll('.col-sy-child');
