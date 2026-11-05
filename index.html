@@ -24,11 +24,7 @@
       --text-muted: #64748b;
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
       font-family: 'Plus Jakarta Sans', sans-serif;
@@ -66,58 +62,31 @@
     }
 
     .brand-icon-box {
-      width: 48px;
-      height: 48px;
+      width: 48px; height: 48px;
       border-radius: 12px;
       background: linear-gradient(135deg, #2563eb, #1d4ed8);
       color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      display: flex; align-items: center; justify-content: center;
       font-size: 1.5rem;
       box-shadow: 0 4px 10px rgba(37, 99, 235, 0.25);
     }
 
-    .app-title {
-      font-size: 1.45rem;
-      font-weight: 800;
-      color: #0f172a;
-      letter-spacing: -0.02em;
-    }
+    .app-title { font-size: 1.45rem; font-weight: 800; color: #0f172a; letter-spacing: -0.02em; }
+    .app-subtitle { font-size: 0.82rem; color: var(--text-muted); font-weight: 500; margin-top: 2px; }
 
-    .app-subtitle {
-      font-size: 0.82rem;
-      color: var(--text-muted);
-      font-weight: 500;
-      margin-top: 2px;
-    }
-
-    .header-actions {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
+    .header-actions { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
 
     .session-badge {
-      background: #eff6ff;
-      color: #1d4ed8;
+      background: #eff6ff; color: #1d4ed8;
       border: 1px solid #bfdbfe;
-      padding: 6px 14px;
-      border-radius: 9999px;
-      font-size: 0.82rem;
-      font-weight: 700;
-      display: flex;
-      align-items: center;
-      gap: 8px;
+      padding: 6px 14px; border-radius: 9999px;
+      font-size: 0.82rem; font-weight: 700;
+      display: flex; align-items: center; gap: 8px;
       box-shadow: 0 1px 2px rgba(0,0,0,0.04);
     }
 
     .pulse-dot {
-      width: 8px;
-      height: 8px;
-      background: #2563eb;
-      border-radius: 50%;
+      width: 8px; height: 8px; background: #2563eb; border-radius: 50%;
       animation: pulse 1.8s infinite;
     }
 
@@ -127,726 +96,187 @@
     }
 
     .control-card {
-      padding: 22px 28px;
-      background: #f8fafc;
-      border-bottom: 1px solid #e2e8f0;
+      padding: 22px 28px; background: #f8fafc; border-bottom: 1px solid #e2e8f0;
     }
 
     .control-grid-top {
-      display: grid;
-      grid-template-columns: 160px 1fr 240px 220px;
-      gap: 16px;
-      align-items: stretch;
+      display: grid; grid-template-columns: 160px 1fr 240px 220px; gap: 16px; align-items: stretch;
     }
 
-    @media (max-width: 1200px) {
-      .control-grid-top {
-        grid-template-columns: 1fr 1fr;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .control-grid-top {
-        grid-template-columns: 1fr;
-      }
-    }
+    @media (max-width: 1200px) { .control-grid-top { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 768px) { .control-grid-top { grid-template-columns: 1fr; } }
 
     .panel-box {
-      background: #ffffff;
-      border: 1px solid #cbd5e1;
-      border-radius: 12px;
-      padding: 12px 14px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      position: relative;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.02);
-      transition: all 0.2s;
+      background: #ffffff; border: 1px solid #cbd5e1; border-radius: 12px;
+      padding: 12px 14px; display: flex; flex-direction: column; justify-content: center;
+      position: relative; box-shadow: 0 1px 3px rgba(0,0,0,0.02); transition: all 0.2s;
     }
 
-    .panel-box:focus-within {
-      border-color: #2563eb;
-      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
-    }
+    .panel-box:focus-within { border-color: #2563eb; box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12); }
 
     .panel-label {
-      font-size: 0.72rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-      color: #475569;
-      margin-bottom: 6px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
+      font-size: 0.72rem; font-weight: 800; text-transform: uppercase;
+      letter-spacing: 0.04em; color: #475569; margin-bottom: 6px;
+      display: flex; align-items: center; gap: 6px;
     }
 
     .custom-select, .custom-input {
-      width: 100%;
-      border: none;
-      background: transparent;
-      font-family: inherit;
-      font-size: 0.92rem;
-      font-weight: 700;
-      color: #0f172a;
-      outline: none;
-      cursor: pointer;
+      width: 100%; border: none; background: transparent; font-family: inherit;
+      font-size: 0.92rem; font-weight: 700; color: #0f172a; outline: none; cursor: pointer;
     }
 
     .highlight-select {
-      background: #fef08a !important;
-      border: 1px solid #fde047 !important;
-      border-radius: 8px;
-      padding: 6px 10px;
+      background: #fef08a !important; border: 1px solid #fde047 !important;
+      border-radius: 8px; padding: 6px 10px;
     }
 
     .control-grid-bottom {
-      display: grid;
-      grid-template-columns: 3fr 1fr;
-      gap: 16px;
-      margin-top: 14px;
+      display: grid; grid-template-columns: 3fr 1fr; gap: 16px; margin-top: 14px;
     }
 
-    @media (max-width: 900px) {
-      .control-grid-bottom {
-        grid-template-columns: 1fr;
-      }
-    }
+    @media (max-width: 900px) { .control-grid-bottom { grid-template-columns: 1fr; } }
 
-    .toggle-container {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 100%;
-    }
+    .toggle-container { display: flex; align-items: center; justify-content: space-between; height: 100%; }
 
-    .switch-ui {
-      position: relative;
-      display: inline-block;
-      width: 46px;
-      height: 24px;
-      flex-shrink: 0;
-    }
-
-    .switch-ui input {
-      opacity: 0;
-      width: 0;
-      height: 0;
-    }
-
+    .switch-ui { position: relative; display: inline-block; width: 46px; height: 24px; flex-shrink: 0; }
+    .switch-ui input { opacity: 0; width: 0; height: 0; }
     .switch-slider {
-      position: absolute;
-      cursor: pointer;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background-color: #cbd5e1;
-      transition: .3s;
-      border-radius: 34px;
+      position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0;
+      background-color: #cbd5e1; transition: .3s; border-radius: 34px;
     }
-
     .switch-slider:before {
-      position: absolute;
-      content: "";
-      height: 18px;
-      width: 18px;
-      left: 3px;
-      bottom: 3px;
-      background-color: white;
-      transition: .3s;
-      border-radius: 50%;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.25);
+      position: absolute; content: ""; height: 18px; width: 18px; left: 3px; bottom: 3px;
+      background-color: white; transition: .3s; border-radius: 50%; box-shadow: 0 1px 3px rgba(0,0,0,0.25);
     }
+    input:checked + .switch-slider { background-color: #2563eb; }
+    input:checked + .switch-slider:before { transform: translateX(22px); }
 
-    input:checked + .switch-slider {
-      background-color: #2563eb;
-    }
-
-    input:checked + .switch-slider:before {
-      transform: translateX(22px);
-    }
-
-    /* 4-Tab Navigation */
     .tabs-header-bar {
-      display: flex;
-      gap: 6px;
-      padding: 12px 20px 0;
-      background: #f1f5f9;
-      border-bottom: 2px solid #e2e8f0;
-      overflow-x: hidden;
-      width: 100%;
-      box-sizing: border-box;
+      display: flex; gap: 6px; padding: 12px 20px 0; background: #f1f5f9;
+      border-bottom: 2px solid #e2e8f0; overflow-x: hidden; width: 100%; box-sizing: border-box;
     }
 
     .tab-nav-btn {
-      flex: 1 1 0;
-      min-width: 0;
-      padding: 12px 6px;
-      font-size: 0.78rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.02em;
-      border: 1px solid #cbd5e1;
-      border-bottom: none;
-      background: #e2e8f0;
-      color: #475569;
-      border-radius: 10px 10px 0 0;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      transition: all 0.2s;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-      overflow: hidden;
+      flex: 1 1 0; min-width: 0; padding: 12px 6px; font-size: 0.78rem; font-weight: 800;
+      text-transform: uppercase; letter-spacing: 0.02em; border: 1px solid #cbd5e1; border-bottom: none;
+      background: #e2e8f0; color: #475569; border-radius: 10px 10px 0 0; cursor: pointer;
+      display: flex; align-items: center; justify-content: center; gap: 6px; transition: all 0.2s;
+      white-space: nowrap; text-overflow: ellipsis; overflow: hidden;
     }
 
-    .tab-nav-btn:hover {
-      background: #cbd5e1;
-      color: #0f172a;
-    }
+    .tab-nav-btn:hover { background: #cbd5e1; color: #0f172a; }
+    .tab-nav-btn.active { background: #1e3a8a; color: #ffffff; border-color: #1e3a8a; box-shadow: 0 -2px 6px rgba(30, 58, 138, 0.15); }
 
-    .tab-nav-btn.active {
-      background: #1e3a8a;
-      color: #ffffff;
-      border-color: #1e3a8a;
-      box-shadow: 0 -2px 6px rgba(30, 58, 138, 0.15);
-    }
-
-    .tab-content-panel {
-      display: none;
-      padding: 24px 28px;
-      animation: fadeIn 0.25s ease-in-out;
-    }
-
-    .tab-content-panel.active {
-      display: block;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(3px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+    .tab-content-panel { display: none; padding: 24px 28px; animation: fadeIn 0.25s ease-in-out; }
+    .tab-content-panel.active { display: block; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(3px); } to { opacity: 1; transform: translateY(0); } }
 
     .table-responsive {
-      overflow-x: auto;
-      border: 1px solid #cbd5e1;
-      border-radius: 10px;
-      background: #ffffff;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+      overflow-x: auto; border: 1px solid #cbd5e1; border-radius: 10px; background: #ffffff; box-shadow: 0 1px 4px rgba(0,0,0,0.04);
     }
 
-    table.data-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 0.82rem;
-      text-align: center;
-    }
+    table.data-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; text-align: center; }
+    table.data-table th, table.data-table td { border: 1px solid #cbd5e1; padding: 8px 6px; }
 
-    table.data-table th, table.data-table td {
-      border: 1px solid #cbd5e1;
-      padding: 8px 6px;
-    }
-
-    .th-navy-main {
-      background: #1e3a8a;
-      color: #ffffff;
-      font-weight: 800;
-      text-transform: uppercase;
-      font-size: 0.75rem;
-      letter-spacing: 0.03em;
-    }
-
-    .th-navy-sub {
-      background: #172554;
-      color: #ffffff;
-      font-weight: 700;
-      font-size: 0.7rem;
-    }
+    .th-navy-main { background: #1e3a8a; color: #ffffff; font-weight: 800; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.03em; }
+    .th-navy-sub { background: #172554; color: #ffffff; font-weight: 700; font-size: 0.7rem; }
 
     .bg-row-pink { background-color: #fce7f3; }
     .bg-row-cyan { background-color: #cffafe; }
     .bg-row-muted { background-color: #f1f5f9; }
 
-    .matrix-col-wa {
-      width: 320px !important;
-      min-width: 320px !important;
-      max-width: 320px !important;
-      text-align: left !important;
-      box-sizing: border-box;
-    }
+    .matrix-col-wa { width: 320px !important; min-width: 320px !important; max-width: 320px !important; text-align: left !important; box-sizing: border-box; }
+    .matrix-col-jam { width: 65px !important; min-width: 65px !important; max-width: 65px !important; text-align: center !important; box-sizing: border-box; }
+    .matrix-th-session { background: #0f172a; color: #ffffff; width: 64px; min-width: 64px; max-width: 64px; font-size: 0.72rem; font-weight: 800; padding: 6px 2px !important; }
+    .matrix-stepper-cell { padding: 3px 2px !important; vertical-align: middle; width: 64px; min-width: 64px; max-width: 64px; }
 
-    .matrix-col-jam {
-      width: 65px !important;
-      min-width: 65px !important;
-      max-width: 65px !important;
-      text-align: center !important;
-      box-sizing: border-box;
-    }
+    .stepper-widget { display: inline-flex; align-items: center; justify-content: center; gap: 2px; background: #ffffff; border: 1px solid #cbd5e1; border-radius: 6px; padding: 2px; transition: all 0.2s; }
+    .stepper-widget.has-value { background: #172554; border-color: #1e3a8a; box-shadow: 0 1px 3px rgba(15, 23, 42, 0.25); }
+    .btn-step { width: 17px; height: 22px; border-radius: 4px; border: 1px solid #cbd5e1; background: #f8fafc; color: #1e293b; font-size: 0.75rem; font-weight: 800; display: inline-flex; align-items: center; justify-content: center; cursor: pointer; user-select: none; transition: all 0.15s; padding: 0; }
+    .btn-step:hover { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+    .stepper-widget.has-value .btn-step { background: #1e40af; border-color: #3b82f6; color: #ffffff; }
+    .step-display-val { min-width: 20px; font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; font-weight: 800; text-align: center; color: #94a3b8; }
+    .stepper-widget.has-value .step-display-val { color: #ffffff; }
 
-    .matrix-th-session {
-      background: #0f172a;
-      color: #ffffff;
-      width: 64px;
-      min-width: 64px;
-      max-width: 64px;
-      font-size: 0.72rem;
-      font-weight: 800;
-      padding: 6px 2px !important;
-    }
+    .btn-action-light { background: #ffffff; border: 1px solid #cbd5e1; color: #1e293b; padding: 6px 14px; border-radius: 8px; font-size: 0.78rem; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; transition: all 0.2s; box-shadow: 0 1px 2px rgba(0,0,0,0.04); }
+    .btn-action-light:hover { background: #f8fafc; border-color: #94a3b8; }
+    .btn-action-primary { background: #2563eb; border: 1px solid #2563eb; color: #ffffff; padding: 6px 14px; border-radius: 8px; font-size: 0.78rem; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; transition: all 0.2s; box-shadow: 0 1px 3px rgba(37, 99, 235, 0.25); }
+    .btn-action-primary:hover { background: #1d4ed8; border-color: #1d4ed8; }
 
-    .matrix-stepper-cell {
-      padding: 3px 2px !important;
-      vertical-align: middle;
-      width: 64px;
-      min-width: 64px;
-      max-width: 64px;
-    }
+    .teaching-plan-input { width: 100%; min-height: 40px; padding: 6px 10px; font-family: inherit; font-size: 0.8rem; font-weight: 500; border: 1px solid #cbd5e1; border-radius: 6px; outline: none; transition: border 0.2s; }
+    .teaching-plan-input:focus { border-color: #2563eb; box-shadow: 0 0 0 2px rgba(37,99,235,0.15); }
 
-    .stepper-widget {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 2px;
-      background: #ffffff;
-      border: 1px solid #cbd5e1;
-      border-radius: 6px;
-      padding: 2px;
-      transition: all 0.2s;
-    }
+    .code-badge { display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; font-weight: 800; padding: 2px 6px; border-radius: 4px; margin-bottom: 4px; }
+    .code-badge-blue { background: #dbeafe; color: #1d4ed8; border: 1px solid #bfdbfe; }
+    .code-badge-green { background: #dcfce7; color: #15803d; border: 1px solid #bbf7d0; }
 
-    .stepper-widget.has-value {
-      background: #172554;
-      border-color: #1e3a8a;
-      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.25);
-    }
+    .credit-alert-box { margin-bottom: 16px; padding: 12px 18px; border-radius: 10px; font-size: 0.82rem; font-weight: 800; display: none; align-items: center; gap: 10px; }
+    .tab2-info-bar { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 10px; padding: 10px 16px; margin-bottom: 16px; }
 
-    .btn-step {
-      width: 17px;
-      height: 22px;
-      border-radius: 4px;
-      border: 1px solid #cbd5e1;
-      background: #f8fafc;
-      color: #1e293b;
-      font-size: 0.75rem;
-      font-weight: 800;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      user-select: none;
-      transition: all 0.15s;
-      padding: 0;
-    }
+    .cu-accordion-card { background: #ffffff; border: 1px solid #cbd5e1; border-radius: 10px; margin-bottom: 12px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.02); }
+    .cu-accordion-header { padding: 12px 16px; background: #f8fafc; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-weight: 800; font-size: 0.84rem; color: #1e3a8a; user-select: none; border-bottom: 1px solid transparent; transition: background 0.2s; }
+    .cu-accordion-header:hover { background: #f1f5f9; }
+    .cu-accordion-header.active { border-bottom-color: #cbd5e1; background: #eff6ff; }
+    .cu-accordion-body { display: none; padding: 16px; background: #ffffff; }
+    .cu-accordion-body.open { display: block; }
 
-    .btn-step:hover {
-      background: #2563eb;
-      color: #ffffff;
-      border-color: #2563eb;
-    }
+    .modal-backdrop { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(3px); z-index: 1000; align-items: center; justify-content: center; padding: 16px; }
+    .modal-backdrop.open { display: flex; }
+    .modal-box { background: #ffffff; border-radius: 14px; width: 100%; max-width: 520px; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.2); border: 1px solid #e2e8f0; overflow: hidden; }
+    .modal-header { padding: 16px 20px; background: #f8fafc; border-bottom: 1px solid #e2e8f0; display: flex; justify-content: space-between; align-items: center; font-weight: 800; color: #0f172a; }
+    .modal-body { padding: 20px; }
+    .modal-footer { padding: 12px 20px; background: #f8fafc; border-top: 1px solid #e2e8f0; display: flex; justify-content: flex-end; gap: 10px; }
 
-    .stepper-widget.has-value .btn-step {
-      background: #1e40af;
-      border-color: #3b82f6;
-      color: #ffffff;
-    }
+    .slider-compact { width: 100%; height: 5px; accent-color: #2563eb; cursor: pointer; }
+    .slider-compact.slider-amber { accent-color: #d97706; }
 
-    .step-display-val {
-      min-width: 20px;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.78rem;
-      font-weight: 800;
-      text-align: center;
-      color: #94a3b8;
-    }
+    .btn-circle-toggle { width: 24px; height: 24px; border-radius: 6px; border: 1px solid #cbd5e1; background: #ffffff; display: inline-flex; align-items: center; justify-content: center; cursor: pointer; font-size: 0.7rem; font-weight: 800; color: #1e3a8a; transition: all 0.2s; }
+    .btn-circle-toggle:hover { background: #2563eb; color: white; border-color: #2563eb; }
 
-    .stepper-widget.has-value .step-display-val {
-      color: #ffffff;
-    }
-
-    .btn-action-light {
-      background: #ffffff;
-      border: 1px solid #cbd5e1;
-      color: #1e293b;
-      padding: 6px 14px;
-      border-radius: 8px;
-      font-size: 0.78rem;
-      font-weight: 700;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      transition: all 0.2s;
-      box-shadow: 0 1px 2px rgba(0,0,0,0.04);
-    }
-
-    .btn-action-light:hover {
-      background: #f8fafc;
-      border-color: #94a3b8;
-    }
-
-    .btn-action-primary {
-      background: #2563eb;
-      border: 1px solid #2563eb;
-      color: #ffffff;
-      padding: 6px 14px;
-      border-radius: 8px;
-      font-size: 0.78rem;
-      font-weight: 700;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      transition: all 0.2s;
-      box-shadow: 0 1px 3px rgba(37, 99, 235, 0.25);
-    }
-
-    .btn-action-primary:hover {
-      background: #1d4ed8;
-      border-color: #1d4ed8;
-    }
-
-    .teaching-plan-input {
-      width: 100%;
-      min-height: 40px;
-      padding: 6px 10px;
-      font-family: inherit;
-      font-size: 0.8rem;
-      font-weight: 500;
-      border: 1px solid #cbd5e1;
-      border-radius: 6px;
-      outline: none;
-      transition: border 0.2s;
-    }
-
-    .teaching-plan-input:focus {
-      border-color: #2563eb;
-      box-shadow: 0 0 0 2px rgba(37,99,235,0.15);
-    }
-
-    .code-badge {
-      display: inline-block;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.72rem;
-      font-weight: 800;
-      padding: 2px 6px;
-      border-radius: 4px;
-      margin-bottom: 4px;
-    }
-
-    .code-badge-blue {
-      background: #dbeafe;
-      color: #1d4ed8;
-      border: 1px solid #bfdbfe;
-    }
-
-    .code-badge-green {
-      background: #dcfce7;
-      color: #15803d;
-      border: 1px solid #bbf7d0;
-    }
-
-    .credit-alert-box {
-      margin-bottom: 16px;
-      padding: 12px 18px;
-      border-radius: 10px;
-      font-size: 0.82rem;
-      font-weight: 800;
-      display: none;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .tab2-info-bar {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: center;
-      gap: 12px;
-      background: #eff6ff;
-      border: 1px solid #bfdbfe;
-      border-radius: 10px;
-      padding: 10px 16px;
-      margin-bottom: 16px;
-    }
-
-    .cu-accordion-card {
-      background: #ffffff;
-      border: 1px solid #cbd5e1;
-      border-radius: 10px;
-      margin-bottom: 12px;
-      overflow: hidden;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.02);
-    }
-
-    .cu-accordion-header {
-      padding: 12px 16px;
-      background: #f8fafc;
-      cursor: pointer;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-weight: 800;
-      font-size: 0.84rem;
-      color: #1e3a8a;
-      user-select: none;
-      border-bottom: 1px solid transparent;
-      transition: background 0.2s;
-    }
-
-    .cu-accordion-header:hover {
-      background: #f1f5f9;
-    }
-
-    .cu-accordion-header.active {
-      border-bottom-color: #cbd5e1;
-      background: #eff6ff;
-    }
-
-    .cu-accordion-body {
-      display: none;
-      padding: 16px;
-      background: #ffffff;
-    }
-
-    .cu-accordion-body.open {
-      display: block;
-    }
-
-    .modal-backdrop {
-      display: none;
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(15, 23, 42, 0.6);
-      backdrop-filter: blur(3px);
-      z-index: 1000;
-      align-items: center;
-      justify-content: center;
-      padding: 16px;
-    }
-
-    .modal-backdrop.open {
-      display: flex;
-    }
-
-    .modal-box {
-      background: #ffffff;
-      border-radius: 14px;
-      width: 100%;
-      max-width: 520px;
-      box-shadow: 0 20px 25px -5px rgba(0,0,0,0.2);
-      border: 1px solid #e2e8f0;
-      overflow: hidden;
-    }
-
-    .modal-header {
-      padding: 16px 20px;
-      background: #f8fafc;
-      border-bottom: 1px solid #e2e8f0;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-weight: 800;
-      color: #0f172a;
-    }
-
-    .modal-body {
-      padding: 20px;
-    }
-
-    .modal-footer {
-      padding: 12px 20px;
-      background: #f8fafc;
-      border-top: 1px solid #e2e8f0;
-      display: flex;
-      justify-content: flex-end;
-      gap: 10px;
-    }
-
-    .slider-compact {
-      width: 100%;
-      height: 5px;
-      accent-color: #2563eb;
-      cursor: pointer;
-    }
-
-    .slider-compact.slider-amber {
-      accent-color: #d97706;
-    }
-
-    .btn-circle-toggle {
-      width: 24px;
-      height: 24px;
-      border-radius: 6px;
-      border: 1px solid #cbd5e1;
-      background: #ffffff;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      font-size: 0.7rem;
-      font-weight: 800;
-      color: #1e3a8a;
-      transition: all 0.2s;
-    }
-
-    .btn-circle-toggle:hover {
-      background: #2563eb;
-      color: white;
-      border-color: #2563eb;
-    }
-
-    .wa-subrow {
-      display: none;
-    }
-
-    .wa-subrow.active {
-      display: table-row;
-    }
-
-    .print-only-banner, .print-section-header, .print-page-footer {
-      display: none;
-    }
+    .wa-subrow { display: none; }
+    .wa-subrow.active { display: table-row; }
+    
+    .print-only-banner, .print-section-header, .print-page-footer { display: none; }
 
     /* ========================================= */
-    /* PENGOPTIMUMAN CETAKAN (PERKARA 4)         */
+    /* CETAKAN DIPERTINGKATKAN (COMBINE TAB)     */
     /* ========================================= */
     @media print {
-      @page {
-        size: A4 portrait;
-        margin: 10mm;
-      }
+      @page { size: A4 portrait; margin: 10mm; }
+      body { padding: 0 !important; background: white !important; color: black !important; font-size: 8pt !important; }
 
-      body {
-        padding: 0 !important;
-        background: white !important;
-        color: black !important;
-        font-size: 8pt !important;
-      }
-
-      .no-print, 
-      .top-header, 
-      .control-card, 
-      .tabs-header-bar, 
-      .tab2-info-bar, 
-      .credit-alert-box,
-      .btn-circle-toggle,
-      #sectionTeoriMapping, 
-      #sectionAmaliMapping,
-      .btn-action-light,
-      .btn-step,
-      .slider-compact {
+      .no-print, .top-header, .control-card, .tabs-header-bar, .tab2-info-bar, 
+      .credit-alert-box, .btn-circle-toggle, #sectionTeoriMapping, #sectionAmaliMapping,
+      .btn-action-light, .btn-step, .slider-compact {
         display: none !important;
       }
 
-      .app-container {
-        border: none !important;
-        box-shadow: none !important;
-        max-width: 100% !important;
-        width: 100% !important;
-      }
+      .app-container { border: none !important; box-shadow: none !important; max-width: 100% !important; width: 100% !important; }
 
-      /* Pemecahan Halaman Utama */
-      #tab1Content {
-        display: block !important;
-        page-break-after: always !important;
-      }
+      /* PAKSA SEMUA TAB UNTUK COMBINE WAKTU CETAK */
+      .tab-content-panel { display: block !important; opacity: 1 !important; padding: 0 !important; margin-bottom: 20px !important; }
+      
+      #tab1Content { page-break-after: always !important; }
+      #tab2Content { page-break-before: always !important; page-break-after: always !important; }
+      #tab3Content { page-break-before: always !important; page-break-after: always !important; }
+      #tab4Content { page-break-before: always !important; }
 
-      #tab2Content {
-        display: block !important;
-        page-break-before: always !important;
-        page-break-after: always !important;
-      }
+      .print-only-banner { display: block !important; margin-bottom: 10px !important; border-bottom: 2px solid #0f172a !important; padding-bottom: 4px !important; }
+      .print-section-header { display: block !important; font-size: 10pt !important; font-weight: 800 !important; color: #1e3a8a !important; border-bottom: 1.5px solid #cbd5e1 !important; padding-bottom: 2px !important; margin: 10px 0 6px 0 !important; }
 
-      #tab3Content {
-        display: block !important;
-        page-break-before: always !important;
-        page-break-after: always !important;
-      }
+      .table-responsive { overflow-x: visible !important; border: none !important; box-shadow: none !important; width: 100% !important; }
+      table.data-table { width: 100% !important; table-layout: auto !important; font-size: 7.5pt !important; border-collapse: collapse !important; }
+      table.data-table th, table.data-table td { padding: 4px 3px !important; word-wrap: break-word !important; }
 
-      #tab4Content {
-        display: block !important;
-        page-break-before: always !important;
-      }
+      .wa-subrow { display: none !important; }
+      #combinedPlanContainer { display: block !important; }
+      .cu-accordion-body { display: block !important; padding: 4px 0 !important; }
+      .cu-accordion-card { border: 1px solid #cbd5e1 !important; page-break-inside: avoid !important; margin-bottom: 10px !important; }
+      
+      .teaching-plan-input::placeholder { color: transparent !important; }
+      .teaching-plan-input { border: none !important; background: transparent !important; padding: 0 !important; }
 
-      .print-only-banner {
-        display: block !important;
-        margin-bottom: 10px !important;
-        border-bottom: 2px solid #0f172a !important;
-        padding-bottom: 4px !important;
-      }
-
-      .print-section-header {
-        display: block !important;
-        font-size: 10pt !important;
-        font-weight: 800 !important;
-        color: #1e3a8a !important;
-        border-bottom: 1.5px solid #cbd5e1 !important;
-        padding-bottom: 2px !important;
-        margin: 10px 0 6px 0 !important;
-      }
-
-      /* Pengoptimuman Jadual Lebar untuk A4 Portrait */
-      .table-responsive {
-        overflow-x: visible !important;
-        border: none !important;
-        box-shadow: none !important;
-        width: 100% !important;
-      }
-
-      table.data-table {
-        width: 100% !important;
-        table-layout: auto !important; /* Biar browser tentukan lebar terbaik */
-        font-size: 7.5pt !important;
-        border-collapse: collapse !important;
-      }
-
-      table.data-table th, table.data-table td {
-        padding: 4px 3px !important; /* Padatkan ruang */
-        word-wrap: break-word !important;
-      }
-
-      /* Memastikan Sub-row sentiasa disembunyikan waktu cetak */
-      .wa-subrow {
-        display: none !important;
-      }
-
-      #combinedPlanContainer {
-        display: block !important;
-      }
-
-      .cu-accordion-body {
-        display: block !important;
-        padding: 4px 0 !important;
-      }
-
-      .cu-accordion-card {
-        border: 1px solid #cbd5e1 !important;
-        page-break-inside: avoid !important;
-        margin-bottom: 10px !important;
-      }
-
-      .teaching-plan-input::placeholder {
-        color: transparent !important;
-      }
-
-      .teaching-plan-input {
-        border: none !important;
-        background: transparent !important;
-        padding: 0 !important;
-      }
-
-      .print-page-footer {
-        display: block !important;
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        text-align: center;
-        font-size: 7pt;
-        color: #475569;
-        border-top: 1px solid #cbd5e1;
-        padding-top: 2px;
-      }
+      .print-page-footer { display: block !important; position: fixed; bottom: 0; left: 0; right: 0; text-align: center; font-size: 7pt; color: #475569; border-top: 1px solid #cbd5e1; padding-top: 2px; }
     }
   </style>
 </head>
@@ -876,12 +306,8 @@
         </div>
       </div>
       <div class="header-actions">
-        <button class="btn-action-light" onclick="openPbModal()">
-          🏛️ Maklumat PB
-        </button>
-        <button class="btn-action-primary" onclick="triggerPrintWithSetup()">
-          🖨️ Cetak / PDF
-        </button>
+        <button class="btn-action-light" onclick="openPbModal()">🏛️ Maklumat PB</button>
+        <button class="btn-action-primary" onclick="triggerPrintWithSetup()">🖨️ Cetak / PDF</button>
         <div class="session-badge">
           <span class="pulse-dot"></span>
           <span>Sesi Temp: <span id="sessionTimerText">02:59:59</span></span>
@@ -891,7 +317,6 @@
 
     <div class="control-card">
       <div class="control-grid-top">
-        
         <div class="panel-box">
           <label class="panel-label">🗳 Mod Pentauliahan</label>
           <select id="modPentauliahan" class="custom-select highlight-select" onchange="onModPentauliahanChange()">
@@ -907,13 +332,11 @@
           <datalist id="programListDatalist"></datalist>
         </div>
 
-        <!-- PERKARA 1: Pelaksanaan Latihan Auto -->
         <div class="panel-box" id="panelPelaksanaanLatihan">
           <label class="panel-label">🕒 Pelaksanaan Latihan (%)</label>
           <div id="pelaksanaanAutoDisplay" class="custom-select highlight-select" style="display:flex; align-items:center; cursor:default;">
             30% (PL) & 70% (SY)
           </div>
-          <!-- Menyimpan nilai sebenar untuk digunakan dalam logik pengiraan -->
           <input type="hidden" id="pelaksanaanHidden" value="30-70">
         </div>
 
@@ -929,7 +352,6 @@
             </label>
           </div>
         </div>
-
       </div>
 
       <div class="control-grid-bottom">
@@ -945,23 +367,15 @@
       </div>
     </div>
 
-    <!-- PERKARA 3: 4-Tab Navigation Bar (Teks Dipendekkan) -->
+    <!-- TABS NAV -->
     <div class="tabs-header-bar no-print">
-      <button class="tab-nav-btn active" id="btnTab1" onclick="switchMainTab('tab1Content')">
-        📖 1. STRUKTUR KURIKULUM
-      </button>
-      <button class="tab-nav-btn" id="btnTab2" onclick="switchMainTab('tab2Content')">
-        🕒 2. PENJAJARAN JAM
-      </button>
-      <button class="tab-nav-btn" id="btnTab3" onclick="switchMainTab('tab3Content')">
-        🧩 3. PELAN MENGAJAR
-      </button>
-      <button class="tab-nav-btn" id="btnTab4" onclick="switchMainTab('tab4Content')">
-        📋 4. JSU
-      </button>
+      <button class="tab-nav-btn active" id="btnTab1" onclick="switchMainTab('tab1Content')">📖 1. STRUKTUR KURIKULUM</button>
+      <button class="tab-nav-btn" id="btnTab2" onclick="switchMainTab('tab2Content')">🕒 2. PENJAJARAN JAM</button>
+      <button class="tab-nav-btn" id="btnTab3" onclick="switchMainTab('tab3Content')">🧩 3. PELAN MENGAJAR</button>
+      <button class="tab-nav-btn" id="btnTab4" onclick="switchMainTab('tab4Content')">📋 4. JSU</button>
     </div>
 
-    <!-- TAB 1: STRUKTUR KURIKULUM -->
+    <!-- TAB 1 -->
     <div id="tab1Content" class="tab-content-panel active">
       <div class="print-section-header">PERKARA 1: STRUKTUR KURIKULUM PROGRAM</div>
       <div class="table-responsive">
@@ -987,14 +401,11 @@
               <td id="syTeras" class="col-sy" style="font-weight:700;">0</td>
             </tr>
             <tr class="bg-row-muted">
-              <td colspan="5" id="tdModulWajibHeader" style="text-align:left; font-weight:800; color:#334155; padding-left:14px;">
-                2. MODUL WAJIB
-              </td>
+              <td colspan="5" id="tdModulWajibHeader" style="text-align:left; font-weight:800; color:#334155; padding-left:14px;">2. MODUL WAJIB</td>
             </tr>
             <tr>
               <td style="text-align:left; padding-left:28px; font-weight:600;">
-                <a href="https://drive.google.com/drive/folders/1PCdV3Aq68LaYwVx2sydubed1nMs-70LL" target="_blank" 
-                   style="color:#1d4ed8; text-decoration:underline; font-weight:700;">
+                <a href="https://drive.google.com/drive/folders/1PCdV3Aq68LaYwVx2sydubed1nMs-70LL" target="_blank" style="color:#1d4ed8; text-decoration:underline; font-weight:700;">
                   2.1) CORE ABILITIES, CA ↗
                 </a>
               </td>
@@ -1007,7 +418,6 @@
               <td style="text-align:left; padding-left:28px;">
                 <div style="font-weight:600; margin-bottom:4px;">2.2) MODUL PENYEDIA TVET</div>
                 <div style="display:flex; flex-wrap:wrap; gap:6px; align-items:center;">
-                  <!-- PERKARA 2: Senarai Dropdown TVET Terkini -->
                   <select id="modulTvetSelect" class="custom-select highlight-select no-print" style="width:auto; font-size:0.75rem;" onchange="onTvetModuleChange()">
                     <option value="i">i. CU Elektif*</option>
                     <option value="ii">ii. Kombinasi WA*</option>
@@ -1017,7 +427,6 @@
                     <option value="vi">vi. Modul Syarikat</option>
                   </select>
                   
-                  <!-- PERKARA 2: Pilihan 100% PL atau Nisbah Program untuk (iv, v, vi) -->
                   <div id="tvetRatioToggleWrapper" style="display:none; align-items:center; gap:4px;" class="no-print">
                     <label class="switch-ui" style="width:36px; height:18px;">
                       <input type="checkbox" id="toggleTvetRatio" onchange="onTvetRatioToggle()">
@@ -1034,24 +443,15 @@
             </tr>
             <tr class="bg-row-pink">
               <td style="text-align:left; padding-left:14px; font-weight:700;">3. PENDEDAHAN INDUSTRI*</td>
-              <td id="kreditPI" style="font-weight:700;">0</td>
-              <td style="color:#94a3b8;">-</td>
-              <td id="plPI" class="col-pl" style="font-weight:700;">0</td>
-              <td id="syPI" class="col-sy col-sy-child" style="color:#94a3b8;">-</td>
+              <td id="kreditPI" style="font-weight:700;">0</td><td style="color:#94a3b8;">-</td><td id="plPI" class="col-pl" style="font-weight:700;">0</td><td id="syPI" class="col-sy col-sy-child" style="color:#94a3b8;">-</td>
             </tr>
             <tr class="bg-row-pink">
               <td style="text-align:left; padding-left:14px; font-weight:700;">4. LATIHAN INDUSTRI**</td>
-              <td id="kreditLI" style="font-weight:700;">-</td>
-              <td style="color:#94a3b8;">-</td>
-              <td id="plLI" class="col-pl" style="color:#94a3b8;">-</td>
-              <td id="syLI" class="col-sy col-sy-child" style="color:#94a3b8;">-</td>
+              <td id="kreditLI" style="font-weight:700;">-</td><td style="color:#94a3b8;">-</td><td id="plLI" class="col-pl" style="color:#94a3b8;">-</td><td id="syLI" class="col-sy col-sy-child" style="color:#94a3b8;">-</td>
             </tr>
             <tr class="bg-row-cyan">
               <td style="text-align:left; padding-left:14px; font-weight:700;">5. PROJEK AKHIR</td>
-              <td id="kreditPA" style="font-weight:700;">-</td>
-              <td style="color:#94a3b8;">-</td>
-              <td id="plPA" class="col-pl" style="color:#94a3b8;">-</td>
-              <td id="syPA" class="col-sy col-sy-child" style="color:#94a3b8;">-</td>
+              <td id="kreditPA" style="font-weight:700;">-</td><td style="color:#94a3b8;">-</td><td id="plPA" class="col-pl" style="color:#94a3b8;">-</td><td id="syPA" class="col-sy col-sy-child" style="color:#94a3b8;">-</td>
             </tr>
           </tbody>
           <tfoot>
@@ -1067,20 +467,14 @@
       </div>
     </div>
 
-    <!-- TAB 2: PENJAJARAN JAM LATIHAN -->
+    <!-- TAB 2 -->
     <div id="tab2Content" class="tab-content-panel">
       <div class="print-section-header">PERKARA 2: JADUAL PENJAJARAN JAM LATIHAN (CU SAHAJA)</div>
-      
       <div class="tab2-info-bar no-print">
         <div class="range-indicator-text">
-          📌 Julat PnP Dibenarkan: 
-          Bersemuka: <strong id="lblJulatSemuka" style="color:#1d4ed8;">80 - 95%</strong> | 
-          Kendiri: <strong id="lblJulatKendiri" style="color:#d97706;">0 - 17%</strong> | 
-          Penilaian: <strong id="lblJulatPenilaian" style="color:#0f766e;">3 - 20%</strong>
+          📌 Julat PnP Dibenarkan: Bersemuka: <strong id="lblJulatSemuka" style="color:#1d4ed8;">80 - 95%</strong> | Kendiri: <strong id="lblJulatKendiri" style="color:#d97706;">0 - 17%</strong> | Penilaian: <strong id="lblJulatPenilaian" style="color:#0f766e;">3 - 20%</strong>
         </div>
-        <button class="btn-action-light" onclick="resetAllCalculations()">
-          🔄 Reset Nilai
-        </button>
+        <button class="btn-action-light" onclick="resetAllCalculations()">🔄 Reset Nilai</button>
       </div>
 
       <div id="creditAlertNotice" class="credit-alert-box"></div>
@@ -1108,17 +502,12 @@
               <th class="th-navy-sub" style="width:70px; background:#0891b2; color:white;">[F] &Sigma; LATIHAN</th>
             </tr>
           </thead>
-          <tbody id="cuTableBody">
-            <!-- Populated dynamically (CU Teras Sahaja) -->
-          </tbody>
+          <tbody id="cuTableBody"></tbody>
           <tfoot>
             <tr style="background:#e0e7ff; font-weight:800; color:#1e1b4b;">
               <td colspan="3" style="text-align:right; padding-right:12px;">JUMLAH:</td>
-              <td id="sumAsal">0</td>
-              <td id="sumDijajar">0</td>
-              <td id="sumKredit">0</td>
-              <td id="sumPelarasan" class="no-print">0</td>
-              <td id="sumKreditBaharu">0</td>
+              <td id="sumAsal">0</td><td id="sumDijajar">0</td><td id="sumKredit">0</td>
+              <td id="sumPelarasan" class="no-print">0</td><td id="sumKreditBaharu">0</td>
               <td id="sumBersemuka" style="background:#dbeafe; color:#1e3a8a;">0</td>
               <td id="sumKendiri" style="background:#fef3c7; color:#b45309;">0</td>
               <td id="sumPenilaian" style="background:#d1fae5; color:#065f46;">0</td>
@@ -1129,61 +518,41 @@
       </div>
     </div>
 
-    <!-- TAB 3: PEMETAAN SESI LATIHAN (RK/RS) -->
+    <!-- TAB 3 -->
     <div id="tab3Content" class="tab-content-panel">
       <div class="print-section-header">PERKARA 3: JADUAL PENYATUAN TAJUK PELAN MENGAJAR TEORI (KP) & AMALI (KK)</div>
-
       <div class="tab2-info-bar no-print" style="display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:12px;">
         <div id="bannerPanduanSesi" class="range-indicator-text">
-          💡 <strong>Panduan Sesi:</strong> Teori dihadkan maksimum <strong id="lblJamSesiTeori" style="color:#1d4ed8;">8</strong> Jam / sesi (T01, T02...), Amali dihadkan <strong id="lblJamBlokAmali" style="color:#0d9488;">40</strong> Jam / blok (A01, A02...).
+          💡 <strong>Panduan Sesi:</strong> Teori dihadkan maksimum <strong id="lblJamSesiTeori" style="color:#1d4ed8;">8</strong> Jam / sesi, Amali dihadkan <strong id="lblJamBlokAmali" style="color:#0d9488;">40</strong> Jam / blok.
         </div>
-
         <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
           <div style="display:flex; align-items:center; gap:6px; background:#ffffff; border:1px solid #cbd5e1; border-radius:8px; padding:4px 8px;">
             <label style="font-size:0.75rem; font-weight:800; color:#334155;">⏱️ Jam / Hari:</label>
             <select id="selJamHari" class="custom-select highlight-select" style="width:auto; padding:2px 8px; font-size:0.75rem;" onchange="onSessionConfigChange()">
-              <option value="4">4 Jam</option>
-              <option value="5">5 Jam</option>
-              <option value="6">6 Jam</option>
-              <option value="7">7 Jam</option>
-              <option value="8" selected>8 Jam</option>
+              <option value="4">4 Jam</option><option value="5">5 Jam</option><option value="6">6 Jam</option><option value="7">7 Jam</option><option value="8" selected>8 Jam</option>
             </select>
           </div>
-
           <div style="display:flex; align-items:center; gap:6px; background:#ffffff; border:1px solid #cbd5e1; border-radius:8px; padding:4px 8px;">
             <label style="font-size:0.75rem; font-weight:800; color:#334155;">📅 Hari / Minggu:</label>
             <select id="selHariMinggu" class="custom-select highlight-select" style="width:auto; padding:2px 8px; font-size:0.75rem;" onchange="onSessionConfigChange()">
-              <option value="3">3 Hari</option>
-              <option value="4">4 Hari</option>
-              <option value="5" selected>5 Hari</option>
-              <option value="6">6 Hari</option>
+              <option value="3">3 Hari</option><option value="4">4 Hari</option><option value="5" selected>5 Hari</option><option value="6">6 Hari</option>
             </select>
           </div>
-
           <div style="display:flex; gap:6px;">
-            <button class="btn-action-light" onclick="toggleMatrixView('teori')">👁️ Papar Matriks Teori</button>
-            <button class="btn-action-light" onclick="toggleMatrixView('amali')">👁️ Papar Matriks Amali</button>
+            <button class="btn-action-light" onclick="toggleMatrixView('teori')">👁️ Matriks Teori</button>
+            <button class="btn-action-light" onclick="toggleMatrixView('amali')">👁️ Matriks Amali</button>
             <button class="btn-action-light" onclick="resetTab3Distribution()">⚡ Auto-Agih Semula</button>
           </div>
         </div>
       </div>
 
       <div id="sectionTeoriMapping" style="display:none; margin-bottom:20px;">
-        <h4 style="font-size:0.88rem; font-weight:800; color:#1d4ed8; margin-bottom:8px;" id="titleMatriksTeori">
-          📘 MATRIKS PEMETAAN SESI TEORI
-        </h4>
-        <div class="table-responsive">
-          <table class="data-table" id="matrixTableTeori"></table>
-        </div>
+        <h4 style="font-size:0.88rem; font-weight:800; color:#1d4ed8; margin-bottom:8px;" id="titleMatriksTeori">📘 MATRIKS PEMETAAN SESI TEORI</h4>
+        <div class="table-responsive"><table class="data-table" id="matrixTableTeori"></table></div>
       </div>
-
       <div id="sectionAmaliMapping" style="display:none; margin-bottom:20px;">
-        <h4 style="font-size:0.88rem; font-weight:800; color:#0d9488; margin-bottom:8px;" id="titleMatriksAmali">
-          🛠️ MATRIKS PEMETAAN BLOK AMALI
-        </h4>
-        <div class="table-responsive">
-          <table class="data-table" id="matrixTableAmali"></table>
-        </div>
+        <h4 style="font-size:0.88rem; font-weight:800; color:#0d9488; margin-bottom:8px;" id="titleMatriksAmali">🛠️ MATRIKS PEMETAAN BLOK AMALI</h4>
+        <div class="table-responsive"><table class="data-table" id="matrixTableAmali"></table></div>
       </div>
 
       <div id="combinedPlanContainer">
@@ -1198,39 +567,25 @@
                 <th style="width:10%; text-align:center;">MASA (AMALI)</th>
               </tr>
             </thead>
-            <tbody id="combinedPlanBody">
-              <!-- Dynamically rendered -->
-            </tbody>
+            <tbody id="combinedPlanBody"></tbody>
           </table>
         </div>
       </div>
     </div>
 
-    <!-- TAB 4: JSU PENILAIAN OBJEKTIF INDIVIDU -->
+    <!-- TAB 4 -->
     <div id="tab4Content" class="tab-content-panel">
       <div class="print-section-header">PERKARA 4: JADUAL SPESIFIKASI UJIAN (JSU) PENILAIAN OBJEKTIF INDIVIDU</div>
-
       <div class="tab2-info-bar no-print">
-        <div class="range-indicator-text">
-          📋 <strong>Piawai Jadual 14 JPK:</strong> Pengiraan soalan & kesukaran dikira automatik (R=50%, S=30%, T=20%). Gunakan <strong>[ − ]</strong> dan <strong>[ + ]</strong> untuk melaras taburan soalan.
-        </div>
-        <button class="btn-action-light" onclick="toggleAllJsuAccordions()">
-          📂 Buka / Tutup Semua JSU
-        </button>
+        <div class="range-indicator-text">📋 <strong>Piawai Jadual 14 JPK:</strong> Pengiraan soalan & kesukaran dikira automatik. Gunakan <strong>[ − ]</strong> dan <strong>[ + ]</strong> untuk melaras taburan.</div>
+        <button class="btn-action-light" onclick="toggleAllJsuAccordions()">📂 Buka / Tutup Semua JSU</button>
       </div>
-
-      <div id="jsuAccordionsContainer">
-        <!-- Rendered per CU accordion -->
-      </div>
+      <div id="jsuAccordionsContainer"></div>
     </div>
 
-    <div class="print-page-footer">
-      Dokumen ini dijana secara automatik oleh Kalkulator Pentauliahan Pusat Bertauliah JPK | Mematuhi Piawai JPK / NOSS
-    </div>
-
+    <div class="print-page-footer">Dokumen ini dijana secara automatik oleh Kalkulator Pentauliahan Pusat Bertauliah JPK | Mematuhi Piawai JPK / NOSS</div>
   </div>
 
-  <!-- Modal PB -->
   <div class="modal-backdrop" id="pbModal">
     <div class="modal-box">
       <div class="modal-header">
@@ -1240,15 +595,11 @@
       <div class="modal-body">
         <div style="margin-bottom:14px;">
           <label style="display:block; font-size:0.75rem; font-weight:800; margin-bottom:4px; color:#334155;">NAMA PUSAT BERTAULIAH (PB):</label>
-          <input type="text" id="inputModalPbName" class="custom-input" 
-                 style="border:1px solid #cbd5e1; border-radius:8px; padding:8px 12px; background:#f8fafc;" 
-                 placeholder="Contoh: Akademi Kemahiran Vokasional ABC...">
+          <input type="text" id="inputModalPbName" class="custom-input" style="border:1px solid #cbd5e1; border-radius:8px; padding:8px 12px; background:#f8fafc;">
         </div>
         <div>
           <label style="display:block; font-size:0.75rem; font-weight:800; margin-bottom:4px; color:#334155;">ALAMAT RINGKAS / BANDAR:</label>
-          <input type="text" id="inputModalPbAddress" class="custom-input" 
-                 style="border:1px solid #cbd5e1; border-radius:8px; padding:8px 12px; background:#f8fafc;" 
-                 placeholder="Contoh: Shah Alam, Selangor...">
+          <input type="text" id="inputModalPbAddress" class="custom-input" style="border:1px solid #cbd5e1; border-radius:8px; padding:8px 12px; background:#f8fafc;">
         </div>
       </div>
       <div class="modal-footer">
@@ -1259,12 +610,7 @@
   </div>
 
   <script>
-    const APP_CONFIG = {
-      adiSyncAllCuSliders: true,
-      adiAllowKendiri50: false,
-      slapbAllowKendiri50: true
-    };
-
+    const APP_CONFIG = { adiSyncAllCuSliders: true, adiAllowKendiri50: false, slapbAllowKendiri50: true };
     const matrixTahap = {
       "Tahap 1": { teras: 13, ca: 1, tvet: 2, pi: 0, li: 0, pa: 0, total: 15 },
       "Tahap 2": { teras: 13, ca: 1, tvet: 2, pi: 0, li: 0, pa: 0, total: 15 },
@@ -1275,7 +621,6 @@
       "Bermula Tahap 3": { teras: 46, ca: 4, tvet: 3, pi: 0, li: 0, pa: 0, total: 60 },
       "Bermula Tahap 4": { teras: 61, ca: 6, tvet: 3, pi: 0, li: 4, pa: 0, total: 90 }
     };
-
     const pnpRangesStandard = {
       "Tahap 1": { bersemuka: [80, 95], kendiri: [0, 17], penilaian: [3, 20] },
       "Tahap 2": { bersemuka: [80, 95], kendiri: [0, 17], penilaian: [3, 20] },
@@ -1283,7 +628,6 @@
       "Tahap 4": { bersemuka: [60, 80], kendiri: [10, 25], penilaian: [10, 25] },
       "Tahap 5": { bersemuka: [50, 70], kendiri: [15, 30], penilaian: [15, 30] }
     };
-
     const pnpRangesJadual6b = {
       "Tahap 1": { bersemuka: [40, 70], kendiri: [20, 50], penilaian: [10, 20] },
       "Tahap 2": { bersemuka: [40, 70], kendiri: [20, 50], penilaian: [10, 20] },
@@ -1292,508 +636,209 @@
       "Tahap 5": { bersemuka: [40, 50], kendiri: [30, 50], penilaian: [20, 30] }
     };
 
-    let dbNoss = [];
-    let dbJajar = {};
-    let dbWaData = {};
-
-    let cuPnpSettings = {};
-    let waOffsets = {};
-    let matrixManualEditsTeori = {};
-    let matrixManualEditsAmali = {};
-    let combinedPlanTitles = {};
-    let jsuEdits = {};
-    let jsuPerformanceTicks = {};
-
+    let dbNoss = [], dbJajar = {}, dbWaData = {};
+    let cuPnpSettings = {}, waOffsets = {}, matrixManualEditsTeori = {}, matrixManualEditsAmali = {}, combinedPlanTitles = {}, jsuEdits = {}, jsuPerformanceTicks = {};
     let waCalculatedHours = {};
 
-    function safeGetStorage(key, fallback) {
-      try {
-        return localStorage.getItem(key) || fallback;
-      } catch (e) {
-        return fallback;
-      }
-    }
+    function safeGetStorage(k, f) { try { return localStorage.getItem(k) || f; } catch (e) { return f; } }
+    function safeSetStorage(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
 
-    function safeSetStorage(key, val) {
-      try {
-        localStorage.setItem(key, val);
-      } catch (e) {}
-    }
-
-    let pbInfo = {
-      name: safeGetStorage('jpk_pb_name', 'Pusat Latihan Kemahiran ABC'),
-      address: safeGetStorage('jpk_pb_address', 'Shah Alam, Selangor')
-    };
+    let pbInfo = { name: safeGetStorage('jpk_pb_name', 'Pusat Latihan Kemahiran ABC'), address: safeGetStorage('jpk_pb_address', 'Shah Alam, Selangor') };
 
     function filterCoreCuList(list) {
       if (!list || list.length === 0) return [];
-      let filtered = list.filter(cu => {
-        let code = (cu.code || "").toUpperCase();
-        if (/-E\d+/i.test(code) || code.includes("-E0") || code.includes("-E1")) return false;
-        return true;
-      });
+      let filtered = list.filter(cu => { let c = (cu.code || "").toUpperCase(); return !/-E\d+/i.test(c) && !c.includes("-E0") && !c.includes("-E1"); });
       return filtered.length > 0 ? filtered : list;
     }
 
     function getSessionLimits() {
       const jamHari = parseInt(document.getElementById('selJamHari')?.value, 10) || 8;
       const hariMinggu = parseInt(document.getElementById('selHariMinggu')?.value, 10) || 5;
-      const jamBlok = jamHari * hariMinggu;
-      return { jamHari, hariMinggu, jamBlok };
+      return { jamHari, hariMinggu, jamBlok: jamHari * hariMinggu };
     }
 
     function onSessionConfigChange() {
       const { jamHari, jamBlok } = getSessionLimits();
-      const lblTeori = document.getElementById('lblJamSesiTeori');
-      const lblAmali = document.getElementById('lblJamBlokAmali');
-      if (lblTeori) lblTeori.innerText = jamHari;
-      if (lblAmali) lblAmali.innerText = jamBlok;
-
-      const titleT = document.getElementById('titleMatriksTeori');
-      const titleA = document.getElementById('titleMatriksAmali');
-      if (titleT) titleT.innerText = `📘 MATRIKS PEMETAAN SESI TEORI (MAKSIMUM ${jamHari} JAM / SESI)`;
-      if (titleA) titleA.innerText = `🛠️ MATRIKS PEMETAAN BLOK AMALI (MAKSIMUM ${jamBlok} JAM / BLOK)`;
-
+      document.getElementById('lblJamSesiTeori').innerText = jamHari;
+      document.getElementById('lblJamBlokAmali').innerText = jamBlok;
+      document.getElementById('titleMatriksTeori').innerText = `📘 MATRIKS PEMETAAN SESI TEORI (MAKSIMUM ${jamHari} JAM / SESI)`;
+      document.getElementById('titleMatriksAmali').innerText = `🛠️ MATRIKS PEMETAAN BLOK AMALI (MAKSIMUM ${jamBlok} JAM / BLOK)`;
       renderTab3All();
     }
 
     window.onload = function() {
-      initSessionTimer();
-      updatePrintHeaderDisplay();
-
+      initSessionTimer(); updatePrintHeaderDisplay();
       if (typeof google !== 'undefined' && google.script && google.script.run) {
-        google.script.run
-          .withSuccessHandler(onDataLoadedSuccess)
-          .withFailureHandler(onDataLoadedFailure)
-          .getMasterDataFromSheet();
+        google.script.run.withSuccessHandler(onDataLoadedSuccess).withFailureHandler(onDataLoadedFailure).getMasterDataFromSheet();
       } else {
-        const GAS_URL = "https://script.google.com/macros/s/AKfycbyD9bx1g9OH11pP0UaoIEZ_Ri2RzjF7B58hZoNIIjg6yd0jUM0QUMJOr8AmfA3KCz3aDQ/exec";
-
-        fetch(GAS_URL + "?action=getMasterData")
-          .then(res => res.json())
-          .then(data => {
-            onDataLoadedSuccess(data);
-          })
-          .catch(err => {
-            console.error("Gagal menarik data terus dari Google Apps Script:", err);
-            initMockData();
-          });
+        fetch("https://script.google.com/macros/s/AKfycbyD9bx1g9OH11pP0UaoIEZ_Ri2RzjF7B58hZoNIIjg6yd0jUM0QUMJOr8AmfA3KCz3aDQ/exec?action=getMasterData")
+          .then(r => r.json()).then(d => onDataLoadedSuccess(d)).catch(e => initMockData());
       }
     };
 
     function initSessionTimer() {
-      let seconds = 3 * 3600;
-      const timerEl = document.getElementById('sessionTimerText');
-      setInterval(() => {
-        if (seconds > 0) seconds--;
-        const h = String(Math.floor(seconds / 3600)).padStart(2, '0');
-        const m = String(Math.floor((seconds % 3600) / 60)).padStart(2, '0');
-        const s = String(seconds % 60).padStart(2, '0');
-        if (timerEl) timerEl.innerText = `${h}:${m}:${s}`;
-      }, 1000);
+      let s = 3 * 3600;
+      setInterval(() => { if (s > 0) s--; document.getElementById('sessionTimerText').innerText = `${String(Math.floor(s/3600)).padStart(2,'0')}:${String(Math.floor((s%3600)/60)).padStart(2,'0')}:${String(s%60).padStart(2,'0')}`; }, 1000);
     }
 
     function updatePrintHeaderDisplay() {
-      const pName = document.getElementById('printPbNameDisplay');
-      const pAddr = document.getElementById('printPbAddressDisplay');
-      if (pName) pName.innerText = `PUSAT BERTAULIAH: ${pbInfo.name.toUpperCase() || '-'}`;
-      if (pAddr) pAddr.innerText = `Alamat: ${pbInfo.address || '-'}`;
+      document.getElementById('printPbNameDisplay').innerText = `PUSAT BERTAULIAH: ${pbInfo.name.toUpperCase() || '-'}`;
+      document.getElementById('printPbAddressDisplay').innerText = `Alamat: ${pbInfo.address || '-'}`;
     }
 
     function triggerPrintWithSetup() {
-      const code = document.getElementById('kodProgram')?.value.trim();
-      const name = document.getElementById('namaProgramDisplay')?.innerText;
-      document.getElementById('printProgCodeDisplay').innerText = `Kod: ${code || '-'}`;
-      document.getElementById('printProgNameDisplay').innerText = `Program: ${name || '-'}`;
-
-      calculateAll();
-      renderTab3All();
-      renderJsuTab();
-
+      document.getElementById('printProgCodeDisplay').innerText = `Kod: ${document.getElementById('kodProgram')?.value.trim() || '-'}`;
+      document.getElementById('printProgNameDisplay').innerText = `Program: ${document.getElementById('namaProgramDisplay')?.innerText || '-'}`;
+      calculateAll(); renderTab3All(); renderJsuTab();
       document.querySelectorAll('.cu-accordion-body').forEach(el => el.classList.add('open'));
       document.querySelectorAll('.cu-accordion-header span:last-child').forEach(s => s.innerText = '▲');
-
-      setTimeout(() => {
-        window.print();
-      }, 150);
+      setTimeout(() => window.print(), 150);
     }
 
-    function onDataLoadedSuccess(data) {
-      if (!data) return;
-      dbNoss = data.noss || [];
-      dbJajar = data.jajar || {};
-      dbWaData = data.waData || {};
-
-      populateProgramDatalist();
-    }
-
-    function onDataLoadedFailure(err) {
-      initMockData();
-    }
+    function onDataLoadedSuccess(d) { if (!d) return; dbNoss = d.noss || []; dbJajar = d.jajar || {}; dbWaData = d.waData || {}; populateProgramDatalist(); }
+    function onDataLoadedFailure(e) { initMockData(); }
 
     function initMockData() {
-      dbNoss = [
-        { code: "A011-001-2:2018", name: "OPERASI FLORIKULTUR", statusTahap: "Bermula Tahap 2" },
-        { code: "G452-001-2:2017", name: "SERVIS KENDERAAN KOMERSIAL", statusTahap: "Tahap 2" },
-        { code: "FB-077-4:2013", name: "PENGURUSAN SISTEM MAKLUMAT", statusTahap: "Tahap 4" }
-      ];
-
-      dbJajar = {
-        "A011-001-2:2018": [
-          { code: "A011-001-2:2018-C01", name: "PENYEDIAAN MEDIA TANAMAN ORNAMENTAL", asal: 72 },
-          { code: "A011-001-2:2018-C02", name: "OPERASI SEMAIAN TANAMAN ORNAMENTAL", asal: 240 },
-          { code: "A011-001-2:2018-C03", name: "OPERASI PENANAMAN TANAMAN ORNAMENTAL", asal: 288 },
-          { code: "A011-001-2:2018-C04", name: "OPERASI PEMASUAN TANAMAN ORNAMENTAL", asal: 168 }
-        ]
-      };
-
-      dbWaData = {
-        "A011-001-2:2018-C01": [
-          { noWa: "CU1-WA1", namaWa: "Kenalpasti keperluan penyediaan media tanaman", masa: 4, weightage: 25 },
-          { noWa: "CU1-WA2", namaWa: "Sediakan peralatan untuk penyediaan media tanaman", masa: 4, weightage: 25 },
-          { noWa: "CU1-WA3", namaWa: "Laksanakan penyediaan media tanaman untuk ornamental", masa: 12, weightage: 30 },
-          { noWa: "CU1-WA4", namaWa: "Simpan media tanaman yang telah disediakan", masa: 4, weightage: 20 }
-        ]
-      };
-
+      dbNoss = [{ code: "A011-001-2:2018", name: "OPERASI FLORIKULTUR", statusTahap: "Bermula Tahap 2" }, { code: "G452-001-2:2017", name: "SERVIS KENDERAAN KOMERSIAL", statusTahap: "Tahap 2" }];
+      dbJajar = { "A011-001-2:2018": [{ code: "A011-001-2:2018-C01", name: "PENYEDIAAN MEDIA TANAMAN ORNAMENTAL", asal: 72 }] };
+      dbWaData = { "A011-001-2:2018-C01": [{ noWa: "CU1-WA1", namaWa: "Kenalpasti keperluan penyediaan media tanaman", masa: 4, weightage: 25 }, { noWa: "CU1-WA2", namaWa: "Sediakan peralatan untuk penyediaan media", masa: 4, weightage: 25 }, { noWa: "CU1-WA3", namaWa: "Laksanakan penyediaan media", masa: 12, weightage: 30 }, { noWa: "CU1-WA4", namaWa: "Simpan media", masa: 4, weightage: 20 }] };
       populateProgramDatalist();
     }
 
     function populateProgramDatalist() {
-      const datalist = document.getElementById('programListDatalist');
-      if (!datalist) return;
-      datalist.innerHTML = '';
-      dbNoss.forEach(prog => {
-        const opt = document.createElement('option');
-        opt.value = prog.code;
-        opt.label = `${prog.code} - ${prog.name}`;
-        datalist.appendChild(opt);
-      });
+      const dl = document.getElementById('programListDatalist'); if (!dl) return; dl.innerHTML = '';
+      dbNoss.forEach(p => { const o = document.createElement('option'); o.value = p.code; o.label = `${p.code} - ${p.name}`; dl.appendChild(o); });
     }
 
-    // PERKARA 1: Logik Nisbah Automatik
     function updatePelaksanaanAutoDisplay() {
-      const status = document.getElementById('statusTahap')?.value || "Bermula Tahap 2";
-      const display = document.getElementById('pelaksanaanAutoDisplay');
-      const hidden = document.getElementById('pelaksanaanHidden');
-      
-      const isHighLevel = status.includes('Tahap 4') || status.includes('Tahap 5');
-      
-      if (isHighLevel) {
-        if (display) display.innerText = "40% (PL) & 60% (SY)";
-        if (hidden) hidden.value = "40-60";
-      } else {
-        if (display) display.innerText = "30% (PL) & 70% (SY)";
-        if (hidden) hidden.value = "30-70";
-      }
+      const isHigh = (document.getElementById('statusTahap')?.value || "Bermula Tahap 2").includes('Tahap 4') || (document.getElementById('statusTahap')?.value || "Bermula Tahap 2").includes('Tahap 5');
+      document.getElementById('pelaksanaanAutoDisplay').innerText = isHigh ? "40% (PL) & 60% (SY)" : "30% (PL) & 70% (SY)";
+      document.getElementById('pelaksanaanHidden').value = isHigh ? "40-60" : "30-70";
     }
 
     function onModPentauliahanChange() {
       const mod = document.getElementById('modPentauliahan')?.value || "ADI";
-      const toggleKendiri = document.getElementById('toggleKendiri50');
-      const panelAuto = document.getElementById('panelPelaksanaanLatihan');
-
-      if (mod === 'SLaPB') {
-        if (panelAuto) panelAuto.style.opacity = '0.5';
-        if (toggleKendiri) toggleKendiri.disabled = !APP_CONFIG.slapbAllowKendiri50;
-      } else {
-        if (panelAuto) panelAuto.style.opacity = '1';
-        if (toggleKendiri) {
-          if (!APP_CONFIG.adiAllowKendiri50) {
-            toggleKendiri.checked = false;
-            toggleKendiri.disabled = true;
-          } else {
-            toggleKendiri.disabled = false;
-          }
-        }
-      }
-
-      onToggleKendiriChange();
-      updatePelaksanaanAutoDisplay();
-      calculateAll();
-      renderTab3All();
-      renderJsuTab();
+      const tg = document.getElementById('toggleKendiri50');
+      if (mod === 'SLaPB') { document.getElementById('panelPelaksanaanLatihan').style.opacity = '0.5'; if (tg) tg.disabled = !APP_CONFIG.slapbAllowKendiri50; } 
+      else { document.getElementById('panelPelaksanaanLatihan').style.opacity = '1'; if (tg) { tg.checked = false; tg.disabled = !APP_CONFIG.adiAllowKendiri50; } }
+      onToggleKendiriChange(); updatePelaksanaanAutoDisplay(); calculateAll(); renderTab3All(); renderJsuTab();
     }
 
     function onProgramCodeSelect() {
-      const input = document.getElementById('kodProgram');
-      if (!input) return;
-      const code = input.value.trim();
-      const prog = dbNoss.find(p => p.code.toLowerCase() === code.toLowerCase());
-
-      if (prog) {
-        document.getElementById('namaProgramDisplay').innerText = prog.name;
-        document.getElementById('statusTahapDisplay').innerText = prog.statusTahap;
-        document.getElementById('statusTahap').value = prog.statusTahap;
-      } else {
-        document.getElementById('namaProgramDisplay').innerText = code ? "PROGRAM KUSTOM / TAIP SENDIRI" : "Sila pilih program di atas...";
-      }
-
-      updatePelaksanaanAutoDisplay(); // PERKARA 1 Kemaskini
-      renderCuTableRows(code);
-      calculateAll();
-      renderTab3All();
-      renderJsuTab();
+      const c = document.getElementById('kodProgram').value.trim(); const p = dbNoss.find(x => x.code.toLowerCase() === c.toLowerCase());
+      if (p) { document.getElementById('namaProgramDisplay').innerText = p.name; document.getElementById('statusTahapDisplay').innerText = p.statusTahap; document.getElementById('statusTahap').value = p.statusTahap; } 
+      else { document.getElementById('namaProgramDisplay').innerText = c ? "PROGRAM KUSTOM / TAIP SENDIRI" : "Sila pilih program di atas..."; }
+      updatePelaksanaanAutoDisplay(); renderCuTableRows(c); calculateAll(); renderTab3All(); renderJsuTab();
     }
 
     function onToggleKendiriChange() {
-      const toggle = document.getElementById('toggleKendiri50');
-      const label = document.getElementById('pnpToggleLabel');
-      if (!toggle || !label) return;
-
-      if (toggle.checked) {
-        label.innerText = "Kendiri 50% (Pilihan 2)";
-        label.style.color = "#d97706";
-      } else {
-        label.innerText = "Standard (Pilihan 1)";
-        label.style.color = "#1e40af";
-      }
+      const tg = document.getElementById('toggleKendiri50'); const lbl = document.getElementById('pnpToggleLabel');
+      if (tg && lbl) { lbl.innerText = tg.checked ? "Kendiri 50% (Pilihan 2)" : "Standard (Pilihan 1)"; lbl.style.color = tg.checked ? "#d97706" : "#1e40af"; }
       calculateAll();
     }
 
-    // PERKARA 2: Kawalan Toggle 100% PL TVET
     function onTvetModuleChange() {
-      const val = document.getElementById('modulTvetSelect')?.value;
-      const wrapper = document.getElementById('tvetRatioToggleWrapper');
-      if (['iv', 'v', 'vi'].includes(val)) {
-        if (wrapper) wrapper.style.display = 'flex';
-      } else {
-        if (wrapper) wrapper.style.display = 'none';
-      }
+      const v = document.getElementById('modulTvetSelect')?.value;
+      document.getElementById('tvetRatioToggleWrapper').style.display = ['iv', 'v', 'vi'].includes(v) ? 'flex' : 'none';
       calculateAll();
     }
 
     function onTvetRatioToggle() {
-      const toggle = document.getElementById('toggleTvetRatio');
-      const lbl = document.getElementById('lblTvetRatio');
-      if (toggle.checked) {
-        lbl.innerText = "Ikut Program";
-        lbl.style.color = "#0f766e";
-        toggle.nextElementSibling.style.backgroundColor = "#0d9488";
-      } else {
-        lbl.innerText = "100% PL";
-        lbl.style.color = "#047857";
-        toggle.nextElementSibling.style.backgroundColor = "#10b981";
-      }
+      const tg = document.getElementById('toggleTvetRatio'); const lbl = document.getElementById('lblTvetRatio');
+      if (tg.checked) { lbl.innerText = "Ikut Program"; lbl.style.color = "#0f766e"; tg.nextElementSibling.style.backgroundColor = "#0d9488"; } 
+      else { lbl.innerText = "100% PL"; lbl.style.color = "#047857"; tg.nextElementSibling.style.backgroundColor = "#10b981"; }
       calculateAll();
     }
 
-    function switchMainTab(tabId) {
+    function switchMainTab(id) {
       document.querySelectorAll('.tab-content-panel').forEach(p => p.classList.remove('active'));
       document.querySelectorAll('.tab-nav-btn').forEach(b => b.classList.remove('active'));
-
-      const target = document.getElementById(tabId);
-      if (target) target.classList.add('active');
-
-      if (tabId === 'tab1Content') document.getElementById('btnTab1').classList.add('active');
-      if (tabId === 'tab2Content') document.getElementById('btnTab2').classList.add('active');
-      if (tabId === 'tab3Content') {
-        document.getElementById('btnTab3').classList.add('active');
-        renderTab3All();
-      }
-      if (tabId === 'tab4Content') {
-        document.getElementById('btnTab4').classList.add('active');
-        renderJsuTab();
-      }
+      document.getElementById(id).classList.add('active');
+      document.getElementById('btn' + id.replace('Content','')).classList.add('active');
+      if (id === 'tab3Content') renderTab3All();
+      if (id === 'tab4Content') renderJsuTab();
     }
 
-    function renderCuTableRows(programCode) {
-      const tbody = document.getElementById('cuTableBody');
-      if (!tbody) return;
-      tbody.innerHTML = '';
+    function getWaListForCu(pCode, cCode) {
+      if (dbWaData[cCode] && dbWaData[cCode].length > 0) return dbWaData[cCode];
+      let comp = (pCode || "") + "___" + cCode; if (dbWaData[comp] && dbWaData[comp].length > 0) return dbWaData[comp];
+      for (let k in dbWaData) if (k.toLowerCase().includes(cCode.toLowerCase())) return dbWaData[k];
+      return [ { noWa: "CU1-WA1", namaWa: "Sediakan Keperluan & Perancangan Operasi", masa: 4, weightage: 25 }, { noWa: "CU1-WA2", namaWa: "Sediakan Peralatan & Mesin", masa: 4, weightage: 25 }, { noWa: "CU1-WA3", namaWa: "Laksanakan Operasi", masa: 12, weightage: 30 }, { noWa: "CU1-WA4", namaWa: "Pemeriksaan Kualiti", masa: 4, weightage: 20 } ];
+    }
 
-      let rawList = dbJajar[programCode] || [];
-      let cuList = filterCoreCuList(rawList);
+    function renderCuTableRows(pCode) {
+      const tb = document.getElementById('cuTableBody'); if (!tb) return; tb.innerHTML = '';
+      let cuList = filterCoreCuList(dbJajar[pCode] || []);
+      if (cuList.length === 0) cuList = [ { code: (pCode || "PROG") + "-C01", name: "PENYEDIAAN OPERASI UTAMA", asal: 80 } ];
 
-      if (cuList.length === 0) {
-        cuList = [
-          { code: (programCode || "PROG") + "-C01", name: "PENYEDIAAN OPERASI UTAMA", asal: 80 },
-          { code: (programCode || "PROG") + "-C02", name: "PELAKSANAAN KERJA TEKNIKAL", asal: 160 },
-          { code: (programCode || "PROG") + "-C03", name: "KAWALAN KUALITI & PEMERIKSAAN", asal: 120 }
-        ];
-      }
-
-      cuList.forEach((cu) => {
-        const cuCode = cu.code;
-        const cuName = cu.name;
-        const asal = cu.asal || 80;
-
-        let waList = getWaListForCu(programCode, cuCode);
-        let waCount = waList.length;
-
-        const tr = document.createElement('tr');
-        tr.className = 'cu-main-row';
-        tr.id = `cu-row-${cuCode}`;
-        tr.setAttribute('data-cucode', cuCode);
-
+      cuList.forEach((cu, i) => {
+        let waCount = getWaListForCu(pCode, cu.code).length;
+        const tr = document.createElement('tr'); tr.className = 'cu-main-row'; tr.id = `cu-row-${cu.code}`; tr.setAttribute('data-cucode', cu.code);
         tr.innerHTML = `
-          <td class="no-print">
-            <button class="btn-circle-toggle" id="btn-toggle-${cuCode}" onclick="toggleWaAccordion('${cuCode}')" title="Papar / Sembunyi WA">
-              <span>▼</span>
-            </button>
-          </td>
-          <td style="text-align:left; font-weight:700; font-family:'JetBrains Mono',monospace; font-size:0.75rem;">${cuCode}</td>
-          <td style="text-align:left; font-weight:600;">
-            ${cuName} <span style="font-size:0.72rem; color:#64748b; font-weight:normal;">(${waCount} WA)</span>
-          </td>
-          <td class="cu-asal" style="background:#fce7f3; font-weight:700;">${asal}</td>
+          <td class="no-print"><button class="btn-circle-toggle" id="btn-toggle-${cu.code}" onclick="toggleWaAccordion('${cu.code}')"><span>▼</span></button></td>
+          <td style="text-align:left; font-weight:700; font-family:'JetBrains Mono',monospace; font-size:0.75rem;">${cu.code}</td>
+          <td style="text-align:left; font-weight:600;">${cu.name} <span style="font-size:0.72rem; color:#64748b; font-weight:normal;">(${waCount} WA)</span></td>
+          <td class="cu-asal" style="background:#fce7f3; font-weight:700;">${cu.asal || 80}</td>
           <td class="cu-dijajar" style="background:#fce7f3; font-weight:700;">0</td>
           <td class="cu-kredit" style="background:#fce7f3; font-weight:700;">0.0</td>
-          <td class="no-print" style="background:#ecfdf5;">
-            <select class="custom-select highlight-select cu-pelarasan" style="font-size:0.75rem; padding:2px;" onchange="onPelarasanChange()">
-              <option value="-1">-1</option>
-              <option value="0" selected>0</option>
-              <option value="1">+1</option>
-            </select>
-          </td>
+          <td class="no-print" style="background:#ecfdf5;"><select class="custom-select highlight-select cu-pelarasan" style="font-size:0.75rem; padding:2px;" onchange="onPelarasanChange()"><option value="-1">-1</option><option value="0" selected>0</option><option value="1">+1</option></select></td>
           <td class="cu-kredit-baharu" style="background:#d1fae5; font-weight:800; color:#064e3b;">0.0</td>
-          
-          <td style="background:#eff6ff;">
-            <div style="display:flex; justify-content:space-between; font-size:0.75rem; font-weight:800; margin-bottom:2px;">
-              <span class="cu-jam-semuka" style="color:#1d4ed8;">0 jam</span>
-              <span class="val-semuka" style="color:#1e40af;">95%</span>
-            </div>
-            <input type="range" class="slider-compact slider-semuka no-print" 
-                   oninput="onSliderSemukaInput('${cuCode}', this.value)">
-          </td>
-
-          <td style="background:#fffbeb;">
-            <div style="display:flex; justify-content:space-between; font-size:0.75rem; font-weight:800; margin-bottom:2px;">
-              <span class="cu-jam-kendiri" style="color:#b45309;">0 jam</span>
-              <span class="val-kendiri" style="color:#b45309;">0%</span>
-            </div>
-            <input type="range" class="slider-compact slider-amber slider-kendiri no-print" 
-                   oninput="onSliderKendiriInput('${cuCode}', this.value)">
-          </td>
-
-          <td style="background:#ecfdf5;">
-            <div class="cu-jam-penilaian" style="font-weight:800; color:#047857; font-size:0.78rem;">0 jam</div>
-            <div class="val-penilaian" style="font-size:0.7rem; font-weight:700; color:#059669;">5%</div>
-          </td>
-
+          <td style="background:#eff6ff;"><div style="display:flex; justify-content:space-between; font-size:0.75rem; font-weight:800; margin-bottom:2px;"><span class="cu-jam-semuka" style="color:#1d4ed8;">0 jam</span><span class="val-semuka" style="color:#1e40af;">95%</span></div><input type="range" class="slider-compact slider-semuka no-print" oninput="onSliderSemukaInput('${cu.code}', this.value)"></td>
+          <td style="background:#fffbeb;"><div style="display:flex; justify-content:space-between; font-size:0.75rem; font-weight:800; margin-bottom:2px;"><span class="cu-jam-kendiri" style="color:#b45309;">0 jam</span><span class="val-kendiri" style="color:#b45309;">0%</span></div><input type="range" class="slider-compact slider-amber slider-kendiri no-print" oninput="onSliderKendiriInput('${cu.code}', this.value)"></td>
+          <td style="background:#ecfdf5;"><div class="cu-jam-penilaian" style="font-weight:800; color:#047857; font-size:0.78rem;">0 jam</div><div class="val-penilaian" style="font-size:0.7rem; font-weight:700; color:#059669;">5%</div></td>
           <td class="cu-f" style="background:#cffafe; font-weight:800; color:#0e7490; font-size:0.85rem;">0</td>
         `;
-        tbody.appendChild(tr);
+        tb.appendChild(tr);
 
-        const trWa = document.createElement('tr');
-        trWa.className = 'wa-subrow';
-        trWa.id = `wa-row-${cuCode}`;
-        trWa.innerHTML = `
+        const trW = document.createElement('tr'); trW.className = 'wa-subrow'; trW.id = `wa-row-${cu.code}`;
+        trW.innerHTML = `
           <td colspan="12" style="padding:0; background:#f8fafc;">
             <div style="padding:14px; border:1px solid #cbd5e1; margin:8px 4px; border-radius:8px;">
-              <div style="font-weight:800; font-size:0.82rem; color:#1e3a8a; margin-bottom:8px;">
-                📌 PERINCIAN AKTIVITI KERJA (WA) BAGI: <span style="font-family:'JetBrains Mono',monospace;">${cuCode}</span>
-              </div>
-              <div class="table-responsive">
-                <table class="data-table" style="font-size:0.75rem;">
-                  <thead>
-                    <tr class="th-navy-sub">
-                      <th style="width:70px;">NO. WA</th>
-                      <th style="text-align:left;">AKTIVITI KERJA (WA)</th>
-                      <th style="width:85px;">WEIGHTAGE (%)</th>
-                      <th style="width:75px;">JAM ASAL</th>
-                      <th style="width:80px;">OFFSET [+/-]</th>
-                      <th style="width:75px; background:#2563eb; color:white;">JAM AKHIR</th>
-                      <th style="width:85px;">COPTPA (RK)</th>
-                      <th style="width:85px;">COPTPA (RS)</th>
-                      <th style="width:110px; background:#1e3a8a; color:white;">BERSEMUKA (RK)</th>
-                      <th style="width:110px; background:#1e3a8a; color:white;">BERSEMUKA (RS)</th>
-                    </tr>
-                  </thead>
-                  <tbody id="wa-body-${cuCode}"></tbody>
-                </table>
-              </div>
+              <div style="font-weight:800; font-size:0.82rem; color:#1e3a8a; margin-bottom:8px;">📌 PERINCIAN AKTIVITI KERJA (WA): <span style="font-family:'JetBrains Mono',monospace;">${cu.code}</span></div>
+              <div class="table-responsive"><table class="data-table" style="font-size:0.75rem;"><thead><tr class="th-navy-sub"><th style="width:70px;">NO. WA</th><th style="text-align:left;">AKTIVITI KERJA (WA)</th><th style="width:85px;">WEIGHTAGE (%)</th><th style="width:75px;">JAM ASAL</th><th style="width:80px;">OFFSET [+/-]</th><th style="width:75px; background:#2563eb; color:white;">JAM AKHIR</th><th style="width:85px;">COPTPA (RK)</th><th style="width:85px;">COPTPA (RS)</th><th style="width:110px; background:#1e3a8a; color:white;">BERSEMUKA (RK)</th><th style="width:110px; background:#1e3a8a; color:white;">BERSEMUKA (RS)</th></tr></thead><tbody id="wa-body-${cu.code}"></tbody>
+              <tfoot><tr id="wa-tfoot-${cu.code}" style="background:#f1f5f9; font-weight:800; font-size:0.78rem;"></tr></tfoot>
+              </table></div>
             </div>
           </td>
         `;
-        tbody.appendChild(trWa);
+        tb.appendChild(trW);
       });
     }
 
-    function getWaListForCu(programCode, cuCode) {
-      if (dbWaData[cuCode] && dbWaData[cuCode].length > 0) return dbWaData[cuCode];
-      let composite = (programCode || "") + "___" + cuCode;
-      if (dbWaData[composite] && dbWaData[composite].length > 0) return dbWaData[composite];
-
-      for (let k in dbWaData) {
-        if (k.toLowerCase().includes(cuCode.toLowerCase())) return dbWaData[k];
-      }
-
-      return [
-        { noWa: "CU1-WA1", namaWa: "Sediakan Keperluan & Perancangan Operasi", masa: 4, weightage: 25 },
-        { noWa: "CU1-WA2", namaWa: "Sediakan Peralatan, Mesin & Bahan Kerja", masa: 4, weightage: 25 },
-        { noWa: "CU1-WA3", namaWa: "Laksanakan Operasi Kerja Mengikut Standard", masa: 12, weightage: 30 },
-        { noWa: "CU1-WA4", namaWa: "Pemeriksaan Kualiti, Rekod & Housekeeping", masa: 4, weightage: 20 }
-      ];
+    function toggleWaAccordion(cCode) {
+      const r = document.getElementById(`wa-row-${cCode}`), b = document.getElementById(`btn-toggle-${cCode}`);
+      if (!r) return; const isOpen = r.classList.contains('active');
+      document.querySelectorAll('.wa-subrow').forEach(x => x.classList.remove('active'));
+      document.querySelectorAll('.btn-circle-toggle span').forEach(s => s.innerText = '▼');
+      if (!isOpen) { r.classList.add('active'); if (b) b.querySelector('span').innerText = '▲'; }
     }
 
-    function toggleWaAccordion(cuCode) {
-      const targetRow = document.getElementById(`wa-row-${cuCode}`);
-      const targetBtn = document.getElementById(`btn-toggle-${cuCode}`);
-      if (!targetRow) return;
-
-      const isCurrentlyOpen = targetRow.classList.contains('active');
-      document.querySelectorAll('.wa-subrow').forEach(row => row.classList.remove('active'));
-      document.querySelectorAll('.btn-circle-toggle span').forEach(span => span.innerText = '▼');
-
-      if (!isCurrentlyOpen) {
-        targetRow.classList.add('active');
-        if (targetBtn) targetBtn.querySelector('span').innerText = '▲';
-      }
+    function onSliderSemukaInput(c, v) { 
+      if (document.getElementById('modPentauliahan')?.value === 'ADI' && APP_CONFIG.adiSyncAllCuSliders) document.querySelectorAll('.cu-main-row').forEach(r => { let cC = r.getAttribute('data-cucode'); if (!cuPnpSettings[cC]) cuPnpSettings[cC] = {}; cuPnpSettings[cC].semuka = parseInt(v); });
+      else { if (!cuPnpSettings[c]) cuPnpSettings[c] = {}; cuPnpSettings[c].semuka = parseInt(v); }
+      calculateAll(); renderTab3All();
     }
 
-    function onSliderSemukaInput(cuCode, val) {
-      let numVal = parseInt(val, 10);
-      const mod = document.getElementById('modPentauliahan')?.value || "ADI";
-
-      if (mod === 'ADI' && APP_CONFIG.adiSyncAllCuSliders) {
-        document.querySelectorAll('.cu-main-row').forEach(r => {
-          let cCode = r.getAttribute('data-cucode');
-          if (!cuPnpSettings[cCode]) cuPnpSettings[cCode] = {};
-          cuPnpSettings[cCode].semuka = numVal;
-        });
-      } else {
-        if (!cuPnpSettings[cuCode]) cuPnpSettings[cuCode] = {};
-        cuPnpSettings[cuCode].semuka = numVal;
-      }
-      calculateAll();
-      renderTab3All();
+    function onSliderKendiriInput(c, v) {
+      if (document.getElementById('modPentauliahan')?.value === 'ADI' && APP_CONFIG.adiSyncAllCuSliders) document.querySelectorAll('.cu-main-row').forEach(r => { let cC = r.getAttribute('data-cucode'); if (!cuPnpSettings[cC]) cuPnpSettings[cC] = {}; cuPnpSettings[cC].kendiri = parseInt(v); });
+      else { if (!cuPnpSettings[c]) cuPnpSettings[c] = {}; cuPnpSettings[c].kendiri = parseInt(v); }
+      calculateAll(); renderTab3All();
     }
 
-    function onSliderKendiriInput(cuCode, val) {
-      let numVal = parseInt(val, 10);
-      const mod = document.getElementById('modPentauliahan')?.value || "ADI";
+    function onPelarasanChange() { calculateAll(); renderTab3All(); renderJsuTab(); }
+    function onWaOffsetChange(cCode, wIdx, el) { waOffsets[`${cCode}_${wIdx}`] = parseInt(el.value, 10) || 0; calculateAll(); renderTab3All(); }
 
-      if (mod === 'ADI' && APP_CONFIG.adiSyncAllCuSliders) {
-        document.querySelectorAll('.cu-main-row').forEach(r => {
-          let cCode = r.getAttribute('data-cucode');
-          if (!cuPnpSettings[cCode]) cuPnpSettings[cCode] = {};
-          cuPnpSettings[cCode].kendiri = numVal;
-        });
-      } else {
-        if (!cuPnpSettings[cuCode]) cuPnpSettings[cuCode] = {};
-        cuPnpSettings[cuCode].kendiri = numVal;
-      }
-      calculateAll();
-      renderTab3All();
-    }
-
-    function onPelarasanChange() {
-      calculateAll();
-      renderTab3All();
-      renderJsuTab();
-    }
-
-    function onWaOffsetChange(cuCode, waIndex, selectElem) {
-      const key = `${cuCode}_${waIndex}`;
-      waOffsets[key] = parseInt(selectElem.value, 10) || 0;
-      calculateAll();
-      renderTab3All();
+    function agihJamTepat(weightList, totalJam) {
+      if (!weightList || weightList.length === 0 || totalJam <= 0) return [];
+      let exact = weightList.map(w => (w / 100) * totalJam), rounded = exact.map(Math.floor);
+      let diff = totalJam - rounded.reduce((a, b) => a + b, 0);
+      let remainders = exact.map((val, idx) => ({ idx, rem: val - rounded[idx] })).sort((a, b) => b.rem - a.rem);
+      for (let i = 0; i < diff && i < remainders.length; i++) rounded[remainders[i].idx]++;
+      return rounded;
     }
 
     function calculateAll() {
       waCalculatedHours = {};
-
       const mod = document.getElementById('modPentauliahan')?.value || "ADI";
       const status = document.getElementById('statusTahap')?.value || "Bermula Tahap 2";
       const struct = matrixTahap[status] || matrixTahap["Bermula Tahap 2"];
@@ -1806,118 +851,51 @@
       document.getElementById('kreditPA').innerText = struct.pa > 0 ? struct.pa : '-';
       document.getElementById('kreditJumlah').innerText = struct.total;
 
-      const jamTeras = struct.teras * 40;
-      document.getElementById('jamTeras').innerText = jamTeras.toLocaleString();
-
+      const jamTeras = struct.teras * 40; document.getElementById('jamTeras').innerText = jamTeras.toLocaleString();
       let plPct = 30, syPct = 70;
-      let waRkPct = 30, waRsPct = 70;
-
-      // PERKARA 1: Tarik nilai dari input tersembunyi
-      if (mod === 'ADI') {
-        const ratioVal = document.getElementById('pelaksanaanHidden')?.value || "30-70";
-        [plPct, syPct] = ratioVal.split('-').map(Number);
-        waRkPct = plPct;
-        waRsPct = syPct;
-      } else {
-        plPct = 100;
-        syPct = 0;
-        waRkPct = 30;
-        waRsPct = 70;
-      }
-
-      let plTerasVal = Math.round(jamTeras * (plPct / 100));
-      let syTerasVal = Math.round(jamTeras * (syPct / 100));
+      if (mod === 'ADI') { [plPct, syPct] = (document.getElementById('pelaksanaanHidden')?.value || "30-70").split('-').map(Number); } else { plPct = 100; syPct = 0; }
+      
+      const plTerasVal = Math.round(jamTeras * (plPct / 100)), syTerasVal = Math.round(jamTeras * (syPct / 100));
       document.getElementById('plTeras').innerText = plTerasVal.toLocaleString();
 
-      const jamCA = struct.ca * 40;
-      document.getElementById('jamCA').innerText = jamCA;
-      document.getElementById('plCA').innerText = jamCA;
-
-      const jamTVET = struct.tvet * 40;
+      const jamCA = struct.ca * 40, jamTVET = struct.tvet * 40;
+      document.getElementById('jamCA').innerText = jamCA; document.getElementById('plCA').innerText = jamCA;
       document.getElementById('jamTVET').innerText = jamTVET;
       
-      // PERKARA 2: Logik Pengiraan TVET Berdasarkan Dropdown & Toggle
       let plTvetVal = 0, syTvetVal = 0;
-      const tvetModType = document.getElementById('modulTvetSelect')?.value || "i";
-      
-      if (mod === 'SLaPB') {
-        plTvetVal = jamTVET;
-        syTvetVal = 0;
-      } else {
-        if (['iv', 'v', 'vi'].includes(tvetModType)) {
-          const isIkutProgram = document.getElementById('toggleTvetRatio')?.checked || false;
-          if (isIkutProgram) {
-            plTvetVal = Math.round(jamTVET * (plPct / 100));
-            syTvetVal = Math.round(jamTVET * (syPct / 100));
-          } else {
-            plTvetVal = jamTVET; // 100% PL
-            syTvetVal = 0;
-          }
-        } else {
-          // Default i, ii, iii
-          plTvetVal = Math.round(jamTVET * (plPct / 100));
-          syTvetVal = Math.round(jamTVET * (syPct / 100));
-        }
+      const tvetMod = document.getElementById('modulTvetSelect')?.value || "i";
+      if (mod === 'SLaPB') { plTvetVal = jamTVET; } else {
+        if (['iv','v','vi'].includes(tvetMod) && !document.getElementById('toggleTvetRatio')?.checked) { plTvetVal = jamTVET; }
+        else { plTvetVal = Math.round(jamTVET * (plPct/100)); syTvetVal = Math.round(jamTVET * (syPct/100)); }
       }
       document.getElementById('plTVET').innerText = plTvetVal;
 
-      const totalPL = plTerasVal + jamCA + plTvetVal;
-      const totalSY = syTerasVal + syTvetVal;
-      const jamJumlah = struct.total * 40;
+      document.getElementById('jamJumlah').innerText = (struct.total * 40).toLocaleString();
+      document.getElementById('plJumlah').innerText = (plTerasVal + jamCA + plTvetVal).toLocaleString();
 
-      document.getElementById('jamJumlah').innerText = jamJumlah.toLocaleString();
-      document.getElementById('plJumlah').innerText = totalPL.toLocaleString();
-
-      const syTerasEl = document.getElementById('syTeras');
-      const wajibHeaderEl = document.getElementById('tdModulWajibHeader');
-      const syChildCells = document.querySelectorAll('.col-sy-child');
-
+      const syTerasEl = document.getElementById('syTeras'), tdWajib = document.getElementById('tdModulWajibHeader');
       if (mod === 'SLaPB') {
-        if (syTerasEl) {
-          syTerasEl.rowSpan = 7;
-          syTerasEl.innerHTML = `
-            <div style="font-size:0.76rem; font-weight:700; color:#64748b; line-height:1.45; padding:8px 4px; max-width:125px; margin:0 auto; word-wrap:break-word;">
-              Hanya terpakai untuk<br>Pentauliahan ADI
-            </div>
-          `;
-          syTerasEl.style.backgroundColor = '#f1f5f9';
-          syTerasEl.style.verticalAlign = 'middle';
-        }
-        if (wajibHeaderEl) wajibHeaderEl.colSpan = 4;
-        syChildCells.forEach(el => el.style.display = 'none');
-        document.getElementById('syJumlah').innerText = '-';
-        document.getElementById('syJumlah').style.color = '#94a3b8';
+        if (syTerasEl) { syTerasEl.rowSpan = 7; syTerasEl.innerHTML = `<div style="font-size:0.76rem; font-weight:700; color:#64748b; line-height:1.45; padding:8px 4px; max-width:125px; margin:0 auto; word-wrap:break-word;">Hanya terpakai untuk<br>Pentauliahan ADI</div>`; syTerasEl.style.backgroundColor = '#f1f5f9'; }
+        if (tdWajib) tdWajib.colSpan = 4;
+        document.querySelectorAll('.col-sy-child').forEach(el => el.style.display = 'none');
+        document.getElementById('syJumlah').innerText = '-'; document.getElementById('syJumlah').style.color = '#94a3b8';
       } else {
-        if (syTerasEl) {
-          syTerasEl.rowSpan = 1;
-          syTerasEl.innerText = syTerasVal.toLocaleString();
-          syTerasEl.style.backgroundColor = '';
-          syTerasEl.style.verticalAlign = '';
-        }
-        if (wajibHeaderEl) wajibHeaderEl.colSpan = 5;
-        syChildCells.forEach(el => el.style.display = '');
+        if (syTerasEl) { syTerasEl.rowSpan = 1; syTerasEl.innerText = syTerasVal.toLocaleString(); syTerasEl.style.backgroundColor = ''; }
+        if (tdWajib) tdWajib.colSpan = 5;
+        document.querySelectorAll('.col-sy-child').forEach(el => el.style.display = '');
         document.getElementById('syTVET').innerText = syTvetVal;
-        document.getElementById('syJumlah').innerText = totalSY.toLocaleString();
-        document.getElementById('syJumlah').style.color = '#1e3a8a';
+        document.getElementById('syJumlah').innerText = (syTerasVal + syTvetVal).toLocaleString(); document.getElementById('syJumlah').style.color = '#1e3a8a';
       }
 
       let cleanTahap = status.replace('Bermula ', '');
-      const isKendiri50 = document.getElementById('toggleKendiri50')?.checked || false;
-
-      let range = pnpRangesStandard[cleanTahap] || pnpRangesStandard["Tahap 2"];
-      if (isKendiri50) range = pnpRangesJadual6b[cleanTahap] || pnpRangesJadual6b["Tahap 2"];
-
+      let range = (document.getElementById('toggleKendiri50')?.checked) ? (pnpRangesJadual6b[cleanTahap] || pnpRangesJadual6b["Tahap 2"]) : (pnpRangesStandard[cleanTahap] || pnpRangesStandard["Tahap 2"]);
       document.getElementById('lblJulatSemuka').innerText = `${range.bersemuka[0]} - ${range.bersemuka[1]}%`;
       document.getElementById('lblJulatKendiri').innerText = `${range.kendiri[0]} - ${range.kendiri[1]}%`;
       document.getElementById('lblJulatPenilaian').innerText = `${range.penilaian[0]} - ${range.penilaian[1]}%`;
 
+      let sumAsal = 0, sumDijajar = 0, sumKredit = 0, sumPelarasan = 0, sumKreditBaharu = 0, sumBersemuka = 0, sumKendiri = 0, sumPenilaian = 0, sumF = 0;
       const cuRows = document.querySelectorAll('#cuTableBody tr.cu-main-row');
-      let sumAsal = 0;
       cuRows.forEach(r => sumAsal += parseFloat(r.querySelector('.cu-asal')?.innerText) || 0);
-
-      let sumDijajar = 0, sumKredit = 0, sumPelarasan = 0, sumKreditBaharu = 0;
-      let sumBersemuka = 0, sumKendiri = 0, sumPenilaian = 0, sumF = 0;
-
       const programCode = document.getElementById('kodProgram')?.value.trim() || "";
 
       cuRows.forEach((r, cuIdx) => {
@@ -1931,846 +909,344 @@
 
         let sVal = cuPnpSettings[cuCode]?.semuka ?? range.bersemuka[1];
         let kVal = cuPnpSettings[cuCode]?.kendiri ?? range.kendiri[0];
-
-        if (sVal < range.bersemuka[0]) sVal = range.bersemuka[0];
-        if (sVal > range.bersemuka[1]) sVal = range.bersemuka[1];
-
-        const maxKendiriBoleh = Math.min(range.kendiri[1], (100 - sVal) - range.penilaian[0]);
-        if (kVal > maxKendiriBoleh) kVal = Math.max(0, maxKendiriBoleh);
-        if (kVal < range.kendiri[0]) kVal = range.kendiri[0];
-
+        sVal = Math.max(range.bersemuka[0], Math.min(range.bersemuka[1], sVal));
+        kVal = Math.max(range.kendiri[0], Math.min(Math.min(range.kendiri[1], (100 - sVal) - range.penilaian[0]), kVal));
         const pVal = 100 - sVal - kVal;
 
-        const semukaSlider = r.querySelector('.slider-semuka');
-        const kendiriSlider = r.querySelector('.slider-kendiri');
-        if (semukaSlider) {
-          semukaSlider.min = range.bersemuka[0];
-          semukaSlider.max = range.bersemuka[1];
-          semukaSlider.value = sVal;
-        }
-        if (kendiriSlider) {
-          kendiriSlider.min = range.kendiri[0];
-          kendiriSlider.max = range.kendiri[1];
-          kendiriSlider.value = kVal;
-        }
+        const ss = r.querySelector('.slider-semuka'), sk = r.querySelector('.slider-kendiri');
+        if (ss) { ss.min = range.bersemuka[0]; ss.max = range.bersemuka[1]; ss.value = sVal; }
+        if (sk) { sk.min = range.kendiri[0]; sk.max = range.kendiri[1]; sk.value = kVal; }
+        r.querySelector('.val-semuka').innerText = `${sVal}%`; r.querySelector('.val-kendiri').innerText = `${kVal}%`; r.querySelector('.val-penilaian').innerText = `${pVal}%`;
 
-        r.querySelector('.val-semuka').innerText = `${sVal}%`;
-        r.querySelector('.val-kendiri').innerText = `${kVal}%`;
-        r.querySelector('.val-penilaian').innerText = `${pVal}%`;
+        const bersemuka = Math.round(fVal * (sVal / 100)), kendiri = Math.round(fVal * (kVal / 100)), penilaian = Math.max(0, fVal - bersemuka - kendiri);
 
-        const bersemuka = Math.round(fVal * (sVal / 100));
-        const kendiri = Math.round(fVal * (kVal / 100));
-        const penilaian = Math.max(0, fVal - bersemuka - kendiri);
+        r.querySelector('.cu-dijajar').innerText = dijajar; r.querySelector('.cu-kredit').innerText = kredit.toFixed(1); r.querySelector('.cu-kredit-baharu').innerText = kreditBaharu.toFixed(1);
+        r.querySelector('.cu-jam-semuka').innerText = `${bersemuka} jam`; r.querySelector('.cu-jam-kendiri').innerText = `${kendiri} jam`; r.querySelector('.cu-jam-penilaian').innerText = `${penilaian} jam`; r.querySelector('.cu-f').innerText = fVal;
 
-        r.querySelector('.cu-dijajar').innerText = dijajar;
-        r.querySelector('.cu-kredit').innerText = kredit.toFixed(1);
-        r.querySelector('.cu-kredit-baharu').innerText = kreditBaharu.toFixed(1);
-        r.querySelector('.cu-jam-semuka').innerText = `${bersemuka} jam`;
-        r.querySelector('.cu-jam-kendiri').innerText = `${kendiri} jam`;
-        r.querySelector('.cu-jam-penilaian').innerText = `${penilaian} jam`;
-        r.querySelector('.cu-f').innerText = fVal;
-
-        sumDijajar += dijajar;
-        sumKredit += kredit;
-        sumPelarasan += pelarasan;
-        sumKreditBaharu += kreditBaharu;
-        sumBersemuka += bersemuka;
-        sumKendiri += kendiri;
-        sumPenilaian += penilaian;
-        sumF += fVal;
+        sumDijajar += dijajar; sumKredit += kredit; sumPelarasan += pelarasan; sumKreditBaharu += kreditBaharu; sumBersemuka += bersemuka; sumKendiri += kendiri; sumPenilaian += penilaian; sumF += fVal;
 
         const waBody = document.getElementById(`wa-body-${cuCode}`);
-        if (waBody) {
-          waBody.innerHTML = '';
-          let waList = getWaListForCu(programCode, cuCode);
+        const waTfoot = document.getElementById(`wa-tfoot-${cuCode}`);
 
+        if (waBody) {
+          waBody.innerHTML = ''; let waList = getWaListForCu(programCode, cuCode);
           if (waList.length > 0) {
             let weights = waList.map(w => (parseFloat(w.weightage) || (100 / waList.length)));
             let baseHoursList = agihJamTepat(weights, fVal);
+            
+            let sumWaRkRaw = 0, sumWaRsRaw = 0;
+            let finalWaList = [];
 
             waList.forEach((wa, wIdx) => {
-              const waKey = `${cuCode}_${wIdx}`;
-              const offset = waOffsets[waKey] || 0;
-              const jamAsal = baseHoursList[wIdx] || 0;
-              const jamAkhir = Math.max(0, jamAsal + offset);
+              const waKey = `${cuCode}_${wIdx}`; const offset = waOffsets[waKey] || 0;
+              const jamAkhir = Math.max(0, baseHoursList[wIdx] + offset);
+              const cRK = Math.round(jamAkhir * (plPct / 100)), cRS = jamAkhir - cRK;
+              const sRkRaw = Math.round(cRK * (sVal / 100)), sRsRaw = Math.round(cRS * (sVal / 100));
+              
+              sumWaRkRaw += sRkRaw; sumWaRsRaw += sRsRaw;
+              finalWaList.push({ wIdx, waKey, wa, weights, baseJam: baseHoursList[wIdx], offset, jamAkhir, cRK, cRS, sRkRaw, sRsRaw, sRkFinal: sRkRaw, sRsFinal: sRsRaw });
+            });
 
-              const coptpaRK = Math.round(jamAkhir * (waRkPct / 100));
-              const coptpaRS = jamAkhir - coptpaRK;
+            // LOGIK PEMBUNDARAN BAUCER (Baki Jam Bersemuka)
+            let diffRk = Math.round(bersemuka * (plPct/100)) - sumWaRkRaw;
+            let diffRs = (bersemuka - Math.round(bersemuka * (plPct/100))) - sumWaRsRaw;
 
-              const semukaFactor = sVal / 100;
-              const semukaRK_round = Math.round(coptpaRK * semukaFactor);
-              const semukaRS_round = Math.round(coptpaRS * semukaFactor);
+            // Agih baki kepada WA terbesar (berdasarkan jamAkhir tertinggi)
+            if (diffRk !== 0 || diffRs !== 0) {
+              let sortedWa = [...finalWaList].sort((a,b) => b.jamAkhir - a.jamAkhir);
+              if (sortedWa.length > 0) {
+                let target = sortedWa[0];
+                target.sRkFinal += diffRk;
+                target.sRsFinal += diffRs;
+              }
+            }
 
-              waCalculatedHours[waKey] = {
-                rk: semukaRK_round,
-                rs: semukaRS_round
-              };
+            let finalSumRK = 0, finalSumRS = 0;
+
+            finalWaList.forEach(item => {
+              waCalculatedHours[item.waKey] = { rk: item.sRkFinal, rs: item.sRsFinal };
+              finalSumRK += item.sRkFinal; finalSumRS += item.sRsFinal;
 
               const trSub = document.createElement('tr');
               trSub.innerHTML = `
-                <td style="font-weight:700; font-family:'JetBrains Mono',monospace;">${wa.noWa || 'CU' + (cuIdx+1) + '-WA' + (wIdx + 1)}</td>
-                <td style="text-align:left; font-weight:500;">${wa.namaWa}</td>
-                <td>${weights[wIdx].toFixed(1)}%</td>
-                <td style="font-weight:700;">${jamAsal}</td>
-                <td>
-                  <select style="font-size:0.75rem; padding:1px 4px; border-radius:4px;" onchange="onWaOffsetChange('${cuCode}', ${wIdx}, this)">
-                    <option value="1" ${offset === 1 ? 'selected' : ''}>+1</option>
-                    <option value="0" ${offset === 0 ? 'selected' : ''}>0</option>
-                    <option value="-1" ${offset === -1 ? 'selected' : ''}>-1</option>
-                  </select>
-                </td>
-                <td style="font-weight:800; background:#dbeafe; color:#1e40af;">${jamAkhir}</td>
-                <td style="font-weight:700;">${coptpaRK}</td>
-                <td style="font-weight:700;">${coptpaRS}</td>
-                <td><strong>${semukaRK_round} jam</strong></td>
-                <td><strong>${semukaRS_round} jam</strong></td>
+                <td style="font-weight:700; font-family:'JetBrains Mono',monospace;">${item.wa.noWa || 'CU-WA' + (item.wIdx + 1)}</td>
+                <td style="text-align:left; font-weight:500;">${item.wa.namaWa}</td>
+                <td>${item.weights[item.wIdx].toFixed(1)}%</td>
+                <td style="font-weight:700;">${item.baseJam}</td>
+                <td><select style="font-size:0.75rem; padding:1px 4px; border-radius:4px;" onchange="onWaOffsetChange('${cuCode}', ${item.wIdx}, this)"><option value="1" ${item.offset===1?'selected':''}>+1</option><option value="0" ${item.offset===0?'selected':''}>0</option><option value="-1" ${item.offset===-1?'selected':''}>-1</option></select></td>
+                <td style="font-weight:800; background:#dbeafe; color:#1e40af;">${item.jamAkhir}</td>
+                <td style="font-weight:700;">${item.cRK}</td><td style="font-weight:700;">${item.cRS}</td>
+                <td><strong>${item.sRkFinal} jam</strong></td><td><strong>${item.sRsFinal} jam</strong></td>
               `;
               waBody.appendChild(trSub);
             });
+
+            // TFOOT: PETUNJUK KESEIMBANGAN
+            let isBalance = (finalSumRK + finalSumRS) === bersemuka;
+            let balanceColor = isBalance ? "#15803d" : "#b91c1c";
+            let balanceBg = isBalance ? "#dcfce7" : "#fee2e2";
+            let balanceIcon = isBalance ? "✔ Tepat" : "⚠ Ralat/Offset";
+
+            waTfoot.innerHTML = `
+              <td colspan="8" style="text-align:right; color:#475569; padding-right:12px;">JUMLAH KESELURUHAN (MESTI SAMA = ${bersemuka} JAM INDUK) :</td>
+              <td colspan="2" style="background:${balanceBg}; color:${balanceColor}; text-align:center;">
+                <div style="font-size:0.88rem; margin-bottom:2px;">${finalSumRK + finalSumRS} jam <span style="font-size:0.75rem;">(${balanceIcon})</span></div>
+              </td>
+            `;
           }
         }
       });
 
-      document.getElementById('sumAsal').innerText = sumAsal;
-      document.getElementById('sumDijajar').innerText = sumDijajar;
-      document.getElementById('sumKredit').innerText = sumKredit.toFixed(1);
-      document.getElementById('sumPelarasan').innerText = sumPelarasan;
-      document.getElementById('sumKreditBaharu').innerText = sumKreditBaharu.toFixed(1);
-      document.getElementById('sumBersemuka').innerText = sumBersemuka;
-      document.getElementById('sumKendiri').innerText = sumKendiri;
-      document.getElementById('sumPenilaian').innerText = sumPenilaian;
-      document.getElementById('sumF').innerText = sumF;
+      document.getElementById('sumAsal').innerText = sumAsal; document.getElementById('sumDijajar').innerText = sumDijajar; document.getElementById('sumKredit').innerText = sumKredit.toFixed(1);
+      document.getElementById('sumPelarasan').innerText = sumPelarasan; document.getElementById('sumKreditBaharu').innerText = sumKreditBaharu.toFixed(1);
+      document.getElementById('sumBersemuka').innerText = sumBersemuka; document.getElementById('sumKendiri').innerText = sumKendiri; document.getElementById('sumPenilaian').innerText = sumPenilaian; document.getElementById('sumF').innerText = sumF;
 
-      const sasaranKredit = struct.teras;
-      const diffKredit = sumKreditBaharu - sasaranKredit;
-      const creditNoticeEl = document.getElementById('creditAlertNotice');
-
-      if (creditNoticeEl) {
-        if (diffKredit === 0) {
-          creditNoticeEl.style.display = 'flex';
-          creditNoticeEl.style.backgroundColor = '#dcfce7';
-          creditNoticeEl.style.color = '#15803d';
-          creditNoticeEl.style.border = '1px solid #86efac';
-          creditNoticeEl.innerHTML = `<span>🟢</span> <div>Jumlah Kredit Baharu menepati struktur kredit teras dibenarkan (<strong>${sasaranKredit} Kredit</strong>).</div>`;
-        } else if (diffKredit > 0) {
-          creditNoticeEl.style.display = 'flex';
-          creditNoticeEl.style.backgroundColor = '#fee2e2';
-          creditNoticeEl.style.color = '#b91c1c';
-          creditNoticeEl.style.border = '1px solid #fca5a5';
-          creditNoticeEl.innerHTML = `<span>🔴</span> <div>Amaran: Jumlah kredit baharu (<strong>${sumKreditBaharu.toFixed(1)}</strong>) melebihi sasaran <strong>${sasaranKredit}</strong> (Terlebih <strong>+${diffKredit.toFixed(1)} kredit</strong>). Sila buat pelarasan.</div>`;
-        } else {
-          creditNoticeEl.style.display = 'flex';
-          creditNoticeEl.style.backgroundColor = '#fef3c7';
-          creditNoticeEl.style.color = '#b45309';
-          creditNoticeEl.style.border = '1px solid #fde047';
-          creditNoticeEl.innerHTML = `<span>🟡</span> <div>Amaran: Jumlah kredit baharu (<strong>${sumKreditBaharu.toFixed(1)}</strong>) tidak cukup berbanding sasaran <strong>${sasaranKredit}</strong> (Kurang <strong>${diffKredit.toFixed(1)} kredit</strong>). Sila buat pelarasan.</div>`;
-        }
+      const sasaranKredit = struct.teras; const diffKredit = sumKreditBaharu - sasaranKredit; const cNotice = document.getElementById('creditAlertNotice');
+      if (cNotice) {
+        if (diffKredit === 0) { cNotice.style.display = 'flex'; cNotice.style.backgroundColor = '#dcfce7'; cNotice.style.color = '#15803d'; cNotice.style.border = '1px solid #86efac'; cNotice.innerHTML = `<span>🟢</span> <div>Jumlah Kredit Baharu menepati struktur kredit teras dibenarkan (<strong>${sasaranKredit} Kredit</strong>).</div>`; }
+        else if (diffKredit > 0) { cNotice.style.display = 'flex'; cNotice.style.backgroundColor = '#fee2e2'; cNotice.style.color = '#b91c1c'; cNotice.style.border = '1px solid #fca5a5'; cNotice.innerHTML = `<span>🔴</span> <div>Amaran: Jumlah kredit baharu (<strong>${sumKreditBaharu.toFixed(1)}</strong>) melebihi sasaran <strong>${sasaranKredit}</strong> (Terlebih <strong>+${diffKredit.toFixed(1)} kredit</strong>).</div>`; }
+        else { cNotice.style.display = 'flex'; cNotice.style.backgroundColor = '#fef3c7'; cNotice.style.color = '#b45309'; cNotice.style.border = '1px solid #fde047'; cNotice.innerHTML = `<span>🟡</span> <div>Amaran: Jumlah kredit baharu (<strong>${sumKreditBaharu.toFixed(1)}</strong>) tidak cukup berbanding sasaran <strong>${sasaranKredit}</strong> (Kurang <strong>${diffKredit.toFixed(1)} kredit</strong>).</div>`; }
       }
     }
 
-    function agihJamTepat(weightList, totalJam) {
-      if (!weightList || weightList.length === 0 || totalJam <= 0) return [];
-      let exact = weightList.map(w => (w / 100) * totalJam);
-      let rounded = exact.map(Math.floor);
-      let diff = totalJam - rounded.reduce((a, b) => a + b, 0);
-
-      let remainders = exact.map((val, idx) => ({ idx, rem: val - rounded[idx] }));
-      remainders.sort((a, b) => b.rem - a.rem);
-
-      for (let i = 0; i < diff && i < remainders.length; i++) {
-        rounded[remainders[i].idx]++;
-      }
-      return rounded;
-    }
-
-    function toggleMatrixView(type) {
-      const secTeori = document.getElementById('sectionTeoriMapping');
-      const secAmali = document.getElementById('sectionAmaliMapping');
-      if (type === 'teori') {
-        secTeori.style.display = secTeori.style.display === 'none' ? 'block' : 'none';
-        secAmali.style.display = 'none';
-      } else if (type === 'amali') {
-        secAmali.style.display = secAmali.style.display === 'none' ? 'block' : 'none';
-        secTeori.style.display = 'none';
-      } else {
-        secTeori.style.display = 'none';
-        secAmali.style.display = 'none';
-      }
+    function toggleMatrixView(t) {
+      const sT = document.getElementById('sectionTeoriMapping'), sA = document.getElementById('sectionAmaliMapping');
+      if (t === 'teori') { sT.style.display = sT.style.display === 'none' ? 'block' : 'none'; sA.style.display = 'none'; }
+      else if (t === 'amali') { sA.style.display = sA.style.display === 'none' ? 'block' : 'none'; sT.style.display = 'none'; }
+      else { sT.style.display = 'none'; sA.style.display = 'none'; }
     }
 
     function packSessions(cuList, progCode, type) {
       const { jamHari, jamBlok } = getSessionLimits();
-      const isTeori = type === 'T';
-      const maxCap = isTeori ? jamHari : jamBlok;
-      const prefix = isTeori ? 'T' : 'A';
+      const maxCap = type === 'T' ? jamHari : jamBlok;
+      const prefix = type === 'T' ? 'T' : 'A';
       const roman = ['i', 'ii', 'iii', 'iv', 'v', 'vi', 'vii', 'viii'];
-
-      let sessions = [];
-      let sNum = 1;
-      let active = null;
+      let sessions = [], sNum = 1, active = null;
 
       cuList.forEach((cu, cuIdx) => {
-        if (active && active.total > 0) {
-          sessions.push(active);
-          active = null;
-          sNum++;
-        }
-
+        if (active && active.total > 0) { sessions.push(active); active = null; sNum++; }
         let waList = getWaListForCu(progCode, cu.code);
         waList.forEach((wa, waIdx) => {
-          let key = `${cu.code}_${waIdx}`;
-          let cached = waCalculatedHours[key] || { rk: (wa.masa || 8), rs: (wa.masa || 8) * 2 };
-          let nominal = isTeori ? cached.rk : cached.rs;
-          let rem = nominal;
-          
+          let rem = type === 'T' ? (waCalculatedHours[`${cu.code}_${waIdx}`]?.rk || wa.masa || 8) : (waCalculatedHours[`${cu.code}_${waIdx}`]?.rs || (wa.masa||8)*2);
           if (rem <= 0) return;
-
           if (rem > maxCap) {
-            if (active && active.total > 0) {
-              sessions.push(active);
-              active = null;
-              sNum++;
-            }
-
-            let baseCode = prefix + String(sNum).padStart(2, '0');
-            let part = 0;
-            let totalParts = Math.ceil(rem / maxCap);
-
+            if (active && active.total > 0) { sessions.push(active); active = null; sNum++; }
+            let baseCode = prefix + String(sNum).padStart(2, '0'); let part = 0, totalParts = Math.ceil(rem / maxCap);
             while (rem > 0) {
               let chunk = Math.min(rem, maxCap);
-              let subCode = baseCode + (roman[part] || (part + 1));
-              sessions.push({
-                code: subCode,
-                baseCode: baseCode,
-                subPart: part + 1,
-                totalParts: totalParts,
-                allocs: [{
-                  cuCode: cu.code,
-                  cuIdx: cuIdx,
-                  waIdx: waIdx,
-                  waNo: wa.noWa || `WA${waIdx + 1}`,
-                  waName: wa.namaWa,
-                  hours: chunk
-                }],
-                total: chunk,
-                capLeft: maxCap - chunk
-              });
-              rem -= chunk;
-              part++;
+              sessions.push({ code: baseCode + (roman[part] || (part + 1)), baseCode: baseCode, subPart: part + 1, totalParts: totalParts, allocs: [{ cuCode: cu.code, waIdx: waIdx, waName: wa.namaWa, hours: chunk }], total: chunk });
+              rem -= chunk; part++;
             }
-            sNum++;
-            return;
+            sNum++; return;
           }
-
-          if (active && (active.total + rem <= maxCap)) {
-            active.allocs.push({
-              cuCode: cu.code,
-              cuIdx: cuIdx,
-              waIdx: waIdx,
-              waNo: wa.noWa || `WA${waIdx + 1}`,
-              waName: wa.namaWa,
-              hours: rem
-            });
-            active.total += rem;
-            active.capLeft -= rem;
-
-            if (active.total === maxCap) {
-              sessions.push(active);
-              active = null;
-              sNum++;
-            }
-          } else {
-            if (active && active.total > 0) {
-              sessions.push(active);
-              sNum++;
-            }
+          if (active && (active.total + rem <= maxCap)) { active.allocs.push({ cuCode: cu.code, waIdx: waIdx, waName: wa.namaWa, hours: rem }); active.total += rem; if (active.total === maxCap) { sessions.push(active); active = null; sNum++; } } 
+          else {
+            if (active && active.total > 0) { sessions.push(active); sNum++; }
             let baseCode = prefix + String(sNum).padStart(2, '0');
-            active = {
-              code: baseCode,
-              baseCode: baseCode,
-              subPart: 1,
-              totalParts: 1,
-              allocs: [{
-                cuCode: cu.code,
-                cuIdx: cuIdx,
-                waIdx: waIdx,
-                waNo: wa.noWa || `WA${waIdx + 1}`,
-                waName: wa.namaWa,
-                hours: rem
-              }],
-              total: rem,
-              capLeft: maxCap - rem
-            };
-
-            if (active.total === maxCap) {
-              sessions.push(active);
-              active = null;
-              sNum++;
-            }
+            active = { code: baseCode, baseCode: baseCode, subPart: 1, totalParts: 1, allocs: [{ cuCode: cu.code, waIdx: waIdx, waName: wa.namaWa, hours: rem }], total: rem };
+            if (active.total === maxCap) { sessions.push(active); active = null; sNum++; }
           }
         });
-
-        if (active && active.total > 0) {
-          sessions.push(active);
-          active = null;
-          sNum++;
-        }
+        if (active && active.total > 0) { sessions.push(active); active = null; sNum++; }
       });
-
       return sessions;
     }
 
     function renderTab3All() {
-      const progCode = document.getElementById('kodProgram')?.value.trim() || "";
-      const mod = document.getElementById('modPentauliahan')?.value || "ADI";
-      const rawCuList = dbJajar[progCode] || [];
-      const cuList = filterCoreCuList(rawCuList);
-
-      const packedTeori = packSessions(cuList, progCode, 'T');
-      const packedAmali = packSessions(cuList, progCode, 'A');
-
+      const pCode = document.getElementById('kodProgram')?.value.trim() || "", mod = document.getElementById('modPentauliahan')?.value || "ADI";
+      const cuList = filterCoreCuList(dbJajar[pCode] || []);
+      const pT = packSessions(cuList, pCode, 'T'), pA = packSessions(cuList, pCode, 'A');
       const { jamHari, jamBlok } = getSessionLimits();
-
-      renderMatrixGeneric(progCode, cuList, packedTeori, 'T', 'matrixTableTeori', '#e0f2fe', 'code-badge-blue', jamHari, mod);
-      renderMatrixGeneric(progCode, cuList, packedAmali, 'A', 'matrixTableAmali', '#ccfbf1', 'code-badge-green', jamBlok, mod);
-      renderCombinedPlan(progCode, cuList, mod, packedTeori, packedAmali);
+      renderMatrixGeneric(pCode, cuList, pT, 'T', 'matrixTableTeori', '#e0f2fe', 'code-badge-blue', jamHari, mod);
+      renderMatrixGeneric(pCode, cuList, pA, 'A', 'matrixTableAmali', '#ccfbf1', 'code-badge-green', jamBlok, mod);
+      renderCombinedPlan(pCode, cuList, mod, pT, pA);
     }
 
-    function renderMatrixGeneric(progCode, cuList, packedSessions, type, tableId, cuBg, badgeClass, maxCap, mod) {
-      const table = document.getElementById(tableId);
-      if (!table) return;
-      table.innerHTML = '';
+    function renderMatrixGeneric(pCode, cuList, pSess, type, tableId, cuBg, badgeClass, maxCap, mod) {
+      const tbl = document.getElementById(tableId); if (!tbl) return; tbl.innerHTML = '';
+      if (type === 'A' && mod === 'ADI') { tbl.innerHTML = `<tr><td style="padding:40px; text-align:center; background:#f8fafc; color:#64748b; font-weight:700; border:1px solid #cbd5e1; border-radius:8px;">🏢 Dilaksanakan di Syarikat (Rujuk Proses Kerja)</td></tr>`; return; }
 
-      if (type === 'A' && mod === 'ADI') {
-        table.innerHTML = `<tr><td style="padding:40px; text-align:center; background:#f8fafc; color:#64748b; font-weight:700; border:1px solid #cbd5e1; border-radius:8px;">🏢 Dilaksanakan di Syarikat (Rujuk Proses Kerja)</td></tr>`;
-        return;
-      }
+      let th = `<thead><tr><th class="matrix-col-wa">CU - WORK ACTIVITY</th><th class="matrix-col-jam">JAM</th>`;
+      pSess.forEach(s => th += `<th class="matrix-th-session">${s.code}</th>`); th += `<th style="border:none; background:transparent;"></th></tr></thead><tbody>`;
 
-      let thead = `<thead><tr><th class="matrix-col-wa">CU - WORK ACTIVITY</th><th class="matrix-col-jam">JAM</th>`;
-      packedSessions.forEach(s => {
-        thead += `<th class="matrix-th-session">${s.code}</th>`;
-      });
-      thead += `<th style="border:none; background:transparent;"></th></tr></thead><tbody>`;
-
-      cuList.forEach((cu, cuIdx) => {
-        thead += `<tr style="background:${cuBg}; font-weight:800; text-align:left;"><td colspan="${packedSessions.length + 3}">${cu.code} - ${cu.name}</td></tr>`;
-        let waList = getWaListForCu(progCode, cu.code);
-
-        waList.forEach((wa, waIdx) => {
-          let key = `${cu.code}_${waIdx}`;
-          let cached = waCalculatedHours[key] || { rk: (wa.masa || 8), rs: (wa.masa || 8) * 2 };
-          let nominal = type === 'T' ? cached.rk : cached.rs;
-
-          thead += `<tr>
-            <td class="matrix-col-wa"><span class="code-badge ${badgeClass}">CU${cuIdx+1}-WA${waIdx+1}</span> ${wa.namaWa}</td>
-            <td class="matrix-col-jam" style="font-weight:800;">${nominal}</td>`;
-
-          packedSessions.forEach(s => {
-            let matched = s.allocs.find(a => a.cuCode === cu.code && a.waIdx === waIdx);
-            if (matched) {
-              let cellKey = `${type}_${cu.code}_${waIdx}_${s.code}`;
-              let defaultVal = matched.hours;
-              let store = type === 'T' ? matrixManualEditsTeori : matrixManualEditsAmali;
-              let val = store[cellKey] !== undefined ? store[cellKey] : defaultVal;
-
-              thead += `<td class="matrix-stepper-cell">
-                <div class="stepper-widget ${val > 0 ? 'has-value' : ''}">
-                  <button class="btn-step" onclick="stepSessionHour('${type}', '${cellKey}', -1, ${defaultVal})">−</button>
-                  <span class="step-display-val">${val > 0 ? val : '-'}</span>
-                  <button class="btn-step" onclick="stepSessionHour('${type}', '${cellKey}', 1, ${defaultVal})">+</button>
-                </div>
-              </td>`;
-            } else {
-              thead += `<td class="matrix-stepper-cell text-muted" style="color:#cbd5e1;">-</td>`;
-            }
+      cuList.forEach((cu, cI) => {
+        th += `<tr style="background:${cuBg}; font-weight:800; text-align:left;"><td colspan="${pSess.length + 3}">${cu.code} - ${cu.name}</td></tr>`;
+        getWaListForCu(pCode, cu.code).forEach((wa, wI) => {
+          let nom = type === 'T' ? (waCalculatedHours[`${cu.code}_${wI}`]?.rk || wa.masa || 8) : (waCalculatedHours[`${cu.code}_${wI}`]?.rs || (wa.masa||8)*2);
+          th += `<tr><td class="matrix-col-wa"><span class="code-badge ${badgeClass}">CU${cI+1}-WA${wI+1}</span> ${wa.namaWa}</td><td class="matrix-col-jam" style="font-weight:800;">${nom}</td>`;
+          pSess.forEach(s => {
+            let m = s.allocs.find(a => a.cuCode === cu.code && a.waIdx === wI);
+            if (m) {
+              let cK = `${type}_${cu.code}_${wI}_${s.code}`; let v = (type === 'T' ? matrixManualEditsTeori : matrixManualEditsAmali)[cK] ?? m.hours;
+              th += `<td class="matrix-stepper-cell"><div class="stepper-widget ${v>0?'has-value':''}"><button class="btn-step" onclick="stepSessionHour('${type}', '${cK}', -1, ${m.hours})">−</button><span class="step-display-val">${v>0?v:'-'}</span><button class="btn-step" onclick="stepSessionHour('${type}', '${cK}', 1, ${m.hours})">+</button></div></td>`;
+            } else { th += `<td class="matrix-stepper-cell text-muted" style="color:#cbd5e1;">-</td>`; }
           });
-
-          thead += `<td style="border:none; background:transparent;"></td></tr>`;
+          th += `<td style="border:none; background:transparent;"></td></tr>`;
         });
       });
-
-      thead += `</tbody>`;
-      table.innerHTML = thead;
+      tbl.innerHTML = th + `</tbody>`;
     }
 
     function stepSessionHour(type, cellKey, delta, defaultVal) {
       const { jamHari, jamBlok } = getSessionLimits();
-      let limit = type === 'T' ? jamHari : jamBlok;
-      let store = type === 'T' ? matrixManualEditsTeori : matrixManualEditsAmali;
-      let cur = store[cellKey] !== undefined ? store[cellKey] : (defaultVal || 0);
-      let next = Math.max(0, Math.min(limit, cur + delta));
-      store[cellKey] = next;
-      renderTab3All();
+      let limit = type === 'T' ? jamHari : jamBlok, store = type === 'T' ? matrixManualEditsTeori : matrixManualEditsAmali;
+      let next = Math.max(0, Math.min(limit, (store[cellKey] ?? defaultVal) + delta));
+      store[cellKey] = next; renderTab3All();
     }
 
-    function renderCombinedPlan(progCode, cuList, mod, packedTeori, packedAmali) {
-      const tbody = document.getElementById('combinedPlanBody');
-      if (!tbody) return;
-      tbody.innerHTML = '';
-
-      if (cuList.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="5" style="text-align:center; padding:24px; color:#64748b;">Sila pilih program di atas untuk memaparkan Pelan Mengajar.</td></tr>`;
-        return;
-      }
+    function renderCombinedPlan(pCode, cuList, mod, pT, pA) {
+      const tbody = document.getElementById('combinedPlanBody'); if (!tbody) return; tbody.innerHTML = '';
+      if (cuList.length === 0) { tbody.innerHTML = `<tr><td colspan="5" style="text-align:center; padding:24px; color:#64748b;">Sila pilih program di atas untuk memaparkan Pelan Mengajar.</td></tr>`; return; }
 
       cuList.forEach((cu, cuIdx) => {
-        let waList = getWaListForCu(progCode, cu.code);
-        let cuTeoriSessions = packedTeori.filter(s => s.allocs.some(a => a.cuCode === cu.code));
-        let cuAmaliSessions = packedAmali.filter(s => s.allocs.some(a => a.cuCode === cu.code));
-        let processedWaTeori = new Set();
+        let waList = getWaListForCu(pCode, cu.code);
+        let cuTSess = pT.filter(s => s.allocs.some(a => a.cuCode === cu.code));
+        let cuASess = pA.filter(s => s.allocs.some(a => a.cuCode === cu.code));
+        let procT = new Set();
 
         waList.forEach((wa, waIdx) => {
-          if (processedWaTeori.has(waIdx)) return;
-
-          let matchedSessionsT = cuTeoriSessions.filter(s => s.allocs.some(a => a.waIdx === waIdx));
-
-          if (matchedSessionsT.length === 0) {
-            let tr = document.createElement('tr');
-            tr.innerHTML = `
-              <td style="font-weight:600;"><span class="code-badge code-badge-blue">CU${cuIdx+1}-WA${waIdx+1}</span> ${wa.namaWa}</td>
-              <td>-</td><td style="text-align:center;">-</td><td>-</td><td style="text-align:center;">-</td>
-            `;
-            tbody.appendChild(tr);
-            processedWaTeori.add(waIdx);
-            return;
+          if (procT.has(waIdx)) return;
+          let matchT = cuTSess.filter(s => s.allocs.some(a => a.waIdx === waIdx));
+          
+          if (matchT.length === 0) {
+            tbody.innerHTML += `<tr><td style="font-weight:600;"><span class="code-badge code-badge-blue">CU${cuIdx+1}-WA${waIdx+1}</span> ${wa.namaWa}</td><td>-</td><td style="text-align:center;">-</td><td>-</td><td style="text-align:center;">-</td></tr>`;
+            procT.add(waIdx); return;
           }
 
-          if (matchedSessionsT.length === 1 && matchedSessionsT[0].allocs.length > 1) {
-            let sessionObj = matchedSessionsT[0];
-            let sharedAllocs = sessionObj.allocs;
-            let rowSpan = sharedAllocs.length;
+          if (matchT.length === 1 && matchT[0].allocs.length > 1) {
+            let sObj = matchT[0], rowSpan = sObj.allocs.length;
+            let displayCodeT = `[${sObj.code}] ${cu.code}/KP(${sObj.subPart}/${sObj.totalParts})PM`;
+            let inputKeyT = `T_${cu.code}_${sObj.code}`, titleValT = combinedPlanTitles[inputKeyT] || '';
+            let totalHoursT = sObj.allocs.reduce((sum, al) => sum + (matrixManualEditsTeori[`T_${cu.code}_${al.waIdx}_${sObj.code}`] ?? al.hours), 0);
 
-            let sCode = sessionObj.code;
-            let displayCodeT = `[${sCode}] ${cu.code}/KP(${sessionObj.subPart}/${sessionObj.totalParts})PM`;
-            let inputKeyT = `T_${cu.code}_${sCode}`;
-            let titleValT = combinedPlanTitles[inputKeyT] || '';
-
-            let totalHoursT = sharedAllocs.reduce((sum, al) => {
-              let cellKey = `T_${cu.code}_${al.waIdx}_${sCode}`;
-              let h = matrixManualEditsTeori[cellKey] !== undefined ? matrixManualEditsTeori[cellKey] : al.hours;
-              return sum + h;
-            }, 0);
-
-            sharedAllocs.forEach((al, rIdx) => {
-              processedWaTeori.add(al.waIdx);
-              let tr = document.createElement('tr');
-
-              tr.innerHTML += `
-                <td style="font-weight:600; vertical-align:middle;">
-                  <span class="code-badge code-badge-blue">CU${cuIdx+1}-WA${al.waIdx+1}</span><br>${al.waName}
-                </td>
-              `;
-
+            sObj.allocs.forEach((al, rIdx) => {
+              procT.add(al.waIdx); let tr = document.createElement('tr');
+              tr.innerHTML += `<td style="font-weight:600; vertical-align:middle;"><span class="code-badge code-badge-blue">CU${cuIdx+1}-WA${al.waIdx+1}</span><br>${al.waName}</td>`;
+              
               if (rIdx === 0) {
-                tr.innerHTML += `
-                  <td rowspan="${rowSpan}" style="vertical-align:middle;">
-                    <div class="code-badge code-badge-blue mb-1">${displayCodeT}</div>
-                    <input type="text" class="teaching-plan-input" placeholder="Masukkan tajuk PMT..." value="${titleValT}"
-                           oninput="onCombinedTitleInput('${cu.code}', '${sCode}', this.value, 'T')">
-                  </td>
-                  <td rowspan="${rowSpan}" style="text-align:center; font-weight:800; vertical-align:middle;">${totalHoursT}</td>
-                `;
-
-                if (mod === 'ADI') {
-                  tr.innerHTML += `
-                    <td rowspan="${rowSpan}" colspan="2" style="vertical-align:middle; text-align:center; background:#f8fafc; color:#64748b; font-weight:700;">
-                      🏢 Dilaksanakan di Syarikat (Rujuk Proses Kerja)
-                    </td>
-                  `;
-                } else {
-                  let aSession = cuAmaliSessions.find(as => as.allocs.some(aa => aa.waIdx === al.waIdx));
-                  if (aSession) {
-                    let aCode = aSession.code;
-                    let displayCodeA = `[${aCode}] ${cu.code}/KK(${aSession.subPart}/${aSession.totalParts})PM`;
-                    let inputKeyA = `A_${cu.code}_${aCode}`;
-                    let titleValA = combinedPlanTitles[inputKeyA] || '';
-                    let aHours = aSession.allocs.reduce((sum, aa) => {
-                      let cellKeyA = `A_${cu.code}_${aa.waIdx}_${aCode}`;
-                      return sum + (matrixManualEditsAmali[cellKeyA] !== undefined ? matrixManualEditsAmali[cellKeyA] : aa.hours);
-                    }, 0);
-
-                    tr.innerHTML += `
-                      <td rowspan="${rowSpan}" style="vertical-align:middle;">
-                        <div class="code-badge code-badge-green mb-1">${displayCodeA}</div>
-                        <input type="text" class="teaching-plan-input" placeholder="Masukkan tajuk PMA..." value="${titleValA}"
-                               oninput="onCombinedTitleInput('${cu.code}', '${aCode}', this.value, 'A')">
-                      </td>
-                      <td rowspan="${rowSpan}" style="text-align:center; font-weight:800; vertical-align:middle;">${aHours}</td>
-                    `;
-                  } else {
-                    tr.innerHTML += `<td rowspan="${rowSpan}">-</td><td rowspan="${rowSpan}" style="text-align:center;">-</td>`;
-                  }
+                tr.innerHTML += `<td rowspan="${rowSpan}" style="vertical-align:middle;"><div class="code-badge code-badge-blue mb-1">${displayCodeT}</div><input type="text" class="teaching-plan-input" placeholder="Masukkan tajuk PMT..." value="${titleValT}" oninput="onCombinedTitleInput('${cu.code}', '${sObj.code}', this.value, 'T')"></td><td rowspan="${rowSpan}" style="text-align:center; font-weight:800; vertical-align:middle;">${totalHoursT}</td>`;
+                if (mod === 'ADI') { tr.innerHTML += `<td rowspan="${rowSpan}" colspan="2" style="vertical-align:middle; text-align:center; background:#f8fafc; color:#64748b; font-weight:700;">🏢 Dilaksanakan di Syarikat (Rujuk Proses Kerja)</td>`; }
+                else {
+                  let aS = cuASess.find(as => as.allocs.some(aa => aa.waIdx === al.waIdx));
+                  if (aS) {
+                    let aHours = aS.allocs.reduce((sum, aa) => sum + (matrixManualEditsAmali[`A_${cu.code}_${aa.waIdx}_${aS.code}`] ?? aa.hours), 0);
+                    tr.innerHTML += `<td rowspan="${rowSpan}" style="vertical-align:middle;"><div class="code-badge code-badge-green mb-1">[${aS.code}] ${cu.code}/KK(${aS.subPart}/${aS.totalParts})PM</div><input type="text" class="teaching-plan-input" placeholder="Masukkan tajuk PMA..." value="${combinedPlanTitles[`A_${cu.code}_${aS.code}`] || ''}" oninput="onCombinedTitleInput('${cu.code}', '${aS.code}', this.value, 'A')"></td><td rowspan="${rowSpan}" style="text-align:center; font-weight:800; vertical-align:middle;">${aHours}</td>`;
+                  } else { tr.innerHTML += `<td rowspan="${rowSpan}">-</td><td rowspan="${rowSpan}" style="text-align:center;">-</td>`; }
                 }
               }
-
               tbody.appendChild(tr);
             });
             return;
           }
 
-          let subCount = matchedSessionsT.length;
-          processedWaTeori.add(waIdx);
-
-          matchedSessionsT.forEach((sObj, subIdx) => {
+          procT.add(waIdx);
+          matchT.forEach((sObj, subIdx) => {
             let tr = document.createElement('tr');
-            if (subIdx === 0) {
-              tr.innerHTML += `
-                <td rowspan="${subCount}" style="vertical-align:middle; font-weight:600;">
-                  <span class="code-badge code-badge-blue">CU${cuIdx+1}-WA${waIdx+1}</span><br>${wa.namaWa}
-                </td>
-              `;
-            }
-
-            let sCode = sObj.code;
-            let displayCodeT = `[${sCode}] ${cu.code}/KP(${sObj.subPart}/${sObj.totalParts})PM`;
-            let inputKeyT = `T_${cu.code}_${sCode}`;
-            let parentKeyT = `T_${cu.code}_${sObj.baseCode}i`;
+            if (subIdx === 0) tr.innerHTML += `<td rowspan="${matchT.length}" style="vertical-align:middle; font-weight:600;"><span class="code-badge code-badge-blue">CU${cuIdx+1}-WA${waIdx+1}</span><br>${wa.namaWa}</td>`;
+            
+            let sCode = sObj.code, displayCodeT = `[${sCode}] ${cu.code}/KP(${sObj.subPart}/${sObj.totalParts})PM`;
+            let inputKeyT = `T_${cu.code}_${sCode}`, parentKeyT = `T_${cu.code}_${sObj.baseCode}i`;
             let titleValT = combinedPlanTitles[inputKeyT] || (subIdx > 0 ? (combinedPlanTitles[parentKeyT] || '') : '');
-            let phT = subIdx === 0 ? "Masukkan tajuk PMT..." : `Ulang Tajuk ${sObj.baseCode}i (Bahagian ${subIdx+1}/${sObj.totalParts})`;
+            let hoursT = matrixManualEditsTeori[`T_${cu.code}_${waIdx}_${sCode}`] ?? (sObj.allocs.find(a => a.waIdx === waIdx)?.hours ?? sObj.total);
 
-            let cellKeyT = `T_${cu.code}_${waIdx}_${sCode}`;
-            let alT = sObj.allocs.find(a => a.waIdx === waIdx);
-            let hoursT = matrixManualEditsTeori[cellKeyT] !== undefined ? matrixManualEditsTeori[cellKeyT] : (alT ? alT.hours : sObj.total);
-
-            tr.innerHTML += `
-              <td>
-                <div class="code-badge code-badge-blue mb-1">${displayCodeT}</div>
-                <input type="text" class="teaching-plan-input" placeholder="${phT}" value="${titleValT}" data-serial-parent="T_${cu.code}_${sObj.baseCode}"
-                       oninput="onSerialTitleInput('${cu.code}', '${sObj.baseCode}', ${subIdx}, this.value, 'T')">
-              </td>
-              <td style="text-align:center; font-weight:800;">${hoursT}</td>
-            `;
+            tr.innerHTML += `<td><div class="code-badge code-badge-blue mb-1">${displayCodeT}</div><input type="text" class="teaching-plan-input" placeholder="${subIdx===0?"Masukkan tajuk PMT...":`Ulang Tajuk ${sObj.baseCode}i`}" value="${titleValT}" data-serial-parent="T_${cu.code}_${sObj.baseCode}" oninput="onSerialTitleInput('${cu.code}', '${sObj.baseCode}', ${subIdx}, this.value, 'T')"></td><td style="text-align:center; font-weight:800;">${hoursT}</td>`;
 
             if (mod === 'ADI') {
-              if (subIdx === 0) {
-                tr.innerHTML += `
-                  <td rowspan="${subCount}" colspan="2" style="vertical-align:middle; text-align:center; background:#f8fafc; color:#64748b; font-weight:700;">
-                    🏢 Dilaksanakan di Syarikat (Rujuk Proses Kerja)
-                  </td>
-                `;
-              }
+              if (subIdx === 0) tr.innerHTML += `<td rowspan="${matchT.length}" colspan="2" style="vertical-align:middle; text-align:center; background:#f8fafc; color:#64748b; font-weight:700;">🏢 Dilaksanakan di Syarikat (Rujuk Proses Kerja)</td>`;
             } else {
-              let aSession = cuAmaliSessions[subIdx];
-              if (aSession) {
-                let aCode = aSession.code;
-                let displayCodeA = `[${aCode}] ${cu.code}/KK(${aSession.subPart}/${aSession.totalParts})PM`;
-                let inputKeyA = `A_${cu.code}_${aCode}`;
-                let parentKeyA = `A_${cu.code}_${aSession.baseCode}i`;
+              let aS = cuASess[subIdx];
+              if (aS) {
+                let aCode = aS.code, displayCodeA = `[${aCode}] ${cu.code}/KK(${aS.subPart}/${aS.totalParts})PM`;
+                let inputKeyA = `A_${cu.code}_${aCode}`, parentKeyA = `A_${cu.code}_${aS.baseCode}i`;
                 let titleValA = combinedPlanTitles[inputKeyA] || (subIdx > 0 ? (combinedPlanTitles[parentKeyA] || '') : '');
-                let phA = subIdx === 0 ? "Masukkan tajuk PMA..." : `Ulang Tajuk ${aSession.baseCode}i (Bahagian ${subIdx+1}/${aSession.totalParts})`;
+                let hoursA = matrixManualEditsAmali[`A_${cu.code}_${waIdx}_${aCode}`] ?? (aS.allocs.find(a => a.waIdx === waIdx)?.hours ?? aS.total);
 
-                let cellKeyA = `A_${cu.code}_${waIdx}_${aCode}`;
-                let alA = aSession.allocs.find(a => a.waIdx === waIdx);
-                let hoursA = matrixManualEditsAmali[cellKeyA] !== undefined ? matrixManualEditsAmali[cellKeyA] : (alA ? alA.hours : aSession.total);
-
-                tr.innerHTML += `
-                  <td>
-                    <div class="code-badge code-badge-green mb-1">${displayCodeA}</div>
-                    <input type="text" class="teaching-plan-input" placeholder="${phA}" value="${titleValA}" data-serial-parent="A_${cu.code}_${aSession.baseCode}"
-                           oninput="onSerialTitleInput('${cu.code}', '${aSession.baseCode}', ${subIdx}, this.value, 'A')">
-                  </td>
-                  <td style="text-align:center; font-weight:800;">${hoursA}</td>
-                `;
-              } else {
-                tr.innerHTML += `<td>-</td><td style="text-align:center;">-</td>`;
-              }
+                tr.innerHTML += `<td><div class="code-badge code-badge-green mb-1">${displayCodeA}</div><input type="text" class="teaching-plan-input" placeholder="${subIdx===0?"Masukkan tajuk PMA...":`Ulang Tajuk ${aS.baseCode}i`}" value="${titleValA}" data-serial-parent="A_${cu.code}_${aS.baseCode}" oninput="onSerialTitleInput('${cu.code}', '${aS.baseCode}', ${subIdx}, this.value, 'A')"></td><td style="text-align:center; font-weight:800;">${hoursA}</td>`;
+              } else { tr.innerHTML += `<td>-</td><td style="text-align:center;">-</td>`; }
             }
-
             tbody.appendChild(tr);
           });
         });
       });
     }
 
-    function onCombinedTitleInput(cuCode, sCode, val, type) {
-      let key = `${type}_${cuCode}_${sCode}`;
-      combinedPlanTitles[key] = val;
+    function onCombinedTitleInput(c, s, v, t) { combinedPlanTitles[`${t}_${c}_${s}`] = v; }
+    function onSerialTitleInput(c, b, idx, v, t) {
+      const rom = ['i','ii','iii','iv','v','vi']; combinedPlanTitles[`${t}_${c}_${b}${rom[idx]||(idx+1)}`] = v;
+      if (idx === 0) { for(let i=1; i<=6; i++) combinedPlanTitles[`${t}_${c}_${b}${rom[i]||(i+1)}`] = v; document.querySelectorAll(`input[data-serial-parent="${t}_${c}_${b}"]`).forEach((inpt, i) => { if (i>0) inpt.value = v; }); }
     }
-
-    function onSerialTitleInput(cuCode, baseCode, subIdx, val, type) {
-      const roman = ['i', 'ii', 'iii', 'iv', 'v', 'vi'];
-      let curKey = `${type}_${cuCode}_${baseCode}${roman[subIdx] || (subIdx+1)}`;
-      combinedPlanTitles[curKey] = val;
-
-      if (subIdx === 0) {
-        for (let i = 1; i <= 6; i++) {
-          let childKey = `${type}_${cuCode}_${baseCode}${roman[i] || (i+1)}`;
-          combinedPlanTitles[childKey] = val;
-        }
-        document.querySelectorAll(`input[data-serial-parent="${type}_${cuCode}_${baseCode}"]`).forEach((inp, idx) => {
-          if (idx > 0) inp.value = val;
-        });
-      }
-    }
-
-    function resetTab3Distribution() {
-      matrixManualEditsTeori = {};
-      matrixManualEditsAmali = {};
-      combinedPlanTitles = {};
-      renderTab3All();
-    }
+    function resetTab3Distribution() { matrixManualEditsTeori = {}; matrixManualEditsAmali = {}; combinedPlanTitles = {}; renderTab3All(); }
 
     function renderJsuTab() {
-      const container = document.getElementById('jsuAccordionsContainer');
-      if (!container) return;
-      container.innerHTML = '';
-
-      const progCode = document.getElementById('kodProgram')?.value.trim() || "";
-      const status = document.getElementById('statusTahap')?.value || "Tahap 2";
-      const rawCuList = dbJajar[progCode] || [];
-      const cuList = filterCoreCuList(rawCuList);
-
-      if (cuList.length === 0) {
-        container.innerHTML = `<div style="padding:24px; text-align:center; color:#64748b; font-weight:700;">Sila pilih program di atas untuk memaparkan JSU.</div>`;
-        return;
-      }
+      const cont = document.getElementById('jsuAccordionsContainer'); if (!cont) return; cont.innerHTML = '';
+      const pCode = document.getElementById('kodProgram')?.value.trim() || "", stat = document.getElementById('statusTahap')?.value || "Tahap 2";
+      const cuList = filterCoreCuList(dbJajar[pCode] || []);
+      if (cuList.length === 0) { cont.innerHTML = `<div style="padding:24px; text-align:center; color:#64748b; font-weight:700;">Sila pilih program di atas untuk memaparkan JSU.</div>`; return; }
 
       cuList.forEach((cu, cuIdx) => {
-        let kredit = Math.round(cu.asal / 40) || 3;
-        let targetQ = 40;
-        let isLanjutan = status.includes('Tahap 4') || status.includes('Tahap 5');
+        let kr = Math.round((cu.asal||80) / 40) || 3, tgt = 40;
+        if (!stat.includes('Tahap 4') && !stat.includes('Tahap 5')) { if (kr <= 3) tgt = 20; else if (kr <= 6) tgt = 30; else tgt = 40; }
+        
+        let waList = getWaListForCu(pCode, cu.code); let totH = waList.reduce((acc, curr) => acc + (curr.masa || 8), 0);
+        let qPW = waList.map(w => Math.max(1, Math.round(((w.masa || 8) / totH) * tgt)));
+        let diff = tgt - qPW.reduce((a,b)=>a+b, 0); if (diff !== 0 && qPW.length > 0) qPW[0] += diff;
 
-        if (!isLanjutan) {
-          if (kredit <= 3) targetQ = 20;
-          else if (kredit <= 6) targetQ = 30;
-          else targetQ = 40;
-        } else {
-          targetQ = 40;
-        }
-
-        let waList = getWaListForCu(progCode, cu.code);
-        let totWaHours = waList.reduce((acc, curr) => acc + (curr.masa || 8), 0);
-
-        let qPerWa = waList.map(w => Math.max(1, Math.round(((w.masa || 8) / totWaHours) * targetQ)));
-        let sumQ = qPerWa.reduce((a, b) => a + b, 0);
-        let diffQ = targetQ - sumQ;
-        if (diffQ !== 0 && qPerWa.length > 0) qPerWa[0] += diffQ;
-
-        const card = document.createElement('div');
-        card.className = 'cu-accordion-card';
+        const card = document.createElement('div'); card.className = 'cu-accordion-card';
         card.innerHTML = `
           <div class="cu-accordion-header" onclick="toggleJsuAccordion('jsu-body-${cuIdx}')">
-            <span>📄 ${cu.code} - ${cu.name} (Kredit: ${kredit})</span>
-            <div style="display:flex; align-items:center; gap:10px;">
-              <span style="background:#dbeafe; color:#1e40af; padding:3px 10px; border-radius:9999px; font-size:0.75rem;">
-                Sasaran: ${targetQ} Soalan (60 MINIT)
-              </span>
-              <span>▼</span>
-            </div>
+            <span>📄 ${cu.code} - ${cu.name} (Kredit: ${kr})</span>
+            <div style="display:flex; align-items:center; gap:10px;"><span style="background:#dbeafe; color:#1e40af; padding:3px 10px; border-radius:9999px; font-size:0.75rem;">Sasaran: ${tgt} Soalan</span><span>▼</span></div>
           </div>
           <div class="cu-accordion-body" id="jsu-body-${cuIdx}">
-            <div class="table-responsive">
-              <table class="data-table" style="font-size:0.75rem;">
-                <thead>
-                  <tr class="th-navy-main">
-                    <th rowspan="3" style="text-align:left; width:220px;">WORK ACTIVITIES (WA)</th>
-                    <th rowspan="3" style="width:65px;">BIL. SOALAN</th>
-                    <th colspan="3">ARAS KESUKARAN</th>
-                    <th colspan="9">PENILAIAN PENGETAHUAN (KETERAMPILAN)</th>
-                    <th rowspan="3" style="width:75px;">PENILAIAN PRESTASI</th>
-                  </tr>
-                  <tr>
-                    <th rowspan="2" style="background:#334155; color:white; width:45px;">R (50%)</th>
-                    <th rowspan="2" style="background:#334155; color:white; width:45px;">S (30%)</th>
-                    <th rowspan="2" style="background:#334155; color:white; width:45px;">T (20%)</th>
-                    <th colspan="3" style="background:#d97706; color:white;">PROSEDUR</th>
-                    <th colspan="3" style="background:#be185d; color:white;">FAKTA / TEORI</th>
-                    <th colspan="3" style="background:#6d28d9; color:white;">SIKAP / KESELAMATAN</th>
-                  </tr>
-                  <tr style="background:#1e293b; color:white; font-size:0.7rem;">
-                    <th>R</th><th>S</th><th>T</th>
-                    <th>R</th><th>S</th><th>T</th>
-                    <th>R</th><th>S</th><th>T</th>
-                  </tr>
-                </thead>
-                <tbody id="jsu-rows-${cuIdx}"></tbody>
-                <tfoot>
-                  <tr style="background:#fef08a; font-weight:800; color:#854d0e;">
-                    <td style="text-align:right;">JUMLAH:</td>
-                    <td id="jsu-sum-q-${cuIdx}">${targetQ}</td>
-                    <td id="jsu-sum-r-${cuIdx}">0</td>
-                    <td id="jsu-sum-s-${cuIdx}">0</td>
-                    <td id="jsu-sum-t-${cuIdx}">0</td>
-                    <td colspan="3" style="background:#fed7aa;" id="jsu-sum-pros-${cuIdx}">0</td>
-                    <td colspan="3" style="background:#fbcfe8;" id="jsu-sum-fak-${cuIdx}">0</td>
-                    <td colspan="3" style="background:#ddd6fe;" id="jsu-sum-sik-${cuIdx}">0</td>
-                    <td id="jsu-sum-perf-${cuIdx}">0</td>
-                  </tr>
-                  <tr style="background:#bbf7d0; font-weight:800; color:#14532d;">
-                    <td colspan="2">TEMPOH PENILAIAN:</td>
-                    <td colspan="12">60 MINIT (PENGETAHUAN)</td>
-                    <td>3 JAM (PRESTASI)</td>
-                  </tr>
-                </tfoot>
-              </table>
-            </div>
+            <div class="table-responsive"><table class="data-table" style="font-size:0.75rem;">
+              <thead><tr class="th-navy-main"><th rowspan="3" style="text-align:left; width:220px;">WORK ACTIVITIES (WA)</th><th rowspan="3" style="width:65px;">BIL. SOALAN</th><th colspan="3">ARAS KESUKARAN</th><th colspan="9">PENILAIAN PENGETAHUAN (KETERAMPILAN)</th><th rowspan="3" style="width:75px;">PENILAIAN PRESTASI</th></tr><tr><th rowspan="2" style="background:#334155; color:white; width:45px;">R (50%)</th><th rowspan="2" style="background:#334155; color:white; width:45px;">S (30%)</th><th rowspan="2" style="background:#334155; color:white; width:45px;">T (20%)</th><th colspan="3" style="background:#d97706; color:white;">PROSEDUR</th><th colspan="3" style="background:#be185d; color:white;">FAKTA / TEORI</th><th colspan="3" style="background:#6d28d9; color:white;">SIKAP / KESELAMATAN</th></tr><tr style="background:#1e293b; color:white; font-size:0.7rem;"><th>R</th><th>S</th><th>T</th><th>R</th><th>S</th><th>T</th><th>R</th><th>S</th><th>T</th></tr></thead>
+              <tbody id="jsu-rows-${cuIdx}"></tbody>
+              <tfoot><tr style="background:#fef08a; font-weight:800; color:#854d0e;"><td style="text-align:right;">JUMLAH:</td><td id="jsu-sum-q-${cuIdx}">${tgt}</td><td id="jsu-sum-r-${cuIdx}">0</td><td id="jsu-sum-s-${cuIdx}">0</td><td id="jsu-sum-t-${cuIdx}">0</td><td colspan="3" style="background:#fed7aa;" id="jsu-sum-pros-${cuIdx}">0</td><td colspan="3" style="background:#fbcfe8;" id="jsu-sum-fak-${cuIdx}">0</td><td colspan="3" style="background:#ddd6fe;" id="jsu-sum-sik-${cuIdx}">0</td><td id="jsu-sum-perf-${cuIdx}">0</td></tr><tr style="background:#bbf7d0; font-weight:800; color:#14532d;"><td colspan="2">TEMPOH PENILAIAN:</td><td colspan="12">60 MINIT (PENGETAHUAN)</td><td>3 JAM (PRESTASI)</td></tr></tfoot>
+            </table></div>
           </div>
         `;
-        container.appendChild(card);
-
-        renderJsuTableRows(cu, cuIdx, waList, qPerWa);
+        cont.appendChild(card); renderJsuTableRows(cu, cuIdx, waList, qPW);
       });
     }
 
-    function toggleJsuAccordion(id) {
-      const el = document.getElementById(id);
-      if (!el) return;
-      el.classList.toggle('open');
-      const header = el.previousElementSibling;
-      const arrow = header.querySelector('span:last-child');
-      if (arrow) arrow.innerText = el.classList.contains('open') ? '▲' : '▼';
-    }
+    function toggleJsuAccordion(id) { const el = document.getElementById(id); if (!el) return; el.classList.toggle('open'); const ar = el.previousElementSibling.querySelector('span:last-child'); if (ar) ar.innerText = el.classList.contains('open') ? '▲' : '▼'; }
+    function toggleAllJsuAccordions() { const bds = document.querySelectorAll('.cu-accordion-body'); const anyOpen = Array.from(bds).some(b => b.classList.contains('open')); bds.forEach(b => { if (anyOpen) b.classList.remove('open'); else b.classList.add('open'); }); document.querySelectorAll('.cu-accordion-header span:last-child').forEach(s => { s.innerText = anyOpen ? '▼' : '▲'; }); }
 
-    function toggleAllJsuAccordions() {
-      const bodies = document.querySelectorAll('.cu-accordion-body');
-      const anyOpen = Array.from(bodies).some(b => b.classList.contains('open'));
-      bodies.forEach(b => {
-        if (anyOpen) b.classList.remove('open');
-        else b.classList.add('open');
-      });
-      document.querySelectorAll('.cu-accordion-header span:last-child').forEach(s => {
-        s.innerText = anyOpen ? '▼' : '▲';
-      });
-    }
+    function renderJsuTableRows(cu, cI, wL, qPW) {
+      const tb = document.getElementById(`jsu-rows-${cI}`); if (!tb) return; tb.innerHTML = '';
+      let tQ=0, tR=0, tS=0, tT=0, tPr=0, tFk=0, tSk=0, tPf=0;
+      wL.forEach((w, wI) => {
+        let q = qPW[wI] || 4, r = Math.round(q*0.5), s = Math.round(q*0.3), t = Math.max(0, q-r-s);
+        let pR = Math.ceil(r*0.6), fR = r-pR, sR = 0; let pS = Math.ceil(s*0.6), fS = s-pS, sS = 0; let pT = Math.ceil(t*0.6), fT = t-pT, sT = 0;
+        let kP = `${cu.code}_${wI}`;
+        pR = jsuEdits[`${kP}_pR`] ?? pR; pS = jsuEdits[`${kP}_pS`] ?? pS; pT = jsuEdits[`${kP}_pT`] ?? pT;
+        fR = jsuEdits[`${kP}_fR`] ?? fR; fS = jsuEdits[`${kP}_fS`] ?? fS; fT = jsuEdits[`${kP}_fT`] ?? fT;
+        sR = jsuEdits[`${kP}_sR`] ?? sR; sS = jsuEdits[`${kP}_sS`] ?? sS; sT = jsuEdits[`${kP}_sT`] ?? sT;
+        r = pR+fR+sR; s = pS+fS+sS; t = pT+fT+sT; q = r+s+t;
+        tQ+=q; tR+=r; tS+=s; tT+=t; tPr+=(pR+pS+pT); tFk+=(fR+fS+fT); tSk+=(sR+sS+sT);
+        let isTck = jsuPerformanceTicks[kP] ?? true; if (isTck) tPf++;
 
-    function renderJsuTableRows(cu, cuIdx, waList, qPerWa) {
-      const tbody = document.getElementById(`jsu-rows-${cuIdx}`);
-      if (!tbody) return;
-      tbody.innerHTML = '';
-
-      let totQ = 0, totR = 0, totS = 0, totT = 0;
-      let totPros = 0, totFak = 0, totSik = 0, totPerf = 0;
-
-      waList.forEach((wa, wIdx) => {
-        let q = qPerWa[wIdx] || 4;
-        let r = Math.round(q * 0.5);
-        let s = Math.round(q * 0.3);
-        let t = Math.max(0, q - r - s);
-
-        let pR = Math.ceil(r * 0.6), fR = r - pR, sR = 0;
-        let pS = Math.ceil(s * 0.6), fS = s - pS, sS = 0;
-        let pT = Math.ceil(t * 0.6), fT = t - pT, sT = 0;
-
-        let kPref = `${cu.code}_${wIdx}`;
-        pR = jsuEdits[`${kPref}_pR`] ?? pR;
-        pS = jsuEdits[`${kPref}_pS`] ?? pS;
-        pT = jsuEdits[`${kPref}_pT`] ?? pT;
-        fR = jsuEdits[`${kPref}_fR`] ?? fR;
-        fS = jsuEdits[`${kPref}_fS`] ?? fS;
-        fT = jsuEdits[`${kPref}_fT`] ?? fT;
-        sR = jsuEdits[`${kPref}_sR`] ?? sR;
-        sS = jsuEdits[`${kPref}_sS`] ?? sS;
-        sT = jsuEdits[`${kPref}_sT`] ?? sT;
-
-        r = pR + fR + sR;
-        s = pS + fS + sS;
-        t = pT + fT + sT;
-        q = r + s + t;
-
-        totQ += q; totR += r; totS += s; totT += t;
-        totPros += (pR + pS + pT);
-        totFak += (fR + fS + fT);
-        totSik += (sR + sS + sT);
-
-        let isTicked = jsuPerformanceTicks[kPref] ?? true;
-        if (isTicked) totPerf++;
-
-        const tr = document.createElement('tr');
-        tr.innerHTML = `
-          <td style="text-align:left; font-weight:600;"><span class="code-badge code-badge-blue">CU${cuIdx+1}-WA${wIdx+1}</span> ${wa.namaWa}</td>
-          <td style="font-weight:800; background:#f8fafc;">${q}</td>
-          <td style="background:#f1f5f9; font-weight:700;">${r}</td>
-          <td style="background:#f1f5f9; font-weight:700;">${s}</td>
-          <td style="background:#f1f5f9; font-weight:700;">${t}</td>
-
-          <td>${renderJsuCell(kPref, 'pR', pR)}</td>
-          <td>${renderJsuCell(kPref, 'pS', pS)}</td>
-          <td>${renderJsuCell(kPref, 'pT', pT)}</td>
-
-          <td>${renderJsuCell(kPref, 'fR', fR)}</td>
-          <td>${renderJsuCell(kPref, 'fS', fS)}</td>
-          <td>${renderJsuCell(kPref, 'fT', fT)}</td>
-
-          <td>${renderJsuCell(kPref, 'sR', sR)}</td>
-          <td>${renderJsuCell(kPref, 'sS', sS)}</td>
-          <td>${renderJsuCell(kPref, 'sT', sT)}</td>
-
-          <td>
-            <input type="checkbox" ${isTicked ? 'checked' : ''} onchange="onJsuPerfCheck('${kPref}', this.checked)">
-            <span style="font-weight:800; color:#16a34a; margin-left:3px;">${isTicked ? '/' : ''}</span>
-          </td>
+        tb.innerHTML += `
+          <tr><td style="text-align:left; font-weight:600;"><span class="code-badge code-badge-blue">CU${cI+1}-WA${wI+1}</span> ${w.namaWa}</td>
+          <td style="font-weight:800; background:#f8fafc;">${q}</td><td style="background:#f1f5f9; font-weight:700;">${r}</td><td style="background:#f1f5f9; font-weight:700;">${s}</td><td style="background:#f1f5f9; font-weight:700;">${t}</td>
+          <td>${renderJsuCell(kP, 'pR', pR)}</td><td>${renderJsuCell(kP, 'pS', pS)}</td><td>${renderJsuCell(kP, 'pT', pT)}</td>
+          <td>${renderJsuCell(kP, 'fR', fR)}</td><td>${renderJsuCell(kP, 'fS', fS)}</td><td>${renderJsuCell(kP, 'fT', fT)}</td>
+          <td>${renderJsuCell(kP, 'sR', sR)}</td><td>${renderJsuCell(kP, 'sS', sS)}</td><td>${renderJsuCell(kP, 'sT', sT)}</td>
+          <td><input type="checkbox" ${isTck?'checked':''} onchange="onJsuPerfCheck('${kP}', this.checked)"><span style="font-weight:800; color:#16a34a; margin-left:3px;">${isTck?'/':''}</span></td></tr>
         `;
-        tbody.appendChild(tr);
       });
-
-      document.getElementById(`jsu-sum-q-${cuIdx}`).innerText = totQ;
-      document.getElementById(`jsu-sum-r-${cuIdx}`).innerText = totR;
-      document.getElementById(`jsu-sum-s-${cuIdx}`).innerText = totS;
-      document.getElementById(`jsu-sum-t-${cuIdx}`).innerText = totT;
-      document.getElementById(`jsu-sum-pros-${cuIdx}`).innerText = totPros;
-      document.getElementById(`jsu-sum-fak-${cuIdx}`).innerText = totFak;
-      document.getElementById(`jsu-sum-sik-${cuIdx}`).innerText = totSik;
-      document.getElementById(`jsu-sum-perf-${cuIdx}`).innerText = totPerf;
+      document.getElementById(`jsu-sum-q-${cI}`).innerText = tQ; document.getElementById(`jsu-sum-r-${cI}`).innerText = tR; document.getElementById(`jsu-sum-s-${cI}`).innerText = tS; document.getElementById(`jsu-sum-t-${cI}`).innerText = tT;
+      document.getElementById(`jsu-sum-pros-${cI}`).innerText = tPr; document.getElementById(`jsu-sum-fak-${cI}`).innerText = tFk; document.getElementById(`jsu-sum-sik-${cI}`).innerText = tSk; document.getElementById(`jsu-sum-perf-${cI}`).innerText = tPf;
     }
 
-    function renderJsuCell(kPref, field, val) {
-      let key = `${kPref}_${field}`;
-      return `
-        <div class="stepper-widget ${val > 0 ? 'has-value' : ''}">
-          <button class="btn-step no-print" onclick="stepJsuVal('${key}', -1)">−</button>
-          <span class="step-display-val">${val}</span>
-          <button class="btn-step no-print" onclick="stepJsuVal('${key}', 1)">+</button>
-        </div>
-      `;
-    }
+    function renderJsuCell(kP, f, v) { return `<div class="stepper-widget ${v>0?'has-value':''}"><button class="btn-step no-print" onclick="stepJsuVal('${kP}_${f}', -1)">−</button><span class="step-display-val">${v}</span><button class="btn-step no-print" onclick="stepJsuVal('${kP}_${f}', 1)">+</button></div>`; }
+    function stepJsuVal(k, d) { jsuEdits[k] = Math.max(0, (jsuEdits[k]??0)+d); renderJsuTab(); }
+    function onJsuPerfCheck(k, c) { jsuPerformanceTicks[k] = c; renderJsuTab(); }
 
-    function stepJsuVal(key, delta) {
-      let cur = jsuEdits[key] ?? 0;
-      let next = Math.max(0, cur + delta);
-      jsuEdits[key] = next;
-      renderJsuTab();
-    }
-
-    function onJsuPerfCheck(kPref, checked) {
-      jsuPerformanceTicks[kPref] = checked;
-      renderJsuTab();
-    }
-
-    function openPbModal() {
-      const modal = document.getElementById('pbModal');
-      if (modal) {
-        document.getElementById('inputModalPbName').value = pbInfo.name;
-        document.getElementById('inputModalPbAddress').value = pbInfo.address;
-        modal.classList.add('open');
-      }
-    }
-
-    function closePbModal() {
-      const modal = document.getElementById('pbModal');
-      if (modal) modal.classList.remove('open');
-    }
-
-    function savePbInfo() {
-      pbInfo.name = document.getElementById('inputModalPbName').value.trim() || "Pusat Bertauliah";
-      pbInfo.address = document.getElementById('inputModalPbAddress').value.trim() || "-";
-      safeSetStorage('jpk_pb_name', pbInfo.name);
-      safeSetStorage('jpk_pb_address', pbInfo.address);
-      updatePrintHeaderDisplay();
-      closePbModal();
-    }
-
-    function resetAllCalculations() {
-      cuPnpSettings = {};
-      waOffsets = {};
-      matrixManualEditsTeori = {};
-      matrixManualEditsAmali = {};
-      combinedPlanTitles = {};
-      jsuEdits = {};
-      document.querySelectorAll('.cu-pelarasan').forEach(sel => sel.value = "0");
-      calculateAll();
-      renderTab3All();
-      renderJsuTab();
-    }
+    function openPbModal() { const m = document.getElementById('pbModal'); if (m) { document.getElementById('inputModalPbName').value = pbInfo.name; document.getElementById('inputModalPbAddress').value = pbInfo.address; m.classList.add('open'); } }
+    function closePbModal() { const m = document.getElementById('pbModal'); if (m) m.classList.remove('open'); }
+    function savePbInfo() { pbInfo.name = document.getElementById('inputModalPbName').value.trim()||"Pusat Bertauliah"; pbInfo.address = document.getElementById('inputModalPbAddress').value.trim()||"-"; safeSetStorage('jpk_pb_name', pbInfo.name); safeSetStorage('jpk_pb_address', pbInfo.address); updatePrintHeaderDisplay(); closePbModal(); }
+    function resetAllCalculations() { cuPnpSettings={}; waOffsets={}; matrixManualEditsTeori={}; matrixManualEditsAmali={}; combinedPlanTitles={}; jsuEdits={}; document.querySelectorAll('.cu-pelarasan').forEach(s => s.value="0"); calculateAll(); renderTab3All(); renderJsuTab(); }
   </script>
 </body>
 </html>
