@@ -193,8 +193,9 @@
     .stepper-widget { display: inline-flex; align-items: center; justify-content: center; gap: 2px; background: #ffffff; border: 1px solid #cbd5e1; border-radius: 6px; padding: 2px; transition: all 0.2s; }
     .stepper-widget.has-value { background: #172554; border-color: #1e3a8a; box-shadow: 0 1px 3px rgba(15, 23, 42, 0.25); }
     .btn-step { width: 17px; height: 22px; border-radius: 4px; border: 1px solid #cbd5e1; background: #f8fafc; color: #1e293b; font-size: 0.75rem; font-weight: 800; display: inline-flex; align-items: center; justify-content: center; cursor: pointer; user-select: none; transition: all 0.15s; padding: 0; }
-    .btn-step:hover { background: #2563eb; color: #ffffff; border-color: #2563eb; }
-    .stepper-widget.has-value .btn-step { background: #1e40af; border-color: #3b82f6; color: #ffffff; }
+    .btn-step:hover:not(:disabled) { background: #2563eb; color: #ffffff; border-color: #2563eb; }
+    .btn-step:disabled { opacity: 0.35; cursor: not-allowed; background: #e2e8f0 !important; color: #94a3b8 !important; border-color: #cbd5e1 !important; }
+    .stepper-widget.has-value .btn-step:not(:disabled) { background: #1e40af; border-color: #3b82f6; color: #ffffff; }
     .step-display-val { min-width: 20px; font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; font-weight: 800; text-align: center; color: #94a3b8; }
     .stepper-widget.has-value .step-display-val { color: #ffffff; }
 
@@ -236,6 +237,25 @@
     .wa-subrow { display: none; }
     .wa-subrow.active { display: table-row; }
     
+    .subj-select {
+      font-size: 0.75rem;
+      font-weight: 800;
+      padding: 3px 6px;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      background: #f8fafc;
+      color: #0f172a;
+      cursor: pointer;
+      outline: none;
+      transition: all 0.15s;
+    }
+    .subj-select.is-selected {
+      background: #1e3a8a;
+      color: #ffffff;
+      border-color: #1e3a8a;
+      box-shadow: 0 1px 3px rgba(30, 58, 138, 0.3);
+    }
+    
     .print-only-banner, .print-section-header, .print-page-footer { display: none; }
 
     /* ========================================= */
@@ -264,16 +284,18 @@
       .print-section-header { display: block !important; font-size: 10pt !important; font-weight: 800 !important; color: #1e3a8a !important; border-bottom: 1.5px solid #cbd5e1 !important; padding-bottom: 2px !important; margin: 10px 0 6px 0 !important; }
 
       .table-responsive { overflow-x: visible !important; border: none !important; box-shadow: none !important; width: 100% !important; }
-      table.data-table { width: 100% !important; table-layout: auto !important; font-size: 7.5pt !important; border-collapse: collapse !important; }
-      table.data-table th, table.data-table td { padding: 4px 3px !important; word-wrap: break-word !important; }
+      table.data-table { width: 100% !important; table-layout: auto !important; font-size: 7.2pt !important; border-collapse: collapse !important; }
+      table.data-table th, table.data-table td { padding: 3px 2px !important; word-wrap: break-word !important; }
 
       .wa-subrow { display: none !important; }
       #combinedPlanContainer { display: block !important; }
       .cu-accordion-body { display: block !important; padding: 4px 0 !important; }
-      .cu-accordion-card { border: 1px solid #cbd5e1 !important; page-break-inside: avoid !important; margin-bottom: 10px !important; }
+      .cu-accordion-card { border: 1px solid #cbd5e1 !important; page-break-inside: avoid !important; margin-bottom: 12px !important; }
       
       .teaching-plan-input::placeholder { color: transparent !important; }
       .teaching-plan-input { border: none !important; background: transparent !important; padding: 0 !important; }
+
+      select.subj-select { border: none !important; appearance: none !important; font-weight: 800 !important; text-align: center !important; }
 
       .print-page-footer { display: block !important; position: fixed; bottom: 0; left: 0; right: 0; text-align: center; font-size: 7pt; color: #475569; border-top: 1px solid #cbd5e1; padding-top: 2px; }
     }
@@ -574,9 +596,9 @@
 
     <!-- TAB 4: JSU -->
     <div id="tab4Content" class="tab-content-panel">
-      <div class="print-section-header">PERKARA 4: JADUAL SPESIFIKASI UJIAN (JSU) PENILAIAN OBJEKTIF INDIVIDU</div>
+      <div class="print-section-header">PERKARA 4: JADUAL SPESIFIKASI UJIAN (JSU) PENILAIAN OBJEKTIF & SUBJEKTIF</div>
       <div class="tab2-info-bar no-print">
-        <div class="range-indicator-text">📋 <strong>Piawai Jadual 14 JPK:</strong> Pengiraan soalan & kesukaran dikira automatik. Gunakan <strong>[ − ]</strong> dan <strong>[ + ]</strong> untuk melaras taburan.</div>
+        <div class="range-indicator-text">📋 <strong>Piawai Jadual 12 & 14 JPK:</strong> Pengiraan soalan, aras kesukaran, dan domain keterampilan dikawal automatik. Had kuota disekat automatik bagi mengelakkan terlebih laras.</div>
         <button class="btn-action-light" onclick="toggleAllJsuAccordions()">📂 Buka / Tutup Semua JSU</button>
       </div>
       <div id="jsuAccordionsContainer"></div>
@@ -636,7 +658,8 @@
     };
 
     let dbNoss = [], dbJajar = {}, dbWaData = {};
-    let cuPnpSettings = {}, waOffsets = {}, matrixManualEditsTeori = {}, matrixManualEditsAmali = {}, combinedPlanTitles = {}, jsuEdits = {}, jsuPerformanceTicks = {};
+    let cuPnpSettings = {}, waOffsets = {}, matrixManualEditsTeori = {}, matrixManualEditsAmali = {}, combinedPlanTitles = {};
+    let jsuEdits = {}, jsuPerformanceTicks = {}, jsuSubjSelections = {};
     let waCalculatedHours = {};
     let cuCalculatedCredits = {};
     let currentOpenJsuIdx = 0;
@@ -703,7 +726,7 @@
     function initMockData() {
       dbNoss = [{ code: "A011-001-2:2018", name: "OPERASI FLORIKULTUR", statusTahap: "Bermula Tahap 2" }, { code: "G452-001-2:2017", name: "SERVIS KENDERAAN KOMERSIAL", statusTahap: "Tahap 2" }];
       dbJajar = { "A011-001-2:2018": [{ code: "A011-001-2:2018-C01", name: "PENYEDIAAN MEDIA TANAMAN ORNAMENTAL", asal: 72 }] };
-      dbWaData = { "A011-001-2:2018-C01": [{ noWa: "CU1-WA1", namaWa: "Kenalpasti keperluan penyediaan media tanaman", masa: 4 }, { noWa: "CU1-WA2", namaWa: "Sediakan peralatan untuk penyediaan media", masa: 4 }, { noWa: "CU1-WA3", namaWa: "Laksanakan penyediaan media", masa: 12 }, { noWa: "CU1-WA4", namaWa: "Simpan media", masa: 4 }] };
+      dbWaData = { "A011-001-2:2018-C01": [{ noWa: "CU1-WA1", namaWa: "Kenalpasti keperluan penyediaan media tanaman", masa: 24 }, { noWa: "CU1-WA2", namaWa: "Sediakan peralatan untuk penyediaan media", masa: 40 }, { noWa: "CU1-WA3", namaWa: "Laksanakan penyediaan media", masa: 24 }, { noWa: "CU1-WA4", namaWa: "Simpan media", masa: 24 }] };
       populateProgramDatalist();
     }
 
@@ -765,7 +788,7 @@
       if (dbWaData[cCode] && dbWaData[cCode].length > 0) return dbWaData[cCode];
       let comp = (pCode || "") + "___" + cCode; if (dbWaData[comp] && dbWaData[comp].length > 0) return dbWaData[comp];
       for (let k in dbWaData) if (k.toLowerCase().includes(cCode.toLowerCase())) return dbWaData[k];
-      return [ { noWa: "CU1-WA1", namaWa: "Sediakan Keperluan & Perancangan Operasi", masa: 4 }, { noWa: "CU1-WA2", namaWa: "Sediakan Peralatan & Mesin", masa: 4 }, { noWa: "CU1-WA3", namaWa: "Laksanakan Operasi", masa: 12 }, { noWa: "CU1-WA4", namaWa: "Pemeriksaan Kualiti", masa: 4 } ];
+      return [ { noWa: "CU1-WA1", namaWa: "Sediakan Keperluan & Perancangan Operasi", masa: 24 }, { noWa: "CU1-WA2", namaWa: "Sediakan Peralatan & Mesin", masa: 40 }, { noWa: "CU1-WA3", namaWa: "Laksanakan Operasi", masa: 24 }, { noWa: "CU1-WA4", namaWa: "Pemeriksaan Kualiti", masa: 24 } ];
     }
 
     function renderCuTableRows(pCode) {
@@ -947,11 +970,10 @@
               const sRK = Math.round(cRK * (sVal / 100));
               const sRS = Math.round(cRS * (sVal / 100));
 
-              waCalculatedHours[waKey] = { rk: sRK, rs: sRS };
+              waCalculatedHours[waKey] = { rk: sRK, rs: sRS, weightage: wPct, jamAsal: jamAsalDb };
               finalSumRK += sRK; 
               finalSumRS += sRS;
 
-              // BINA DROPDOWN PILIHAN OFFSET DARI +10 HINGGA -10
               let offsetOptions = '';
               for (let v = 10; v >= -10; v--) {
                 let label = v > 0 ? `+${v}` : `${v}`;
@@ -1034,7 +1056,7 @@
       const roman = ['i', 'ii', 'iii', 'iv', 'v', 'vi', 'vii', 'viii'];
       let sessions = [], sNum = 1, active = null;
 
-      cuList.forEach((cu, cuIdx) => {
+      cuList.forEach((cu) => {
         if (active && active.total > 0) { sessions.push(active); active = null; sNum++; }
         let waList = getWaListForCu(progCode, cu.code);
         waList.forEach((wa, waIdx) => {
@@ -1089,7 +1111,9 @@
             let m = s.allocs.find(a => a.cuCode === cu.code && a.waIdx === wI);
             if (m) {
               let cK = `${type}_${cu.code}_${wI}_${s.code}`; let v = (type === 'T' ? matrixManualEditsTeori : matrixManualEditsAmali)[cK] ?? m.hours;
-              th += `<td class="matrix-stepper-cell"><div class="stepper-widget ${v>0?'has-value':''}"><button class="btn-step" onclick="stepSessionHour('${type}', '${cK}', -1, ${m.hours})">−</button><span class="step-display-val">${v>0?v:'-'}</span><button class="btn-step" onclick="stepSessionHour('${type}', '${cK}', 1, ${m.hours})">+</button></div></td>`;
+              let isMax = v >= maxCap;
+              let isMin = v <= 0;
+              th += `<td class="matrix-stepper-cell"><div class="stepper-widget ${v>0?'has-value':''}"><button class="btn-step" ${isMin?'disabled':''} onclick="stepSessionHour('${type}', '${cK}', -1, ${m.hours})">−</button><span class="step-display-val">${v>0?v:'-'}</span><button class="btn-step" ${isMax?'disabled':''} onclick="stepSessionHour('${type}', '${cK}', 1, ${m.hours})">+</button></div></td>`;
             } else { th += `<td class="matrix-stepper-cell text-muted" style="color:#cbd5e1;">-</td>`; }
           });
           th += `<td style="border:none; background:transparent;"></td></tr>`;
@@ -1188,17 +1212,39 @@
     }
     function resetTab3Distribution() { matrixManualEditsTeori = {}; matrixManualEditsAmali = {}; combinedPlanTitles = {}; renderTab3All(); }
 
+    /* ========================================================= */
+    /* LOGIK PINTAR AUTO-AGIH DOMAIN (PROSEDUR > FAKTA > SIKAP)  */
+    /* ========================================================= */
+    function getDomainSplit(n, allowSikap = true) {
+      if (n <= 0) return { p: 0, f: 0, s: 0 };
+      if (n === 1) return { p: 1, f: 0, s: 0 };
+      if (n === 2) return { p: 1, f: 1, s: 0 };
+      if (n === 3) return { p: 2, f: 1, s: 0 };
+      if (n === 4) return allowSikap ? { p: 2, f: 1, s: 1 } : { p: 3, f: 1, s: 0 };
+      if (n === 5) return allowSikap ? { p: 3, f: 1, s: 1 } : { p: 3, f: 2, s: 0 };
+      if (n === 6) return allowSikap ? { p: 3, f: 2, s: 1 } : { p: 4, f: 2, s: 0 };
+      let s = allowSikap ? Math.max(1, Math.round(n * 0.15)) : 0;
+      let rem = n - s;
+      let f = Math.max(1, Math.round(rem * 0.35));
+      let p = n - f - s;
+      if (p < f) { p = Math.ceil(rem / 2); f = rem - p; }
+      return { p, f, s };
+    }
+
+    /* ========================================================= */
+    /* JSU: BAHAGIAN A (OBJEKTIF) + BAHAGIAN B (SUBJEKTIF)       */
+    /* ========================================================= */
     function renderJsuTab() {
       const cont = document.getElementById('jsuAccordionsContainer'); if (!cont) return; cont.innerHTML = '';
       const pCode = document.getElementById('kodProgram')?.value.trim() || "", stat = document.getElementById('statusTahap')?.value || "Tahap 2";
       const cuList = filterCoreCuList(dbJajar[pCode] || []);
       if (cuList.length === 0) { cont.innerHTML = `<div style="padding:24px; text-align:center; color:#64748b; font-weight:700;">Sila pilih program di atas untuk memaparkan JSU.</div>`; return; }
 
+      const isLanjutan = stat.includes('Tahap 4') || stat.includes('Tahap 5');
+
       cuList.forEach((cu, cuIdx) => {
         let kr = cuCalculatedCredits[cu.code] !== undefined ? cuCalculatedCredits[cu.code] : (Math.round((cu.asal||80) / 40) || 3);
         let tgt = 40;
-        let isLanjutan = stat.includes('Tahap 4') || stat.includes('Tahap 5');
-        
         if (!isLanjutan) { 
           if (kr <= 3) tgt = 20; 
           else if (kr <= 6) tgt = 30; 
@@ -1215,16 +1261,32 @@
 
         const isOpen = (allJsuOpen || currentOpenJsuIdx === cuIdx);
 
+        // SYARAT JADUAL 12 JPK UNTUK SUBJEKTIF
+        let showStruktur1 = isLanjutan;
+        let showStruktur2 = isLanjutan && (kr >= 7);
+        let showEsei = isLanjutan && (kr >= 4);
+        let subjMasaText = "30 MINIT (1 SOALAN STRUKTUR)";
+        if (kr >= 7) subjMasaText = "1 JAM 30 MINIT (2 STRUKTUR, 1 ESEI)";
+        else if (kr >= 4) subjMasaText = "1 JAM (1 STRUKTUR, 1 ESEI)";
+
         const card = document.createElement('div'); card.className = 'cu-accordion-card';
         card.innerHTML = `
           <div class="cu-accordion-header ${isOpen ? 'active' : ''}" onclick="toggleJsuAccordion(${cuIdx})">
             <span>📄 ${cu.code} - ${cu.name} (Kredit: ${kr})</span>
             <div style="display:flex; align-items:center; gap:10px;">
-              <span style="background:#dbeafe; color:#1e40af; padding:3px 10px; border-radius:9999px; font-size:0.75rem;">Sasaran: ${tgt} Soalan</span>
+              <span style="background:#dbeafe; color:#1e40af; padding:3px 10px; border-radius:9999px; font-size:0.75rem;">Sasaran Objektif: ${tgt} Soalan</span>
+              ${isLanjutan ? `<span style="background:#fef3c7; color:#b45309; padding:3px 10px; border-radius:9999px; font-size:0.75rem;">Subjektif Aktif</span>` : ''}
               <span>${isOpen ? '▲' : '▼'}</span>
             </div>
           </div>
           <div class="cu-accordion-body ${isOpen ? 'open' : ''}" id="jsu-body-${cuIdx}">
+            
+            <!-- BAHAGIAN A: JSU OBJEKTIF -->
+            <div style="font-weight:800; color:#1e3a8a; font-size:0.82rem; margin-bottom:8px; display:flex; justify-content:space-between; align-items:center;">
+              <span>📌 BAHAGIAN A: PENILAIAN PENGETAHUAN (OBJEKTIF) & PRESTASI</span>
+              <span style="font-size:0.72rem; color:#64748b; font-weight:600;">(Butang [+] disekat automatik apabila kuota aras tercapai)</span>
+            </div>
+            
             <div class="table-responsive"><table class="data-table" style="font-size:0.75rem;">
               <thead>
                 <tr class="th-navy-main">
@@ -1232,7 +1294,7 @@
                   <th rowspan="3" style="width:65px;">BIL. SOALAN</th>
                   <th colspan="3">ARAS KESUKARAN</th>
                   <th colspan="9">PENILAIAN PENGETAHUAN (KETERAMPILAN)</th>
-                  <th rowspan="3" style="width:75px;">PENILAIAN PRESTASI</th>
+                  <th colspan="2" style="background:#172554; color:white;">PENILAIAN PRESTASI</th>
                 </tr>
                 <tr>
                   <th rowspan="2" style="background:#334155; color:white; width:45px;">R (50%)</th>
@@ -1241,6 +1303,8 @@
                   <th colspan="3" style="background:#d97706; color:white;">PROSEDUR</th>
                   <th colspan="3" style="background:#be185d; color:white;">FAKTA / TEORI</th>
                   <th colspan="3" style="background:#6d28d9; color:white;">SIKAP / KESELAMATAN</th>
+                  <th rowspan="2" style="width:60px; font-size:0.68rem; background:#1e3a8a;">PRESTASI 1</th>
+                  <th rowspan="2" style="width:60px; font-size:0.68rem; background:#1e3a8a;">PRESTASI 2</th>
                 </tr>
                 <tr style="background:#1e293b; color:white; font-size:0.7rem;">
                   <th>R</th><th>S</th><th>T</th><th>R</th><th>S</th><th>T</th><th>R</th><th>S</th><th>T</th>
@@ -1257,19 +1321,62 @@
                   <td colspan="3" style="background:#fed7aa;" id="jsu-sum-pros-${cuIdx}">0</td>
                   <td colspan="3" style="background:#fbcfe8;" id="jsu-sum-fak-${cuIdx}">0</td>
                   <td colspan="3" style="background:#ddd6fe;" id="jsu-sum-sik-${cuIdx}">0</td>
-                  <td id="jsu-sum-perf-${cuIdx}">0</td>
+                  <td id="jsu-sum-perf1-${cuIdx}">0</td>
+                  <td id="jsu-sum-perf2-${cuIdx}">0</td>
                 </tr>
                 <tr style="background:#bbf7d0; font-weight:800; color:#14532d;">
                   <td colspan="2">TEMPOH PENILAIAN:</td>
-                  <td colspan="12">60 MINIT (PENGETAHUAN)</td>
-                  <td>3 JAM (PRESTASI)</td>
+                  <td colspan="12">60 MINIT (PENGETAHUAN OBJEKTIF)</td>
+                  <td colspan="2">3 JAM (PRESTASI)</td>
                 </tr>
               </tfoot>
             </table></div>
+
+            <!-- BAHAGIAN B: JSU SUBJEKTIF -->
+            <div style="margin-top:20px; padding-top:16px; border-top:2px dashed #cbd5e1;">
+              ${!isLanjutan ? `
+                <div style="padding:10px 14px; background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; color:#64748b; font-size:0.75rem; font-weight:600;">
+                  ℹ️ Mengikut <strong>Jadual 12 JPK</strong>, penilaian pengetahuan bagi program <strong>${stat}</strong> hanya melibatkan bentuk soalan <strong>Objektif Sahaja</strong> (Subjektif tidak terpakai).
+                </div>
+              ` : `
+                <div style="font-weight:800; color:#0d9488; font-size:0.82rem; margin-bottom:8px; display:flex; justify-content:space-between; align-items:center;">
+                  <span>📝 BAHAGIAN B: PENILAIAN STANDARD (SUBJEKTIF: STRUKTUR & ESEI)</span>
+                  <span style="font-size:0.72rem; color:#0f766e; font-weight:700;">Syarat: Sub-soalan mesti merangkumi ketiga-tiga Aras (R, S, T)</span>
+                </div>
+                
+                <div class="table-responsive"><table class="data-table" style="font-size:0.75rem;">
+                  <thead>
+                    <tr class="th-navy-main">
+                      <th rowspan="2" style="width:260px; text-align:left;">WORK ACTIVITIES (WA)</th>
+                      <th rowspan="2" style="width:75px;">WA WEIGHTAGE</th>
+                      ${showStruktur1 ? `<th colspan="4" style="background:#d97706; color:white;">STRUKTUR 1</th>` : ''}
+                      ${showStruktur2 ? `<th colspan="4" style="background:#0d9488; color:white;">STRUKTUR 2</th>` : ''}
+                      ${showEsei ? `<th rowspan="2" style="background:#6d28d9; color:white; width:75px;">ESEI 1 (T)</th>` : ''}
+                    </tr>
+                    <tr style="background:#1e293b; color:white; font-size:0.7rem;">
+                      ${showStruktur1 ? `<th>a</th><th>b</th><th>c</th><th>d</th>` : ''}
+                      ${showStruktur2 ? `<th>a</th><th>b</th><th>c</th><th>d</th>` : ''}
+                    </tr>
+                  </thead>
+                  <tbody id="jsu-subj-rows-${cuIdx}"></tbody>
+                  <tfoot>
+                    <tr style="background:#f1f5f9; font-weight:800;" id="jsu-subj-status-row-${cuIdx}"></tr>
+                    <tr style="background:#cffafe; font-weight:800; color:#0e7490;">
+                      <td colspan="2">TEMPOH PENILAIAN SUBJEKTIF:</td>
+                      <td colspan="${(showStruktur1?4:0) + (showStruktur2?4:0) + (showEsei?1:0)}">${subjMasaText}</td>
+                    </tr>
+                  </tfoot>
+                </table></div>
+              `}
+            </div>
+
           </div>
         `;
         cont.appendChild(card); 
         renderJsuTableRows(cu, cuIdx, waList, qPW);
+        if (isLanjutan) {
+          renderJsuSubjRows(cu, cuIdx, waList, showStruktur1, showStruktur2, showEsei);
+        }
       });
     }
 
@@ -1284,49 +1391,233 @@
       renderJsuTab();
     }
 
+    /* RENDER BAHAGIAN A (OBJEKTIF) DENGAN KUNCI KUOTA */
     function renderJsuTableRows(cu, cI, wL, qPW) {
       const tb = document.getElementById(`jsu-rows-${cI}`); if (!tb) return; tb.innerHTML = '';
-      let tQ=0, tR=0, tS=0, tT=0, tPr=0, tFk=0, tSk=0, tPf=0;
+      let tQ=0, tR=0, tS=0, tT=0, tPr=0, tFk=0, tSk=0, tPf1=0, tPf2=0;
       
       wL.forEach((w, wI) => {
         let q = qPW[wI] || 4, r = Math.round(q*0.5), s = Math.round(q*0.3), t = Math.max(0, q-r-s);
-        let pR = Math.ceil(r*0.6), fR = r-pR, sR = 0; let pS = Math.ceil(s*0.6), fS = s-pS, sS = 0; let pT = Math.ceil(t*0.6), fT = t-pT, sT = 0;
         let kP = `${cu.code}_${wI}`;
-        pR = jsuEdits[`${kP}_pR`] ?? pR; pS = jsuEdits[`${kP}_pS`] ?? pS; pT = jsuEdits[`${kP}_pT`] ?? pT;
-        fR = jsuEdits[`${kP}_fR`] ?? fR; fS = jsuEdits[`${kP}_fS`] ?? fS; fT = jsuEdits[`${kP}_fT`] ?? fT;
-        sR = jsuEdits[`${kP}_sR`] ?? sR; sS = jsuEdits[`${kP}_sS`] ?? sS; sT = jsuEdits[`${kP}_sT`] ?? sT;
-        r = pR+fR+sR; s = pS+fS+sS; t = pT+fT+sT; q = r+s+t;
-        tQ+=q; tR+=r; tS+=s; tT+=t; tPr+=(pR+pS+pT); tFk+=(fR+fS+fT); tSk+=(sR+sS+sT);
-        let isTck = jsuPerformanceTicks[kP] ?? true; if (isTck) tPf++;
+
+        // Auto-pecahan seimbang jika belum disunting secara manual
+        let splitR = getDomainSplit(r, true);
+        let splitS = getDomainSplit(s, true);
+        let splitT = getDomainSplit(t, false);
+
+        let pR = jsuEdits[`${kP}_pR`] ?? splitR.p;
+        let fR = jsuEdits[`${kP}_fR`] ?? splitR.f;
+        let sR = jsuEdits[`${kP}_sR`] ?? splitR.s;
+
+        let pS = jsuEdits[`${kP}_pS`] ?? splitS.p;
+        let fS = jsuEdits[`${kP}_fS`] ?? splitS.f;
+        let sS = jsuEdits[`${kP}_sS`] ?? splitS.s;
+
+        let pT = jsuEdits[`${kP}_pT`] ?? splitT.p;
+        let fT = jsuEdits[`${kP}_fT`] ?? splitT.f;
+        let sT = jsuEdits[`${kP}_sT`] ?? splitT.s;
+
+        let curR = pR + fR + sR;
+        let curS = pS + fS + sS;
+        let curT = pT + fT + sT;
+
+        tQ += (curR + curS + curT);
+        tR += curR; tS += curS; tT += curT;
+        tPr += (pR + pS + pT); tFk += (fR + fS + fT); tSk += (sR + sS + sT);
+
+        let isTck1 = jsuPerformanceTicks[`${kP}_p1`] ?? true; if (isTck1) tPf1++;
+        let isTck2 = jsuPerformanceTicks[`${kP}_p2`] ?? true; if (isTck2) tPf2++;
+
+        // Status Imbangan Baris
+        let bgR = curR === r ? '#f1f5f9' : (curR < r ? '#fee2e2' : '#fca5a5');
+        let colR = curR === r ? '#1e293b' : '#b91c1c';
+        let bgS = curS === s ? '#f1f5f9' : (curS < s ? '#fee2e2' : '#fca5a5');
+        let colS = curS === s ? '#1e293b' : '#b91c1c';
+        let bgT = curT === t ? '#f1f5f9' : (curT < t ? '#fee2e2' : '#fca5a5');
+        let colT = curT === t ? '#1e293b' : '#b91c1c';
 
         tb.innerHTML += `
           <tr>
             <td style="text-align:left; font-weight:600;"><span class="code-badge code-badge-blue">CU${cI+1}-WA${wI+1}</span> ${w.namaWa}</td>
-            <td style="font-weight:800; background:#f8fafc;">${q}</td>
-            <td style="background:#f1f5f9; font-weight:700;">${r}</td>
-            <td style="background:#f1f5f9; font-weight:700;">${s}</td>
-            <td style="background:#f1f5f9; font-weight:700;">${t}</td>
-            <td>${renderJsuCell(kP, 'pR', pR)}</td><td>${renderJsuCell(kP, 'pS', pS)}</td><td>${renderJsuCell(kP, 'pT', pT)}</td>
-            <td>${renderJsuCell(kP, 'fR', fR)}</td><td>${renderJsuCell(kP, 'fS', fS)}</td><td>${renderJsuCell(kP, 'fT', fT)}</td>
-            <td>${renderJsuCell(kP, 'sR', sR)}</td><td>${renderJsuCell(kP, 'sS', sS)}</td><td>${renderJsuCell(kP, 'sT', sT)}</td>
-            <td>
-              <input type="checkbox" ${isTck?'checked':''} onchange="onJsuPerfCheck('${kP}', this.checked)" style="cursor:pointer; transform:scale(1.15);">
-            </td>
+            <td style="font-weight:800; background:#f8fafc;">${curR + curS + curT}</td>
+            <td style="background:${bgR}; color:${colR}; font-weight:800;">${curR}/${r}</td>
+            <td style="background:${bgS}; color:${colS}; font-weight:800;">${curS}/${s}</td>
+            <td style="background:${bgT}; color:${colT}; font-weight:800;">${curT}/${t}</td>
+            <td>${renderJsuCell(kP, 'pR', pR, curR >= r)}</td>
+            <td>${renderJsuCell(kP, 'pS', pS, curS >= s)}</td>
+            <td>${renderJsuCell(kP, 'pT', pT, curT >= t)}</td>
+            <td>${renderJsuCell(kP, 'fR', fR, curR >= r)}</td>
+            <td>${renderJsuCell(kP, 'fS', fS, curS >= s)}</td>
+            <td>${renderJsuCell(kP, 'fT', fT, curT >= t)}</td>
+            <td>${renderJsuCell(kP, 'sR', sR, curR >= r)}</td>
+            <td>${renderJsuCell(kP, 'sS', sS, curS >= s)}</td>
+            <td>${renderJsuCell(kP, 'sT', sT, curT >= t)}</td>
+            <td><input type="checkbox" ${isTck1?'checked':''} onchange="onJsuPerfCheck('${kP}_p1', this.checked)" style="cursor:pointer; transform:scale(1.15);"></td>
+            <td><input type="checkbox" ${isTck2?'checked':''} onchange="onJsuPerfCheck('${kP}_p2', this.checked)" style="cursor:pointer; transform:scale(1.15);"></td>
           </tr>
         `;
       });
-      document.getElementById(`jsu-sum-q-${cI}`).innerText = tQ; document.getElementById(`jsu-sum-r-${cI}`).innerText = tR; document.getElementById(`jsu-sum-s-${cI}`).innerText = tS; document.getElementById(`jsu-sum-t-${cI}`).innerText = tT;
-      document.getElementById(`jsu-sum-pros-${cI}`).innerText = tPr; document.getElementById(`jsu-sum-fak-${cI}`).innerText = tFk; document.getElementById(`jsu-sum-sik-${cI}`).innerText = tSk; document.getElementById(`jsu-sum-perf-${cI}`).innerText = tPf;
+
+      document.getElementById(`jsu-sum-q-${cI}`).innerText = tQ; 
+      document.getElementById(`jsu-sum-r-${cI}`).innerText = tR; 
+      document.getElementById(`jsu-sum-s-${cI}`).innerText = tS; 
+      document.getElementById(`jsu-sum-t-${cI}`).innerText = tT;
+      document.getElementById(`jsu-sum-pros-${cI}`).innerText = tPr; 
+      document.getElementById(`jsu-sum-fak-${cI}`).innerText = tFk; 
+      document.getElementById(`jsu-sum-sik-${cI}`).innerText = tSk; 
+      document.getElementById(`jsu-sum-perf1-${cI}`).innerText = tPf1;
+      document.getElementById(`jsu-sum-perf2-${cI}`).innerText = tPf2;
     }
 
-    function renderJsuCell(kP, f, v) { return `<div class="stepper-widget ${v>0?'has-value':''}"><button class="btn-step no-print" onclick="stepJsuVal('${kP}_${f}', -1)">−</button><span class="step-display-val">${v}</span><button class="btn-step no-print" onclick="stepJsuVal('${kP}_${f}', 1)">+</button></div>`; }
-    function stepJsuVal(k, d) { jsuEdits[k] = Math.max(0, (jsuEdits[k]??0)+d); renderJsuTab(); }
-    function onJsuPerfCheck(k, c) { jsuPerformanceTicks[k] = c; renderJsuTab(); }
+    function renderJsuCell(kP, f, v, isMaxLimit) {
+      let isMin = v <= 0;
+      return `<div class="stepper-widget ${v>0?'has-value':''}">
+        <button class="btn-step no-print" ${isMin?'disabled':''} onclick="stepJsuVal('${kP}_${f}', -1)">−</button>
+        <span class="step-display-val">${v}</span>
+        <button class="btn-step no-print" ${isMaxLimit?'disabled':''} onclick="stepJsuVal('${kP}_${f}', 1)">+</button>
+      </div>`;
+    }
+
+    function stepJsuVal(k, d) { 
+      jsuEdits[k] = Math.max(0, (jsuEdits[k]??0)+d); 
+      renderJsuTab(); 
+    }
+
+    function onJsuPerfCheck(k, c) { 
+      jsuPerformanceTicks[k] = c; 
+      renderJsuTab(); 
+    }
+
+    /* RENDER BAHAGIAN B (SUBJEKTIF) DENGAN SEMAKAN ARAS (R, S, T) */
+    function renderJsuSubjRows(cu, cI, wL, showS1, showS2, showEsei) {
+      const tb = document.getElementById(`jsu-subj-rows-${cI}`); if (!tb) return; tb.innerHTML = '';
+      
+      let s1Levels = { a: '', b: '', c: '', d: '' };
+      let s2Levels = { a: '', b: '', c: '', d: '' };
+      let eseiCount = 0;
+
+      // Auto-default jika baru
+      if (!jsuSubjSelections[`${cu.code}_s1_a`]) {
+        jsuSubjSelections[`${cu.code}_s1_a_0`] = 'R';
+        jsuSubjSelections[`${cu.code}_s1_b_${Math.min(1, wL.length-1)}`] = 'S';
+        jsuSubjSelections[`${cu.code}_s1_c_${Math.min(2, wL.length-1)}`] = 'S';
+        jsuSubjSelections[`${cu.code}_s1_d_${Math.min(3, wL.length-1)}`] = 'T';
+        if (showS2) {
+          jsuSubjSelections[`${cu.code}_s2_a_0`] = 'R';
+          jsuSubjSelections[`${cu.code}_s2_b_${Math.min(1, wL.length-1)}`] = 'S';
+          jsuSubjSelections[`${cu.code}_s2_c_${Math.min(2, wL.length-1)}`] = 'S';
+          jsuSubjSelections[`${cu.code}_s2_d_${Math.min(3, wL.length-1)}`] = 'T';
+        }
+        if (showEsei) {
+          jsuSubjSelections[`${cu.code}_esei_${wL.length-1}`] = true;
+        }
+      }
+
+      wL.forEach((w, wI) => {
+        let wp = waCalculatedHours[`${cu.code}_${wI}`]?.weightage ?? Math.round(100/wL.length);
+        let tr = document.createElement('tr');
+        
+        let html = `
+          <td style="text-align:left; font-weight:600;"><span class="code-badge code-badge-blue">CU${cI+1}-WA${wI+1}</span> ${w.namaWa}</td>
+          <td style="font-weight:700;">${wp}%</td>
+        `;
+
+        // STRUKTUR 1
+        if (showS1) {
+          ['a', 'b', 'c', 'd'].forEach(sub => {
+            let val = jsuSubjSelections[`${cu.code}_s1_${sub}_${wI}`] || '';
+            if (val) s1Levels[sub] = val;
+            html += `<td>${renderSubjSelect(cu.code, 's1', sub, wI, val)}</td>`;
+          });
+        }
+
+        // STRUKTUR 2
+        if (showS2) {
+          ['a', 'b', 'c', 'd'].forEach(sub => {
+            let val = jsuSubjSelections[`${cu.code}_s2_${sub}_${wI}`] || '';
+            if (val) s2Levels[sub] = val;
+            html += `<td>${renderSubjSelect(cu.code, 's2', sub, wI, val)}</td>`;
+          });
+        }
+
+        // ESEI 1
+        if (showEsei) {
+          let isEsei = jsuSubjSelections[`${cu.code}_esei_${wI}`] ?? false;
+          if (isEsei) eseiCount++;
+          html += `<td><input type="checkbox" ${isEsei?'checked':''} onchange="onSubjEseiChange('${cu.code}', ${wI}, this.checked)" style="cursor:pointer; transform:scale(1.15);"></td>`;
+        }
+
+        tr.innerHTML = html;
+        tb.appendChild(tr);
+      });
+
+      // SEMAKAN KELENGKAPAN ARAS R, S, T UNTUK STRUKTUR
+      const statusRow = document.getElementById(`jsu-subj-status-row-${cI}`);
+      if (statusRow) {
+        let statusHtml = `<td colspan="2" style="text-align:right; font-weight:800; color:#334155;">STATUS PENJAMINAN KUALITI :</td>`;
+        
+        if (showS1) {
+          let s1Vals = Object.values(s1Levels).filter(v => v !== '');
+          let hasR = s1Vals.includes('R'), hasS = s1Vals.includes('S'), hasT = s1Vals.includes('T');
+          let isComplete = s1Vals.length === 4 && hasR && hasS && hasT;
+          let color = isComplete ? '#15803d' : '#b91c1c';
+          let bg = isComplete ? '#dcfce7' : '#fee2e2';
+          let txt = isComplete ? `✔ Lengkap (R,S,T)` : `⚠ ${s1Vals.length}/4 Sub (${!hasR?'Tiada R ':''}${!hasS?'Tiada S ':''}${!hasT?'Tiada T':''})`;
+          statusHtml += `<td colspan="4" style="background:${bg}; color:${color}; font-size:0.7rem; font-weight:800;">${txt}</td>`;
+        }
+
+        if (showS2) {
+          let s2Vals = Object.values(s2Levels).filter(v => v !== '');
+          let hasR = s2Vals.includes('R'), hasS = s2Vals.includes('S'), hasT = s2Vals.includes('T');
+          let isComplete = s2Vals.length === 4 && hasR && hasS && hasT;
+          let color = isComplete ? '#15803d' : '#b91c1c';
+          let bg = isComplete ? '#dcfce7' : '#fee2e2';
+          let txt = isComplete ? `✔ Lengkap (R,S,T)` : `⚠ ${s2Vals.length}/4 Sub (${!hasR?'Tiada R ':''}${!hasS?'Tiada S ':''}${!hasT?'Tiada T':''})`;
+          statusHtml += `<td colspan="4" style="background:${bg}; color:${color}; font-size:0.7rem; font-weight:800;">${txt}</td>`;
+        }
+
+        if (showEsei) {
+          let isComplete = eseiCount > 0;
+          let color = isComplete ? '#15803d' : '#b91c1c';
+          let bg = isComplete ? '#dcfce7' : '#fee2e2';
+          statusHtml += `<td style="background:${bg}; color:${color}; font-size:0.7rem; font-weight:800;">${isComplete ? `✔ ${eseiCount} WA` : '⚠ Kosong'}</td>`;
+        }
+
+        statusRow.innerHTML = statusHtml;
+      }
+    }
+
+    function renderSubjSelect(cCode, group, sub, wI, curVal) {
+      return `
+        <select class="subj-select ${curVal?'is-selected':''}" onchange="onSubjSelectChange('${cCode}', '${group}', '${sub}', ${wI}, this.value)">
+          <option value="">-</option>
+          <option value="R" ${curVal==='R'?'selected':''}>R</option>
+          <option value="S" ${curVal==='S'?'selected':''}>S</option>
+          <option value="T" ${curVal==='T'?'selected':''}>T</option>
+        </select>
+      `;
+    }
+
+    function onSubjSelectChange(cCode, group, sub, wI, val) {
+      // Pastikan sub-soalan tersebut tidak bertindih pada WA lain dalam soalan struktur yang sama
+      if (val !== '') {
+        for (let i = 0; i < 20; i++) {
+          if (i !== wI) delete jsuSubjSelections[`${cCode}_${group}_${sub}_${i}`];
+        }
+      }
+      jsuSubjSelections[`${cCode}_${group}_${sub}_${wI}`] = val;
+      renderJsuTab();
+    }
+
+    function onSubjEseiChange(cCode, wI, checked) {
+      jsuSubjSelections[`${cCode}_esei_${wI}`] = checked;
+      renderJsuTab();
+    }
 
     function openPbModal() { const m = document.getElementById('pbModal'); if (m) { document.getElementById('inputModalPbName').value = pbInfo.name; document.getElementById('inputModalPbAddress').value = pbInfo.address; m.classList.add('open'); } }
     function closePbModal() { const m = document.getElementById('pbModal'); if (m) m.classList.remove('open'); }
     function savePbInfo() { pbInfo.name = document.getElementById('inputModalPbName').value.trim()||"Pusat Bertauliah"; pbInfo.address = document.getElementById('inputModalPbAddress').value.trim()||"-"; safeSetStorage('jpk_pb_name', pbInfo.name); safeSetStorage('jpk_pb_address', pbInfo.address); updatePrintHeaderDisplay(); closePbModal(); }
-    function resetAllCalculations() { cuPnpSettings={}; waOffsets={}; matrixManualEditsTeori={}; matrixManualEditsAmali={}; combinedPlanTitles={}; jsuEdits={}; document.querySelectorAll('.cu-pelarasan').forEach(s => s.value="0"); calculateAll(); renderTab3All(); renderJsuTab(); }
+    function resetAllCalculations() { cuPnpSettings={}; waOffsets={}; matrixManualEditsTeori={}; matrixManualEditsAmali={}; combinedPlanTitles={}; jsuEdits={}; jsuSubjSelections={}; document.querySelectorAll('.cu-pelarasan').forEach(s => s.value="0"); calculateAll(); renderTab3All(); renderJsuTab(); }
   </script>
 </body>
 </html>
