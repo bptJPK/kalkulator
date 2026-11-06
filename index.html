@@ -6,7 +6,7 @@
   <title>Kalkulator Pentauliahan Pusat Bertauliah JPK</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700;800&display=swap" rel="stylesheet">
   
   <style>
@@ -253,7 +253,6 @@
 
       .app-container { border: none !important; box-shadow: none !important; max-width: 100% !important; width: 100% !important; }
 
-      /* GABUNGKAN SEMUA 4 BAHAGIAN TAB */
       .tab-content-panel { display: block !important; opacity: 1 !important; padding: 0 !important; margin-bottom: 20px !important; }
       
       #tab1Content { page-break-after: always !important; }
@@ -640,7 +639,7 @@
     let cuPnpSettings = {}, waOffsets = {}, matrixManualEditsTeori = {}, matrixManualEditsAmali = {}, combinedPlanTitles = {}, jsuEdits = {}, jsuPerformanceTicks = {};
     let waCalculatedHours = {};
     let cuCalculatedCredits = {};
-    let currentOpenJsuIdx = 0; // Mengingati akordion CU yang aktif dibuka
+    let currentOpenJsuIdx = 0;
     let allJsuOpen = false;
 
     function safeGetStorage(k, f) { try { return localStorage.getItem(k) || f; } catch (e) { return f; } }
@@ -903,7 +902,6 @@
         const kreditBaharu = Math.max(0, kredit + pelarasan);
         const fVal = Math.round(kreditBaharu * 40);
 
-        // Simpan kredit baharu untuk dirujuk secara tepat oleh JSU
         cuCalculatedCredits[cuCode] = kreditBaharu;
 
         let sVal = cuPnpSettings[cuCode]?.semuka ?? range.bersemuka[1];
@@ -931,7 +929,6 @@
           waBody.innerHTML = ''; 
           let waList = getWaListForCu(programCode, cuCode);
           if (waList.length > 0) {
-            // Dapatkan jumlah jam asal sebenar WA dari pangkalan data
             let totOrigWaJam = waList.reduce((acc, curr) => acc + (parseFloat(curr.masa) || 0), 0);
             if (totOrigWaJam === 0) totOrigWaJam = waList.length * 8;
 
@@ -941,16 +938,10 @@
               const waKey = `${cuCode}_${wIdx}`; 
               const offset = waOffsets[waKey] || 0;
               
-              // 1. JAM ASAL DARI DATABASE
               const jamAsalDb = parseFloat(wa.masa) || Math.round(totOrigWaJam / waList.length);
-              
-              // 2. WEIGHTAGE (%) BULAT TANPA PERPULUHAN
               const wPct = Math.round((jamAsalDb / totOrigWaJam) * 100);
-
-              // 3. JAM AKHIR = JAM ASAL + OFFSET
               const jamAkhir = Math.max(0, jamAsalDb + offset);
 
-              // 4. PECAHAN COPTPA & BERSEMUKA
               const cRK = Math.round(jamAkhir * (plPct / 100));
               const cRS = jamAkhir - cRK;
               const sRK = Math.round(cRK * (sVal / 100));
@@ -960,13 +951,24 @@
               finalSumRK += sRK; 
               finalSumRS += sRS;
 
+              // BINA DROPDOWN PILIHAN OFFSET DARI +10 HINGGA -10
+              let offsetOptions = '';
+              for (let v = 10; v >= -10; v--) {
+                let label = v > 0 ? `+${v}` : `${v}`;
+                offsetOptions += `<option value="${v}" ${offset === v ? 'selected' : ''}>${label}</option>`;
+              }
+
               const trSub = document.createElement('tr');
               trSub.innerHTML = `
                 <td style="font-weight:700; font-family:'JetBrains Mono',monospace;">${wa.noWa || 'CU-WA' + (wIdx + 1)}</td>
                 <td style="text-align:left; font-weight:500;">${wa.namaWa}</td>
                 <td>${wPct}%</td>
                 <td style="font-weight:700;">${jamAsalDb}</td>
-                <td><select style="font-size:0.75rem; padding:1px 4px; border-radius:4px;" onchange="onWaOffsetChange('${cuCode}', ${wIdx}, this)"><option value="1" ${offset===1?'selected':''}>+1</option><option value="0" ${offset===0?'selected':''}>0</option><option value="-1" ${offset===-1?'selected':''}>-1</option></select></td>
+                <td>
+                  <select style="font-size:0.75rem; padding:1px 4px; border-radius:4px;" onchange="onWaOffsetChange('${cuCode}', ${wIdx}, this)">
+                    ${offsetOptions}
+                  </select>
+                </td>
                 <td style="font-weight:800; background:#dbeafe; color:#1e40af;">${jamAkhir}</td>
                 <td style="font-weight:700;">${cRK}</td><td style="font-weight:700;">${cRS}</td>
                 <td><strong>${sRK} jam</strong></td><td><strong>${sRS} jam</strong></td>
@@ -974,7 +976,6 @@
               waBody.appendChild(trSub);
             });
 
-            // 5. FOOTER IMBAHAN BERSEMUKA DENGAN AYAT TEPAT & INDIKATOR BAKI
             let sumWaSemuka = finalSumRK + finalSumRS;
             let diff = sumWaSemuka - bersemuka;
             let statusText = '';
@@ -1187,9 +1188,6 @@
     }
     function resetTab3Distribution() { matrixManualEditsTeori = {}; matrixManualEditsAmali = {}; combinedPlanTitles = {}; renderTab3All(); }
 
-    /* ========================================================= */
-    /* LOGIK JSU: RUJUK KREDIT BAHARU & AKORDION KEKAL TERBUKA  */
-    /* ========================================================= */
     function renderJsuTab() {
       const cont = document.getElementById('jsuAccordionsContainer'); if (!cont) return; cont.innerHTML = '';
       const pCode = document.getElementById('kodProgram')?.value.trim() || "", stat = document.getElementById('statusTahap')?.value || "Tahap 2";
@@ -1197,7 +1195,6 @@
       if (cuList.length === 0) { cont.innerHTML = `<div style="padding:24px; text-align:center; color:#64748b; font-weight:700;">Sila pilih program di atas untuk memaparkan JSU.</div>`; return; }
 
       cuList.forEach((cu, cuIdx) => {
-        // RUJUK KREDIT BAHARU YANG TEPAT DARI TAB 2
         let kr = cuCalculatedCredits[cu.code] !== undefined ? cuCalculatedCredits[cu.code] : (Math.round((cu.asal||80) / 40) || 3);
         let tgt = 40;
         let isLanjutan = stat.includes('Tahap 4') || stat.includes('Tahap 5');
@@ -1278,7 +1275,6 @@
 
     function toggleJsuAccordion(idx) {
       allJsuOpen = false;
-      // Tukar CU yang dibuka, menutup CU lain secara automatik
       currentOpenJsuIdx = (currentOpenJsuIdx === idx ? null : idx);
       renderJsuTab();
     }
@@ -1303,7 +1299,6 @@
         tQ+=q; tR+=r; tS+=s; tT+=t; tPr+=(pR+pS+pT); tFk+=(fR+fS+fT); tSk+=(sR+sS+sT);
         let isTck = jsuPerformanceTicks[kP] ?? true; if (isTck) tPf++;
 
-        // BUANG TANDA "/" BERSEBELAHAN CHECKBOX
         tb.innerHTML += `
           <tr>
             <td style="text-align:left; font-weight:600;"><span class="code-badge code-badge-blue">CU${cI+1}-WA${wI+1}</span> ${w.namaWa}</td>
