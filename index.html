@@ -239,7 +239,7 @@
     .print-only-banner, .print-section-header, .print-page-footer { display: none; }
 
     /* ========================================= */
-    /* CETAKAN DIPERTINGKATKAN (COMBINE TAB)     */
+    /* CETAKAN COMBINE TAB (SEMUA 4 MUKA SURAT)  */
     /* ========================================= */
     @media print {
       @page { size: A4 portrait; margin: 10mm; }
@@ -253,7 +253,7 @@
 
       .app-container { border: none !important; box-shadow: none !important; max-width: 100% !important; width: 100% !important; }
 
-      /* PAKSA SEMUA TAB UNTUK COMBINE WAKTU CETAK */
+      /* GABUNGKAN SEMUA 4 BAHAGIAN TAB */
       .tab-content-panel { display: block !important; opacity: 1 !important; padding: 0 !important; margin-bottom: 20px !important; }
       
       #tab1Content { page-break-after: always !important; }
@@ -375,7 +375,7 @@
       <button class="tab-nav-btn" id="btnTab4" onclick="switchMainTab('tab4Content')">📋 4. JSU</button>
     </div>
 
-    <!-- TAB 1 -->
+    <!-- TAB 1: STRUKTUR KURIKULUM -->
     <div id="tab1Content" class="tab-content-panel active">
       <div class="print-section-header">PERKARA 1: STRUKTUR KURIKULUM PROGRAM</div>
       <div class="table-responsive">
@@ -467,7 +467,7 @@
       </div>
     </div>
 
-    <!-- TAB 2 -->
+    <!-- TAB 2: PENJAJARAN JAM LATIHAN -->
     <div id="tab2Content" class="tab-content-panel">
       <div class="print-section-header">PERKARA 2: JADUAL PENJAJARAN JAM LATIHAN (CU SAHAJA)</div>
       <div class="tab2-info-bar no-print">
@@ -518,7 +518,7 @@
       </div>
     </div>
 
-    <!-- TAB 3 -->
+    <!-- TAB 3: PELAN MENGAJAR -->
     <div id="tab3Content" class="tab-content-panel">
       <div class="print-section-header">PERKARA 3: JADUAL PENYATUAN TAJUK PELAN MENGAJAR TEORI (KP) & AMALI (KK)</div>
       <div class="tab2-info-bar no-print" style="display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:12px;">
@@ -573,7 +573,7 @@
       </div>
     </div>
 
-    <!-- TAB 4 -->
+    <!-- TAB 4: JSU -->
     <div id="tab4Content" class="tab-content-panel">
       <div class="print-section-header">PERKARA 4: JADUAL SPESIFIKASI UJIAN (JSU) PENILAIAN OBJEKTIF INDIVIDU</div>
       <div class="tab2-info-bar no-print">
@@ -639,6 +639,9 @@
     let dbNoss = [], dbJajar = {}, dbWaData = {};
     let cuPnpSettings = {}, waOffsets = {}, matrixManualEditsTeori = {}, matrixManualEditsAmali = {}, combinedPlanTitles = {}, jsuEdits = {}, jsuPerformanceTicks = {};
     let waCalculatedHours = {};
+    let cuCalculatedCredits = {};
+    let currentOpenJsuIdx = 0; // Mengingati akordion CU yang aktif dibuka
+    let allJsuOpen = false;
 
     function safeGetStorage(k, f) { try { return localStorage.getItem(k) || f; } catch (e) { return f; } }
     function safeSetStorage(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
@@ -701,7 +704,7 @@
     function initMockData() {
       dbNoss = [{ code: "A011-001-2:2018", name: "OPERASI FLORIKULTUR", statusTahap: "Bermula Tahap 2" }, { code: "G452-001-2:2017", name: "SERVIS KENDERAAN KOMERSIAL", statusTahap: "Tahap 2" }];
       dbJajar = { "A011-001-2:2018": [{ code: "A011-001-2:2018-C01", name: "PENYEDIAAN MEDIA TANAMAN ORNAMENTAL", asal: 72 }] };
-      dbWaData = { "A011-001-2:2018-C01": [{ noWa: "CU1-WA1", namaWa: "Kenalpasti keperluan penyediaan media tanaman", masa: 4, weightage: 25 }, { noWa: "CU1-WA2", namaWa: "Sediakan peralatan untuk penyediaan media", masa: 4, weightage: 25 }, { noWa: "CU1-WA3", namaWa: "Laksanakan penyediaan media", masa: 12, weightage: 30 }, { noWa: "CU1-WA4", namaWa: "Simpan media", masa: 4, weightage: 20 }] };
+      dbWaData = { "A011-001-2:2018-C01": [{ noWa: "CU1-WA1", namaWa: "Kenalpasti keperluan penyediaan media tanaman", masa: 4 }, { noWa: "CU1-WA2", namaWa: "Sediakan peralatan untuk penyediaan media", masa: 4 }, { noWa: "CU1-WA3", namaWa: "Laksanakan penyediaan media", masa: 12 }, { noWa: "CU1-WA4", namaWa: "Simpan media", masa: 4 }] };
       populateProgramDatalist();
     }
 
@@ -763,7 +766,7 @@
       if (dbWaData[cCode] && dbWaData[cCode].length > 0) return dbWaData[cCode];
       let comp = (pCode || "") + "___" + cCode; if (dbWaData[comp] && dbWaData[comp].length > 0) return dbWaData[comp];
       for (let k in dbWaData) if (k.toLowerCase().includes(cCode.toLowerCase())) return dbWaData[k];
-      return [ { noWa: "CU1-WA1", namaWa: "Sediakan Keperluan & Perancangan Operasi", masa: 4, weightage: 25 }, { noWa: "CU1-WA2", namaWa: "Sediakan Peralatan & Mesin", masa: 4, weightage: 25 }, { noWa: "CU1-WA3", namaWa: "Laksanakan Operasi", masa: 12, weightage: 30 }, { noWa: "CU1-WA4", namaWa: "Pemeriksaan Kualiti", masa: 4, weightage: 20 } ];
+      return [ { noWa: "CU1-WA1", namaWa: "Sediakan Keperluan & Perancangan Operasi", masa: 4 }, { noWa: "CU1-WA2", namaWa: "Sediakan Peralatan & Mesin", masa: 4 }, { noWa: "CU1-WA3", namaWa: "Laksanakan Operasi", masa: 12 }, { noWa: "CU1-WA4", namaWa: "Pemeriksaan Kualiti", masa: 4 } ];
     }
 
     function renderCuTableRows(pCode) {
@@ -771,7 +774,7 @@
       let cuList = filterCoreCuList(dbJajar[pCode] || []);
       if (cuList.length === 0) cuList = [ { code: (pCode || "PROG") + "-C01", name: "PENYEDIAAN OPERASI UTAMA", asal: 80 } ];
 
-      cuList.forEach((cu, i) => {
+      cuList.forEach((cu) => {
         let waCount = getWaListForCu(pCode, cu.code).length;
         const tr = document.createElement('tr'); tr.className = 'cu-main-row'; tr.id = `cu-row-${cu.code}`; tr.setAttribute('data-cucode', cu.code);
         tr.innerHTML = `
@@ -828,17 +831,10 @@
     function onPelarasanChange() { calculateAll(); renderTab3All(); renderJsuTab(); }
     function onWaOffsetChange(cCode, wIdx, el) { waOffsets[`${cCode}_${wIdx}`] = parseInt(el.value, 10) || 0; calculateAll(); renderTab3All(); }
 
-    function agihJamTepat(weightList, totalJam) {
-      if (!weightList || weightList.length === 0 || totalJam <= 0) return [];
-      let exact = weightList.map(w => (w / 100) * totalJam), rounded = exact.map(Math.floor);
-      let diff = totalJam - rounded.reduce((a, b) => a + b, 0);
-      let remainders = exact.map((val, idx) => ({ idx, rem: val - rounded[idx] })).sort((a, b) => b.rem - a.rem);
-      for (let i = 0; i < diff && i < remainders.length; i++) rounded[remainders[i].idx]++;
-      return rounded;
-    }
-
     function calculateAll() {
       waCalculatedHours = {};
+      cuCalculatedCredits = {};
+
       const mod = document.getElementById('modPentauliahan')?.value || "ADI";
       const status = document.getElementById('statusTahap')?.value || "Bermula Tahap 2";
       const struct = matrixTahap[status] || matrixTahap["Bermula Tahap 2"];
@@ -898,7 +894,7 @@
       cuRows.forEach(r => sumAsal += parseFloat(r.querySelector('.cu-asal')?.innerText) || 0);
       const programCode = document.getElementById('kodProgram')?.value.trim() || "";
 
-      cuRows.forEach((r, cuIdx) => {
+      cuRows.forEach((r) => {
         const cuCode = r.getAttribute('data-cucode');
         const asal = parseFloat(r.querySelector('.cu-asal')?.innerText) || 0;
         const dijajar = sumAsal > 0 ? Math.round((asal / sumAsal) * jamTeras) : 0;
@@ -906,6 +902,9 @@
         const pelarasan = parseFloat(r.querySelector('.cu-pelarasan')?.value) || 0;
         const kreditBaharu = Math.max(0, kredit + pelarasan);
         const fVal = Math.round(kreditBaharu * 40);
+
+        // Simpan kredit baharu untuk dirujuk secara tepat oleh JSU
+        cuCalculatedCredits[cuCode] = kreditBaharu;
 
         let sVal = cuPnpSettings[cuCode]?.semuka ?? range.bersemuka[1];
         let kVal = cuPnpSettings[cuCode]?.kendiri ?? range.kendiri[0];
@@ -929,68 +928,79 @@
         const waTfoot = document.getElementById(`wa-tfoot-${cuCode}`);
 
         if (waBody) {
-          waBody.innerHTML = ''; let waList = getWaListForCu(programCode, cuCode);
+          waBody.innerHTML = ''; 
+          let waList = getWaListForCu(programCode, cuCode);
           if (waList.length > 0) {
-            let weights = waList.map(w => (parseFloat(w.weightage) || (100 / waList.length)));
-            let baseHoursList = agihJamTepat(weights, fVal);
-            
-            let sumWaRkRaw = 0, sumWaRsRaw = 0;
-            let finalWaList = [];
-
-            waList.forEach((wa, wIdx) => {
-              const waKey = `${cuCode}_${wIdx}`; const offset = waOffsets[waKey] || 0;
-              const jamAkhir = Math.max(0, baseHoursList[wIdx] + offset);
-              const cRK = Math.round(jamAkhir * (plPct / 100)), cRS = jamAkhir - cRK;
-              const sRkRaw = Math.round(cRK * (sVal / 100)), sRsRaw = Math.round(cRS * (sVal / 100));
-              
-              sumWaRkRaw += sRkRaw; sumWaRsRaw += sRsRaw;
-              finalWaList.push({ wIdx, waKey, wa, weights, baseJam: baseHoursList[wIdx], offset, jamAkhir, cRK, cRS, sRkRaw, sRsRaw, sRkFinal: sRkRaw, sRsFinal: sRsRaw });
-            });
-
-            // LOGIK PEMBUNDARAN BAUCER (Baki Jam Bersemuka)
-            let diffRk = Math.round(bersemuka * (plPct/100)) - sumWaRkRaw;
-            let diffRs = (bersemuka - Math.round(bersemuka * (plPct/100))) - sumWaRsRaw;
-
-            // Agih baki kepada WA terbesar (berdasarkan jamAkhir tertinggi)
-            if (diffRk !== 0 || diffRs !== 0) {
-              let sortedWa = [...finalWaList].sort((a,b) => b.jamAkhir - a.jamAkhir);
-              if (sortedWa.length > 0) {
-                let target = sortedWa[0];
-                target.sRkFinal += diffRk;
-                target.sRsFinal += diffRs;
-              }
-            }
+            // Dapatkan jumlah jam asal sebenar WA dari pangkalan data
+            let totOrigWaJam = waList.reduce((acc, curr) => acc + (parseFloat(curr.masa) || 0), 0);
+            if (totOrigWaJam === 0) totOrigWaJam = waList.length * 8;
 
             let finalSumRK = 0, finalSumRS = 0;
 
-            finalWaList.forEach(item => {
-              waCalculatedHours[item.waKey] = { rk: item.sRkFinal, rs: item.sRsFinal };
-              finalSumRK += item.sRkFinal; finalSumRS += item.sRsFinal;
+            waList.forEach((wa, wIdx) => {
+              const waKey = `${cuCode}_${wIdx}`; 
+              const offset = waOffsets[waKey] || 0;
+              
+              // 1. JAM ASAL DARI DATABASE
+              const jamAsalDb = parseFloat(wa.masa) || Math.round(totOrigWaJam / waList.length);
+              
+              // 2. WEIGHTAGE (%) BULAT TANPA PERPULUHAN
+              const wPct = Math.round((jamAsalDb / totOrigWaJam) * 100);
+
+              // 3. JAM AKHIR = JAM ASAL + OFFSET
+              const jamAkhir = Math.max(0, jamAsalDb + offset);
+
+              // 4. PECAHAN COPTPA & BERSEMUKA
+              const cRK = Math.round(jamAkhir * (plPct / 100));
+              const cRS = jamAkhir - cRK;
+              const sRK = Math.round(cRK * (sVal / 100));
+              const sRS = Math.round(cRS * (sVal / 100));
+
+              waCalculatedHours[waKey] = { rk: sRK, rs: sRS };
+              finalSumRK += sRK; 
+              finalSumRS += sRS;
 
               const trSub = document.createElement('tr');
               trSub.innerHTML = `
-                <td style="font-weight:700; font-family:'JetBrains Mono',monospace;">${item.wa.noWa || 'CU-WA' + (item.wIdx + 1)}</td>
-                <td style="text-align:left; font-weight:500;">${item.wa.namaWa}</td>
-                <td>${item.weights[item.wIdx].toFixed(1)}%</td>
-                <td style="font-weight:700;">${item.baseJam}</td>
-                <td><select style="font-size:0.75rem; padding:1px 4px; border-radius:4px;" onchange="onWaOffsetChange('${cuCode}', ${item.wIdx}, this)"><option value="1" ${item.offset===1?'selected':''}>+1</option><option value="0" ${item.offset===0?'selected':''}>0</option><option value="-1" ${item.offset===-1?'selected':''}>-1</option></select></td>
-                <td style="font-weight:800; background:#dbeafe; color:#1e40af;">${item.jamAkhir}</td>
-                <td style="font-weight:700;">${item.cRK}</td><td style="font-weight:700;">${item.cRS}</td>
-                <td><strong>${item.sRkFinal} jam</strong></td><td><strong>${item.sRsFinal} jam</strong></td>
+                <td style="font-weight:700; font-family:'JetBrains Mono',monospace;">${wa.noWa || 'CU-WA' + (wIdx + 1)}</td>
+                <td style="text-align:left; font-weight:500;">${wa.namaWa}</td>
+                <td>${wPct}%</td>
+                <td style="font-weight:700;">${jamAsalDb}</td>
+                <td><select style="font-size:0.75rem; padding:1px 4px; border-radius:4px;" onchange="onWaOffsetChange('${cuCode}', ${wIdx}, this)"><option value="1" ${offset===1?'selected':''}>+1</option><option value="0" ${offset===0?'selected':''}>0</option><option value="-1" ${offset===-1?'selected':''}>-1</option></select></td>
+                <td style="font-weight:800; background:#dbeafe; color:#1e40af;">${jamAkhir}</td>
+                <td style="font-weight:700;">${cRK}</td><td style="font-weight:700;">${cRS}</td>
+                <td><strong>${sRK} jam</strong></td><td><strong>${sRS} jam</strong></td>
               `;
               waBody.appendChild(trSub);
             });
 
-            // TFOOT: PETUNJUK KESEIMBANGAN
-            let isBalance = (finalSumRK + finalSumRS) === bersemuka;
-            let balanceColor = isBalance ? "#15803d" : "#b91c1c";
-            let balanceBg = isBalance ? "#dcfce7" : "#fee2e2";
-            let balanceIcon = isBalance ? "✔ Tepat" : "⚠ Ralat/Offset";
+            // 5. FOOTER IMBAHAN BERSEMUKA DENGAN AYAT TEPAT & INDIKATOR BAKI
+            let sumWaSemuka = finalSumRK + finalSumRS;
+            let diff = sumWaSemuka - bersemuka;
+            let statusText = '';
+            let statusBg = '';
+            let statusColor = '';
+
+            if (diff === 0) {
+              statusText = `${sumWaSemuka} jam (✓ Tepat)`;
+              statusBg = '#dcfce7';
+              statusColor = '#15803d';
+            } else if (diff < 0) {
+              statusText = `${sumWaSemuka} jam (kurang lagi ${Math.abs(diff)})`;
+              statusBg = '#fef3c7';
+              statusColor = '#b45309';
+            } else {
+              statusText = `${sumWaSemuka} jam (terlebih ${diff})`;
+              statusBg = '#fee2e2';
+              statusColor = '#b91c1c';
+            }
 
             waTfoot.innerHTML = `
-              <td colspan="8" style="text-align:right; color:#475569; padding-right:12px;">JUMLAH KESELURUHAN (MESTI SAMA = ${bersemuka} JAM INDUK) :</td>
-              <td colspan="2" style="background:${balanceBg}; color:${balanceColor}; text-align:center;">
-                <div style="font-size:0.88rem; margin-bottom:2px;">${finalSumRK + finalSumRS} jam <span style="font-size:0.75rem;">(${balanceIcon})</span></div>
+              <td colspan="8" style="text-align:right; color:#475569; padding-right:12px; font-weight:800;">
+                JUMLAH KESELURUHAN BERSEMUKA (MESTI SAMA = ${bersemuka} JAM ) :
+              </td>
+              <td colspan="2" style="background:${statusBg}; color:${statusColor}; text-align:center;">
+                <div style="font-size:0.88rem; font-weight:800; margin-bottom:2px;">${statusText}</div>
               </td>
             `;
           }
@@ -1177,6 +1187,9 @@
     }
     function resetTab3Distribution() { matrixManualEditsTeori = {}; matrixManualEditsAmali = {}; combinedPlanTitles = {}; renderTab3All(); }
 
+    /* ========================================================= */
+    /* LOGIK JSU: RUJUK KREDIT BAHARU & AKORDION KEKAL TERBUKA  */
+    /* ========================================================= */
     function renderJsuTab() {
       const cont = document.getElementById('jsuAccordionsContainer'); if (!cont) return; cont.innerHTML = '';
       const pCode = document.getElementById('kodProgram')?.value.trim() || "", stat = document.getElementById('statusTahap')?.value || "Tahap 2";
@@ -1184,37 +1197,101 @@
       if (cuList.length === 0) { cont.innerHTML = `<div style="padding:24px; text-align:center; color:#64748b; font-weight:700;">Sila pilih program di atas untuk memaparkan JSU.</div>`; return; }
 
       cuList.forEach((cu, cuIdx) => {
-        let kr = Math.round((cu.asal||80) / 40) || 3, tgt = 40;
-        if (!stat.includes('Tahap 4') && !stat.includes('Tahap 5')) { if (kr <= 3) tgt = 20; else if (kr <= 6) tgt = 30; else tgt = 40; }
+        // RUJUK KREDIT BAHARU YANG TEPAT DARI TAB 2
+        let kr = cuCalculatedCredits[cu.code] !== undefined ? cuCalculatedCredits[cu.code] : (Math.round((cu.asal||80) / 40) || 3);
+        let tgt = 40;
+        let isLanjutan = stat.includes('Tahap 4') || stat.includes('Tahap 5');
         
-        let waList = getWaListForCu(pCode, cu.code); let totH = waList.reduce((acc, curr) => acc + (curr.masa || 8), 0);
-        let qPW = waList.map(w => Math.max(1, Math.round(((w.masa || 8) / totH) * tgt)));
-        let diff = tgt - qPW.reduce((a,b)=>a+b, 0); if (diff !== 0 && qPW.length > 0) qPW[0] += diff;
+        if (!isLanjutan) { 
+          if (kr <= 3) tgt = 20; 
+          else if (kr <= 6) tgt = 30; 
+          else tgt = 40; 
+        } else {
+          tgt = 40;
+        }
+        
+        let waList = getWaListForCu(pCode, cu.code); 
+        let totH = waList.reduce((acc, curr) => acc + (parseFloat(curr.masa) || 8), 0);
+        let qPW = waList.map(w => Math.max(1, Math.round(((parseFloat(w.masa) || 8) / totH) * tgt)));
+        let diff = tgt - qPW.reduce((a,b)=>a+b, 0); 
+        if (diff !== 0 && qPW.length > 0) qPW[0] += diff;
+
+        const isOpen = (allJsuOpen || currentOpenJsuIdx === cuIdx);
 
         const card = document.createElement('div'); card.className = 'cu-accordion-card';
         card.innerHTML = `
-          <div class="cu-accordion-header" onclick="toggleJsuAccordion('jsu-body-${cuIdx}')">
+          <div class="cu-accordion-header ${isOpen ? 'active' : ''}" onclick="toggleJsuAccordion(${cuIdx})">
             <span>📄 ${cu.code} - ${cu.name} (Kredit: ${kr})</span>
-            <div style="display:flex; align-items:center; gap:10px;"><span style="background:#dbeafe; color:#1e40af; padding:3px 10px; border-radius:9999px; font-size:0.75rem;">Sasaran: ${tgt} Soalan</span><span>▼</span></div>
+            <div style="display:flex; align-items:center; gap:10px;">
+              <span style="background:#dbeafe; color:#1e40af; padding:3px 10px; border-radius:9999px; font-size:0.75rem;">Sasaran: ${tgt} Soalan</span>
+              <span>${isOpen ? '▲' : '▼'}</span>
+            </div>
           </div>
-          <div class="cu-accordion-body" id="jsu-body-${cuIdx}">
+          <div class="cu-accordion-body ${isOpen ? 'open' : ''}" id="jsu-body-${cuIdx}">
             <div class="table-responsive"><table class="data-table" style="font-size:0.75rem;">
-              <thead><tr class="th-navy-main"><th rowspan="3" style="text-align:left; width:220px;">WORK ACTIVITIES (WA)</th><th rowspan="3" style="width:65px;">BIL. SOALAN</th><th colspan="3">ARAS KESUKARAN</th><th colspan="9">PENILAIAN PENGETAHUAN (KETERAMPILAN)</th><th rowspan="3" style="width:75px;">PENILAIAN PRESTASI</th></tr><tr><th rowspan="2" style="background:#334155; color:white; width:45px;">R (50%)</th><th rowspan="2" style="background:#334155; color:white; width:45px;">S (30%)</th><th rowspan="2" style="background:#334155; color:white; width:45px;">T (20%)</th><th colspan="3" style="background:#d97706; color:white;">PROSEDUR</th><th colspan="3" style="background:#be185d; color:white;">FAKTA / TEORI</th><th colspan="3" style="background:#6d28d9; color:white;">SIKAP / KESELAMATAN</th></tr><tr style="background:#1e293b; color:white; font-size:0.7rem;"><th>R</th><th>S</th><th>T</th><th>R</th><th>S</th><th>T</th><th>R</th><th>S</th><th>T</th></tr></thead>
+              <thead>
+                <tr class="th-navy-main">
+                  <th rowspan="3" style="text-align:left; width:220px;">WORK ACTIVITIES (WA)</th>
+                  <th rowspan="3" style="width:65px;">BIL. SOALAN</th>
+                  <th colspan="3">ARAS KESUKARAN</th>
+                  <th colspan="9">PENILAIAN PENGETAHUAN (KETERAMPILAN)</th>
+                  <th rowspan="3" style="width:75px;">PENILAIAN PRESTASI</th>
+                </tr>
+                <tr>
+                  <th rowspan="2" style="background:#334155; color:white; width:45px;">R (50%)</th>
+                  <th rowspan="2" style="background:#334155; color:white; width:45px;">S (30%)</th>
+                  <th rowspan="2" style="background:#334155; color:white; width:45px;">T (20%)</th>
+                  <th colspan="3" style="background:#d97706; color:white;">PROSEDUR</th>
+                  <th colspan="3" style="background:#be185d; color:white;">FAKTA / TEORI</th>
+                  <th colspan="3" style="background:#6d28d9; color:white;">SIKAP / KESELAMATAN</th>
+                </tr>
+                <tr style="background:#1e293b; color:white; font-size:0.7rem;">
+                  <th>R</th><th>S</th><th>T</th><th>R</th><th>S</th><th>T</th><th>R</th><th>S</th><th>T</th>
+                </tr>
+              </thead>
               <tbody id="jsu-rows-${cuIdx}"></tbody>
-              <tfoot><tr style="background:#fef08a; font-weight:800; color:#854d0e;"><td style="text-align:right;">JUMLAH:</td><td id="jsu-sum-q-${cuIdx}">${tgt}</td><td id="jsu-sum-r-${cuIdx}">0</td><td id="jsu-sum-s-${cuIdx}">0</td><td id="jsu-sum-t-${cuIdx}">0</td><td colspan="3" style="background:#fed7aa;" id="jsu-sum-pros-${cuIdx}">0</td><td colspan="3" style="background:#fbcfe8;" id="jsu-sum-fak-${cuIdx}">0</td><td colspan="3" style="background:#ddd6fe;" id="jsu-sum-sik-${cuIdx}">0</td><td id="jsu-sum-perf-${cuIdx}">0</td></tr><tr style="background:#bbf7d0; font-weight:800; color:#14532d;"><td colspan="2">TEMPOH PENILAIAN:</td><td colspan="12">60 MINIT (PENGETAHUAN)</td><td>3 JAM (PRESTASI)</td></tr></tfoot>
+              <tfoot>
+                <tr style="background:#fef08a; font-weight:800; color:#854d0e;">
+                  <td style="text-align:right;">JUMLAH:</td>
+                  <td id="jsu-sum-q-${cuIdx}">${tgt}</td>
+                  <td id="jsu-sum-r-${cuIdx}">0</td>
+                  <td id="jsu-sum-s-${cuIdx}">0</td>
+                  <td id="jsu-sum-t-${cuIdx}">0</td>
+                  <td colspan="3" style="background:#fed7aa;" id="jsu-sum-pros-${cuIdx}">0</td>
+                  <td colspan="3" style="background:#fbcfe8;" id="jsu-sum-fak-${cuIdx}">0</td>
+                  <td colspan="3" style="background:#ddd6fe;" id="jsu-sum-sik-${cuIdx}">0</td>
+                  <td id="jsu-sum-perf-${cuIdx}">0</td>
+                </tr>
+                <tr style="background:#bbf7d0; font-weight:800; color:#14532d;">
+                  <td colspan="2">TEMPOH PENILAIAN:</td>
+                  <td colspan="12">60 MINIT (PENGETAHUAN)</td>
+                  <td>3 JAM (PRESTASI)</td>
+                </tr>
+              </tfoot>
             </table></div>
           </div>
         `;
-        cont.appendChild(card); renderJsuTableRows(cu, cuIdx, waList, qPW);
+        cont.appendChild(card); 
+        renderJsuTableRows(cu, cuIdx, waList, qPW);
       });
     }
 
-    function toggleJsuAccordion(id) { const el = document.getElementById(id); if (!el) return; el.classList.toggle('open'); const ar = el.previousElementSibling.querySelector('span:last-child'); if (ar) ar.innerText = el.classList.contains('open') ? '▲' : '▼'; }
-    function toggleAllJsuAccordions() { const bds = document.querySelectorAll('.cu-accordion-body'); const anyOpen = Array.from(bds).some(b => b.classList.contains('open')); bds.forEach(b => { if (anyOpen) b.classList.remove('open'); else b.classList.add('open'); }); document.querySelectorAll('.cu-accordion-header span:last-child').forEach(s => { s.innerText = anyOpen ? '▼' : '▲'; }); }
+    function toggleJsuAccordion(idx) {
+      allJsuOpen = false;
+      // Tukar CU yang dibuka, menutup CU lain secara automatik
+      currentOpenJsuIdx = (currentOpenJsuIdx === idx ? null : idx);
+      renderJsuTab();
+    }
+
+    function toggleAllJsuAccordions() {
+      allJsuOpen = !allJsuOpen;
+      renderJsuTab();
+    }
 
     function renderJsuTableRows(cu, cI, wL, qPW) {
       const tb = document.getElementById(`jsu-rows-${cI}`); if (!tb) return; tb.innerHTML = '';
       let tQ=0, tR=0, tS=0, tT=0, tPr=0, tFk=0, tSk=0, tPf=0;
+      
       wL.forEach((w, wI) => {
         let q = qPW[wI] || 4, r = Math.round(q*0.5), s = Math.round(q*0.3), t = Math.max(0, q-r-s);
         let pR = Math.ceil(r*0.6), fR = r-pR, sR = 0; let pS = Math.ceil(s*0.6), fS = s-pS, sS = 0; let pT = Math.ceil(t*0.6), fT = t-pT, sT = 0;
@@ -1226,13 +1303,21 @@
         tQ+=q; tR+=r; tS+=s; tT+=t; tPr+=(pR+pS+pT); tFk+=(fR+fS+fT); tSk+=(sR+sS+sT);
         let isTck = jsuPerformanceTicks[kP] ?? true; if (isTck) tPf++;
 
+        // BUANG TANDA "/" BERSEBELAHAN CHECKBOX
         tb.innerHTML += `
-          <tr><td style="text-align:left; font-weight:600;"><span class="code-badge code-badge-blue">CU${cI+1}-WA${wI+1}</span> ${w.namaWa}</td>
-          <td style="font-weight:800; background:#f8fafc;">${q}</td><td style="background:#f1f5f9; font-weight:700;">${r}</td><td style="background:#f1f5f9; font-weight:700;">${s}</td><td style="background:#f1f5f9; font-weight:700;">${t}</td>
-          <td>${renderJsuCell(kP, 'pR', pR)}</td><td>${renderJsuCell(kP, 'pS', pS)}</td><td>${renderJsuCell(kP, 'pT', pT)}</td>
-          <td>${renderJsuCell(kP, 'fR', fR)}</td><td>${renderJsuCell(kP, 'fS', fS)}</td><td>${renderJsuCell(kP, 'fT', fT)}</td>
-          <td>${renderJsuCell(kP, 'sR', sR)}</td><td>${renderJsuCell(kP, 'sS', sS)}</td><td>${renderJsuCell(kP, 'sT', sT)}</td>
-          <td><input type="checkbox" ${isTck?'checked':''} onchange="onJsuPerfCheck('${kP}', this.checked)"><span style="font-weight:800; color:#16a34a; margin-left:3px;">${isTck?'/':''}</span></td></tr>
+          <tr>
+            <td style="text-align:left; font-weight:600;"><span class="code-badge code-badge-blue">CU${cI+1}-WA${wI+1}</span> ${w.namaWa}</td>
+            <td style="font-weight:800; background:#f8fafc;">${q}</td>
+            <td style="background:#f1f5f9; font-weight:700;">${r}</td>
+            <td style="background:#f1f5f9; font-weight:700;">${s}</td>
+            <td style="background:#f1f5f9; font-weight:700;">${t}</td>
+            <td>${renderJsuCell(kP, 'pR', pR)}</td><td>${renderJsuCell(kP, 'pS', pS)}</td><td>${renderJsuCell(kP, 'pT', pT)}</td>
+            <td>${renderJsuCell(kP, 'fR', fR)}</td><td>${renderJsuCell(kP, 'fS', fS)}</td><td>${renderJsuCell(kP, 'fT', fT)}</td>
+            <td>${renderJsuCell(kP, 'sR', sR)}</td><td>${renderJsuCell(kP, 'sS', sS)}</td><td>${renderJsuCell(kP, 'sT', sT)}</td>
+            <td>
+              <input type="checkbox" ${isTck?'checked':''} onchange="onJsuPerfCheck('${kP}', this.checked)" style="cursor:pointer; transform:scale(1.15);">
+            </td>
+          </tr>
         `;
       });
       document.getElementById(`jsu-sum-q-${cI}`).innerText = tQ; document.getElementById(`jsu-sum-r-${cI}`).innerText = tR; document.getElementById(`jsu-sum-s-${cI}`).innerText = tS; document.getElementById(`jsu-sum-t-${cI}`).innerText = tT;
