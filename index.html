@@ -186,7 +186,7 @@
     .bg-row-muted { background-color: #f1f5f9; }
 
     .matrix-col-wa { width: 320px !important; min-width: 320px !important; max-width: 320px !important; text-align: left !important; box-sizing: border-box; }
-    .matrix-col-jam { width: 65px !important; min-width: 65px !important; max-width: 65px !important; text-align: center !important; box-sizing: border-box; }
+    .matrix-col-jam { width: 68px !important; min-width: 68px !important; max-width: 68px !important; text-align: center !important; box-sizing: border-box; }
     .matrix-th-session { background: #0f172a; color: #ffffff; width: 64px; min-width: 64px; max-width: 64px; font-size: 0.72rem; font-weight: 800; padding: 6px 2px !important; }
     .matrix-stepper-cell { padding: 3px 2px !important; vertical-align: middle; width: 64px; min-width: 64px; max-width: 64px; }
 
@@ -198,6 +198,78 @@
     .stepper-widget.has-value .btn-step:not(:disabled) { background: #1e40af; border-color: #3b82f6; color: #ffffff; }
     .step-display-val { min-width: 20px; font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; font-weight: 800; text-align: center; color: #94a3b8; }
     .stepper-widget.has-value .step-display-val { color: #ffffff; }
+
+    /* Gaya Kompak Khas untuk JSU (Bebas Skrol Mendatar) */
+    .table-jsu-compact {
+      width: 100% !important;
+      border-collapse: collapse;
+      font-size: 0.74rem;
+    }
+    .table-jsu-compact th {
+      padding: 4px 2px !important;
+    }
+    .table-jsu-compact td {
+      padding: 4px 1px !important;
+      vertical-align: middle;
+    }
+    .jsu-stepper-widget {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1px;
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      border-radius: 5px;
+      padding: 1px;
+    }
+    .jsu-stepper-widget.has-value {
+      background: #172554;
+      border-color: #1e3a8a;
+    }
+    .btn-step-jsu {
+      width: 14px;
+      height: 19px;
+      border-radius: 3px;
+      border: 1px solid #cbd5e1;
+      background: #f8fafc;
+      color: #1e293b;
+      font-size: 0.68rem;
+      font-weight: 800;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      padding: 0;
+      user-select: none;
+    }
+    .btn-step-jsu:hover:not(:disabled) {
+      background: #2563eb;
+      color: #ffffff;
+      border-color: #2563eb;
+    }
+    .btn-step-jsu:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+      background: #e2e8f0 !important;
+      color: #94a3b8 !important;
+      border-color: #cbd5e1 !important;
+    }
+    .jsu-stepper-widget.has-value .btn-step-jsu:not(:disabled) {
+      background: #1e40af;
+      border-color: #3b82f6;
+      color: #ffffff;
+    }
+    .step-display-jsu {
+      min-width: 14px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      font-weight: 800;
+      text-align: center;
+      color: #94a3b8;
+    }
+    .jsu-stepper-widget.has-value .step-display-jsu {
+      color: #ffffff;
+    }
 
     .btn-action-light { background: #ffffff; border: 1px solid #cbd5e1; color: #1e293b; padding: 6px 14px; border-radius: 8px; font-size: 0.78rem; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; transition: all 0.2s; box-shadow: 0 1px 2px rgba(0,0,0,0.04); }
     .btn-action-light:hover { background: #f8fafc; border-color: #94a3b8; }
@@ -218,7 +290,7 @@
     .cu-accordion-header { padding: 12px 16px; background: #f8fafc; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-weight: 800; font-size: 0.84rem; color: #1e3a8a; user-select: none; border-bottom: 1px solid transparent; transition: background 0.2s; }
     .cu-accordion-header:hover { background: #f1f5f9; }
     .cu-accordion-header.active { border-bottom-color: #cbd5e1; background: #eff6ff; }
-    .cu-accordion-body { display: none; padding: 16px; background: #ffffff; }
+    .cu-accordion-body { display: none; padding: 14px; background: #ffffff; }
     .cu-accordion-body.open { display: block; }
 
     .modal-backdrop { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(3px); z-index: 1000; align-items: center; justify-content: center; padding: 16px; }
@@ -267,7 +339,7 @@
 
       .no-print, .top-header, .control-card, .tabs-header-bar, .tab2-info-bar, 
       .credit-alert-box, .btn-circle-toggle, #sectionTeoriMapping, #sectionAmaliMapping,
-      .btn-action-light, .btn-step, .slider-compact {
+      .btn-action-light, .btn-step, .btn-step-jsu, .slider-compact {
         display: none !important;
       }
 
@@ -284,8 +356,8 @@
       .print-section-header { display: block !important; font-size: 10pt !important; font-weight: 800 !important; color: #1e3a8a !important; border-bottom: 1.5px solid #cbd5e1 !important; padding-bottom: 2px !important; margin: 10px 0 6px 0 !important; }
 
       .table-responsive { overflow-x: visible !important; border: none !important; box-shadow: none !important; width: 100% !important; }
-      table.data-table { width: 100% !important; table-layout: auto !important; font-size: 7.2pt !important; border-collapse: collapse !important; }
-      table.data-table th, table.data-table td { padding: 3px 2px !important; word-wrap: break-word !important; }
+      table.data-table, table.table-jsu-compact { width: 100% !important; table-layout: auto !important; font-size: 7.2pt !important; border-collapse: collapse !important; }
+      table.data-table th, table.data-table td, table.table-jsu-compact th, table.table-jsu-compact td { padding: 3px 2px !important; word-wrap: break-word !important; }
 
       .wa-subrow { display: none !important; }
       #combinedPlanContainer { display: block !important; }
@@ -544,7 +616,7 @@
       <div class="print-section-header">PERKARA 3: JADUAL PENYATUAN TAJUK PELAN MENGAJAR TEORI (KP) & AMALI (KK)</div>
       <div class="tab2-info-bar no-print" style="display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:12px;">
         <div id="bannerPanduanSesi" class="range-indicator-text">
-          💡 <strong>Panduan Sesi:</strong> Teori dihadkan maksimum <strong id="lblJamSesiTeori" style="color:#1d4ed8;">8</strong> Jam / sesi, Amali dihadkan <strong id="lblJamBlokAmali" style="color:#0d9488;">40</strong> Jam / blok.
+          💡 <strong>Panduan Sesi:</strong> Teori dihadkan maksimum <strong id="lblJamSesiTeori" style="color:#1d4ed8;">8</strong> Jam / sesi, Amali dihadkan <strong id="lblJamBlokAmali" style="color:#0d9488;">40</strong> Jam / blok. Had agihan dikunci agar tidak melebihi jam WA.
         </div>
         <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
           <div style="display:flex; align-items:center; gap:6px; background:#ffffff; border:1px solid #cbd5e1; border-radius:8px; padding:4px 8px;">
@@ -598,7 +670,7 @@
     <div id="tab4Content" class="tab-content-panel">
       <div class="print-section-header">PERKARA 4: JADUAL SPESIFIKASI UJIAN (JSU) PENILAIAN OBJEKTIF & SUBJEKTIF</div>
       <div class="tab2-info-bar no-print">
-        <div class="range-indicator-text">📋 <strong>Piawai Jadual 12 & 14 JPK:</strong> Pengiraan soalan, aras kesukaran, dan domain keterampilan dikawal automatik. Had kuota disekat automatik bagi mengelakkan terlebih laras.</div>
+        <div class="range-indicator-text">📋 <strong>Piawai Jadual 12 & 14 JPK:</strong> Pengiraan soalan, aras kesukaran, dan domain keterampilan dikawal automatik. Paparan padat bebas skrol mendatar dengan kunci kuota.</div>
         <button class="btn-action-light" onclick="toggleAllJsuAccordions()">📂 Buka / Tutup Semua JSU</button>
       </div>
       <div id="jsuAccordionsContainer"></div>
@@ -724,9 +796,20 @@
     function onDataLoadedFailure(e) { initMockData(); }
 
     function initMockData() {
-      dbNoss = [{ code: "A011-001-2:2018", name: "OPERASI FLORIKULTUR", statusTahap: "Bermula Tahap 2" }, { code: "G452-001-2:2017", name: "SERVIS KENDERAAN KOMERSIAL", statusTahap: "Tahap 2" }];
-      dbJajar = { "A011-001-2:2018": [{ code: "A011-001-2:2018-C01", name: "PENYEDIAAN MEDIA TANAMAN ORNAMENTAL", asal: 72 }] };
-      dbWaData = { "A011-001-2:2018-C01": [{ noWa: "CU1-WA1", namaWa: "Kenalpasti keperluan penyediaan media tanaman", masa: 24 }, { noWa: "CU1-WA2", namaWa: "Sediakan peralatan untuk penyediaan media", masa: 40 }, { noWa: "CU1-WA3", namaWa: "Laksanakan penyediaan media", masa: 24 }, { noWa: "CU1-WA4", namaWa: "Simpan media", masa: 24 }] };
+      dbNoss = [{ code: "0842-006-4:2020", name: "PENTADBIRAN PENGURUSAN KETENTERAMAN AWAM", statusTahap: "Bermula Tahap 4" }, { code: "A011-001-2:2018", name: "OPERASI FLORIKULTUR", statusTahap: "Bermula Tahap 2" }];
+      dbJajar = { 
+        "0842-006-4:2020": [
+          { code: "0842-006-4:2020-C01", name: "PENTADBIRAN PENGURUSAN KETENTERAMAN AWAM/BENCANA", asal: 360 },
+          { code: "0842-006-4:2020-C02", name: "PELAKSANAAN PENCEGAHAN JENAYAH", asal: 360 }
+        ] 
+      };
+      dbWaData = { 
+        "0842-006-4:2020-C02": [
+          { noWa: "CU2-WA1", namaWa: "Atur penugasan rondaan.", masa: 144 },
+          { noWa: "CU2-WA2", namaWa: "Laksana Operasi Bersepadu.", masa: 108 },
+          { noWa: "CU2-WA3", namaWa: "Laksana mesyuarat berjadual bersama pemimpin masyarakat.", masa: 108 }
+        ] 
+      };
       populateProgramDatalist();
     }
 
@@ -819,9 +902,24 @@
         trW.innerHTML = `
           <td colspan="12" style="padding:0; background:#f8fafc;">
             <div style="padding:14px; border:1px solid #cbd5e1; margin:8px 4px; border-radius:8px;">
-              <div style="font-weight:800; font-size:0.82rem; color:#1e3a8a; margin-bottom:8px;">📌 PERINCIAN AKTIVITI KERJA (WA): <span style="font-family:'JetBrains Mono',monospace;">${cu.code}</span></div>
-              <div class="table-responsive"><table class="data-table" style="font-size:0.75rem;"><thead><tr class="th-navy-sub"><th style="width:70px;">NO. WA</th><th style="text-align:left;">AKTIVITI KERJA (WA)</th><th style="width:85px;">WEIGHTAGE (%)</th><th style="width:75px;">JAM ASAL</th><th style="width:80px;">OFFSET [+/-]</th><th style="width:75px; background:#2563eb; color:white;">JAM AKHIR</th><th style="width:85px;">COPTPA (RK)</th><th style="width:85px;">COPTPA (RS)</th><th style="width:110px; background:#1e3a8a; color:white;">BERSEMUKA (RK)</th><th style="width:110px; background:#1e3a8a; color:white;">BERSEMUKA (RS)</th></tr></thead><tbody id="wa-body-${cu.code}"></tbody>
-              <tfoot><tr id="wa-tfoot-${cu.code}" style="background:#f1f5f9; font-weight:800; font-size:0.78rem;"></tr></tfoot>
+              <div style="font-weight:800; font-size:0.82rem; color:#1e3a8a; margin-bottom:8px;">📌 PERINCIAN MASA BERSEMUKA AKTIVITI KERJA (WA): <span style="font-family:'JetBrains Mono',monospace;">${cu.code}</span></div>
+              <div class="table-responsive"><table class="data-table" style="font-size:0.75rem;">
+                <thead>
+                  <tr class="th-navy-sub">
+                    <th style="width:70px;">NO. WA</th>
+                    <th style="text-align:left;">AKTIVITI KERJA (WA)</th>
+                    <th style="width:85px;">WEIGHTAGE (%)</th>
+                    <th style="width:90px;">JAM (DIJAJAR / ASAL)</th>
+                    <th style="width:80px;">OFFSET [+/-]</th>
+                    <th style="width:75px; background:#2563eb; color:white;">JAM AKHIR</th>
+                    <th style="width:85px;">COPTPA (RK)</th>
+                    <th style="width:85px;">COPTPA (RS)</th>
+                    <th style="width:110px; background:#1e3a8a; color:white;">BERSEMUKA (RK)</th>
+                    <th style="width:110px; background:#1e3a8a; color:white;">BERSEMUKA (RS)</th>
+                  </tr>
+                </thead>
+                <tbody id="wa-body-${cu.code}"></tbody>
+                <tfoot><tr id="wa-tfoot-${cu.code}" style="background:#f1f5f9; font-weight:800; font-size:0.78rem;"></tr></tfoot>
               </table></div>
             </div>
           </td>
@@ -853,6 +951,9 @@
     function onPelarasanChange() { calculateAll(); renderTab3All(); renderJsuTab(); }
     function onWaOffsetChange(cCode, wIdx, el) { waOffsets[`${cCode}_${wIdx}`] = parseInt(el.value, 10) || 0; calculateAll(); renderTab3All(); }
 
+    /* ========================================================= */
+    /* KALKULASI TAB 1 & TAB 2 (DENGAN FORMULA NISBAH WA)        */
+    /* ========================================================= */
     function calculateAll() {
       waCalculatedHours = {};
       cuCalculatedCredits = {};
@@ -963,14 +1064,17 @@
               
               const jamAsalDb = parseFloat(wa.masa) || Math.round(totOrigWaJam / waList.length);
               const wPct = Math.round((jamAsalDb / totOrigWaJam) * 100);
-              const jamAkhir = Math.max(0, jamAsalDb + offset);
+              
+              // FORMULA NISBAH PENJAJARAN WA: (Jam Asal WA / Jumlah Jam Asal CU) * [F] Jam Latihan Baharu
+              const jamDijajarWA = Math.round((jamAsalDb / totOrigWaJam) * fVal);
+              const jamAkhir = Math.max(0, jamDijajarWA + offset);
 
               const cRK = Math.round(jamAkhir * (plPct / 100));
               const cRS = jamAkhir - cRK;
               const sRK = Math.round(cRK * (sVal / 100));
               const sRS = Math.round(cRS * (sVal / 100));
 
-              waCalculatedHours[waKey] = { rk: sRK, rs: sRS, weightage: wPct, jamAsal: jamAsalDb };
+              waCalculatedHours[waKey] = { rk: sRK, rs: sRS, weightage: wPct, jamAsal: jamAsalDb, jamDijajar: jamDijajarWA, jamAkhir: jamAkhir };
               finalSumRK += sRK; 
               finalSumRS += sRS;
 
@@ -985,7 +1089,10 @@
                 <td style="font-weight:700; font-family:'JetBrains Mono',monospace;">${wa.noWa || 'CU-WA' + (wIdx + 1)}</td>
                 <td style="text-align:left; font-weight:500;">${wa.namaWa}</td>
                 <td>${wPct}%</td>
-                <td style="font-weight:700;">${jamAsalDb}</td>
+                <td>
+                  <div style="font-weight:800; font-size:0.8rem; color:#0f172a;">${jamDijajarWA} jam</div>
+                  <div style="font-size:0.65rem; color:#64748b; line-height:1.1;">(Asal: ${jamAsalDb})</div>
+                </td>
                 <td>
                   <select style="font-size:0.75rem; padding:1px 4px; border-radius:4px;" onchange="onWaOffsetChange('${cuCode}', ${wIdx}, this)">
                     ${offsetOptions}
@@ -1095,6 +1202,7 @@
       renderCombinedPlan(pCode, cuList, mod, pT, pA);
     }
 
+    /* RENDER MATRIKS TAB 3 DENGAN HARD LIMIT AGAR TIDAK LEBIH JAM WA */
     function renderMatrixGeneric(pCode, cuList, pSess, type, tableId, cuBg, badgeClass, maxCap, mod) {
       const tbl = document.getElementById(tableId); if (!tbl) return; tbl.innerHTML = '';
       if (type === 'A' && mod === 'ADI') { tbl.innerHTML = `<tr><td style="padding:40px; text-align:center; background:#f8fafc; color:#64748b; font-weight:700; border:1px solid #cbd5e1; border-radius:8px;">🏢 Dilaksanakan di Syarikat (Rujuk Proses Kerja)</td></tr>`; return; }
@@ -1106,14 +1214,32 @@
         th += `<tr style="background:${cuBg}; font-weight:800; text-align:left;"><td colspan="${pSess.length + 3}">${cu.code} - ${cu.name}</td></tr>`;
         getWaListForCu(pCode, cu.code).forEach((wa, wI) => {
           let nom = type === 'T' ? (waCalculatedHours[`${cu.code}_${wI}`]?.rk || wa.masa || 8) : (waCalculatedHours[`${cu.code}_${wI}`]?.rs || (wa.masa||8)*2);
-          th += `<tr><td class="matrix-col-wa"><span class="code-badge ${badgeClass}">CU${cI+1}-WA${wI+1}</span> ${wa.namaWa}</td><td class="matrix-col-jam" style="font-weight:800;">${nom}</td>`;
+          
+          // KIRA JUMLAH SEMASA MERENTASI SEMUA SESI BAGI WA INI
+          let currentAllocTotal = pSess.reduce((acc, s) => {
+            let cK = `${type}_${cu.code}_${wI}_${s.code}`;
+            let m = s.allocs.find(a => a.cuCode === cu.code && a.waIdx === wI);
+            let v = (type === 'T' ? matrixManualEditsTeori : matrixManualEditsAmali)[cK] ?? (m ? m.hours : 0);
+            return acc + v;
+          }, 0);
+
+          let isWaDeficient = currentAllocTotal < nom;
+          let isWaMax = currentAllocTotal >= nom;
+
+          let jamCellDisplay = isWaDeficient 
+            ? `<td class="matrix-col-jam" style="background:#fee2e2; color:#b91c1c; font-weight:800;" title="Kurang lagi ${nom - currentAllocTotal} jam">${currentAllocTotal} / ${nom}</td>`
+            : `<td class="matrix-col-jam" style="font-weight:800; color:#0f172a;">${nom}</td>`;
+
+          th += `<tr><td class="matrix-col-wa"><span class="code-badge ${badgeClass}">CU${cI+1}-WA${wI+1}</span> ${wa.namaWa}</td>${jamCellDisplay}`;
+          
           pSess.forEach(s => {
             let m = s.allocs.find(a => a.cuCode === cu.code && a.waIdx === wI);
             if (m) {
-              let cK = `${type}_${cu.code}_${wI}_${s.code}`; let v = (type === 'T' ? matrixManualEditsTeori : matrixManualEditsAmali)[cK] ?? m.hours;
-              let isMax = v >= maxCap;
+              let cK = `${type}_${cu.code}_${wI}_${s.code}`; 
+              let v = (type === 'T' ? matrixManualEditsTeori : matrixManualEditsAmali)[cK] ?? m.hours;
               let isMin = v <= 0;
-              th += `<td class="matrix-stepper-cell"><div class="stepper-widget ${v>0?'has-value':''}"><button class="btn-step" ${isMin?'disabled':''} onclick="stepSessionHour('${type}', '${cK}', -1, ${m.hours})">−</button><span class="step-display-val">${v>0?v:'-'}</span><button class="btn-step" ${isMax?'disabled':''} onclick="stepSessionHour('${type}', '${cK}', 1, ${m.hours})">+</button></div></td>`;
+              let isMax = v >= maxCap || isWaMax;
+              th += `<td class="matrix-stepper-cell"><div class="stepper-widget ${v>0?'has-value':''}"><button class="btn-step" ${isMin?'disabled':''} onclick="stepSessionHour('${type}', '${cK}', -1, ${m.hours}, '${cu.code}', ${wI}, ${nom})">−</button><span class="step-display-val">${v>0?v:'-'}</span><button class="btn-step" ${isMax?'disabled':''} onclick="stepSessionHour('${type}', '${cK}', 1, ${m.hours}, '${cu.code}', ${wI}, ${nom})">+</button></div></td>`;
             } else { th += `<td class="matrix-stepper-cell text-muted" style="color:#cbd5e1;">-</td>`; }
           });
           th += `<td style="border:none; background:transparent;"></td></tr>`;
@@ -1122,11 +1248,27 @@
       tbl.innerHTML = th + `</tbody>`;
     }
 
-    function stepSessionHour(type, cellKey, delta, defaultVal) {
+    function stepSessionHour(type, cellKey, delta, defaultVal, cuCode, waIdx, targetNom) {
       const { jamHari, jamBlok } = getSessionLimits();
-      let limit = type === 'T' ? jamHari : jamBlok, store = type === 'T' ? matrixManualEditsTeori : matrixManualEditsAmali;
-      let next = Math.max(0, Math.min(limit, (store[cellKey] ?? defaultVal) + delta));
-      store[cellKey] = next; renderTab3All();
+      let limit = type === 'T' ? jamHari : jamBlok;
+      let store = type === 'T' ? matrixManualEditsTeori : matrixManualEditsAmali;
+      let curVal = store[cellKey] ?? defaultVal;
+
+      if (delta > 0) {
+        if (curVal >= limit) return;
+        let pSess = packSessions(filterCoreCuList(dbJajar[document.getElementById('kodProgram')?.value.trim()] || []), document.getElementById('kodProgram')?.value.trim(), type);
+        let currentTotal = pSess.reduce((acc, s) => {
+          let k = `${type}_${cuCode}_${waIdx}_${s.code}`;
+          let m = s.allocs.find(a => a.cuCode === cuCode && a.waIdx === waIdx);
+          return acc + (store[k] ?? (m ? m.hours : 0));
+        }, 0);
+        if (currentTotal + delta > targetNom) return;
+      } else if (delta < 0) {
+        if (curVal <= 0) return;
+      }
+
+      store[cellKey] = Math.max(0, curVal + delta);
+      renderTab3All();
     }
 
     function renderCombinedPlan(pCode, cuList, mod, pT, pA) {
@@ -1213,7 +1355,7 @@
     function resetTab3Distribution() { matrixManualEditsTeori = {}; matrixManualEditsAmali = {}; combinedPlanTitles = {}; renderTab3All(); }
 
     /* ========================================================= */
-    /* LOGIK PINTAR AUTO-AGIH DOMAIN (PROSEDUR > FAKTA > SIKAP)  */
+    /* LOGIK AGIHAN DOMAIN (PROSEDUR > FAKTA > SIKAP/KESELAMATAN)*/
     /* ========================================================= */
     function getDomainSplit(n, allowSikap = true) {
       if (n <= 0) return { p: 0, f: 0, s: 0 };
@@ -1232,7 +1374,7 @@
     }
 
     /* ========================================================= */
-    /* JSU: BAHAGIAN A (OBJEKTIF) + BAHAGIAN B (SUBJEKTIF)       */
+    /* TAB 4: JSU KOMPAK TANPA SKROL MENDATAR DENGAN KUNCI KUOTA */
     /* ========================================================= */
     function renderJsuTab() {
       const cont = document.getElementById('jsuAccordionsContainer'); if (!cont) return; cont.innerHTML = '';
@@ -1261,7 +1403,6 @@
 
         const isOpen = (allJsuOpen || currentOpenJsuIdx === cuIdx);
 
-        // SYARAT JADUAL 12 JPK UNTUK SUBJEKTIF
         let showStruktur1 = isLanjutan;
         let showStruktur2 = isLanjutan && (kr >= 7);
         let showEsei = isLanjutan && (kr >= 4);
@@ -1282,91 +1423,97 @@
           <div class="cu-accordion-body ${isOpen ? 'open' : ''}" id="jsu-body-${cuIdx}">
             
             <!-- BAHAGIAN A: JSU OBJEKTIF -->
-            <div style="font-weight:800; color:#1e3a8a; font-size:0.82rem; margin-bottom:8px; display:flex; justify-content:space-between; align-items:center;">
+            <div style="font-weight:800; color:#1e3a8a; font-size:0.8rem; margin-bottom:6px; display:flex; justify-content:space-between; align-items:center;">
               <span>📌 BAHAGIAN A: PENILAIAN PENGETAHUAN (OBJEKTIF) & PRESTASI</span>
-              <span style="font-size:0.72rem; color:#64748b; font-weight:600;">(Butang [+] disekat automatik apabila kuota aras tercapai)</span>
+              <span style="font-size:0.7rem; color:#64748b; font-weight:600;">(Butang [+] disekat automatik apabila kuota aras tercapai)</span>
             </div>
             
-            <div class="table-responsive"><table class="data-table" style="font-size:0.75rem;">
-              <thead>
-                <tr class="th-navy-main">
-                  <th rowspan="3" style="text-align:left; width:220px;">WORK ACTIVITIES (WA)</th>
-                  <th rowspan="3" style="width:65px;">BIL. SOALAN</th>
-                  <th colspan="3">ARAS KESUKARAN</th>
-                  <th colspan="9">PENILAIAN PENGETAHUAN (KETERAMPILAN)</th>
-                  <th colspan="2" style="background:#172554; color:white;">PENILAIAN PRESTASI</th>
-                </tr>
-                <tr>
-                  <th rowspan="2" style="background:#334155; color:white; width:45px;">R (50%)</th>
-                  <th rowspan="2" style="background:#334155; color:white; width:45px;">S (30%)</th>
-                  <th rowspan="2" style="background:#334155; color:white; width:45px;">T (20%)</th>
-                  <th colspan="3" style="background:#d97706; color:white;">PROSEDUR</th>
-                  <th colspan="3" style="background:#be185d; color:white;">FAKTA / TEORI</th>
-                  <th colspan="3" style="background:#6d28d9; color:white;">SIKAP / KESELAMATAN</th>
-                  <th rowspan="2" style="width:60px; font-size:0.68rem; background:#1e3a8a;">PRESTASI 1</th>
-                  <th rowspan="2" style="width:60px; font-size:0.68rem; background:#1e3a8a;">PRESTASI 2</th>
-                </tr>
-                <tr style="background:#1e293b; color:white; font-size:0.7rem;">
-                  <th>R</th><th>S</th><th>T</th><th>R</th><th>S</th><th>T</th><th>R</th><th>S</th><th>T</th>
-                </tr>
-              </thead>
-              <tbody id="jsu-rows-${cuIdx}"></tbody>
-              <tfoot>
-                <tr style="background:#fef08a; font-weight:800; color:#854d0e;">
-                  <td style="text-align:right;">JUMLAH:</td>
-                  <td id="jsu-sum-q-${cuIdx}">${tgt}</td>
-                  <td id="jsu-sum-r-${cuIdx}">0</td>
-                  <td id="jsu-sum-s-${cuIdx}">0</td>
-                  <td id="jsu-sum-t-${cuIdx}">0</td>
-                  <td colspan="3" style="background:#fed7aa;" id="jsu-sum-pros-${cuIdx}">0</td>
-                  <td colspan="3" style="background:#fbcfe8;" id="jsu-sum-fak-${cuIdx}">0</td>
-                  <td colspan="3" style="background:#ddd6fe;" id="jsu-sum-sik-${cuIdx}">0</td>
-                  <td id="jsu-sum-perf1-${cuIdx}">0</td>
-                  <td id="jsu-sum-perf2-${cuIdx}">0</td>
-                </tr>
-                <tr style="background:#bbf7d0; font-weight:800; color:#14532d;">
-                  <td colspan="2">TEMPOH PENILAIAN:</td>
-                  <td colspan="12">60 MINIT (PENGETAHUAN OBJEKTIF)</td>
-                  <td colspan="2">3 JAM (PRESTASI)</td>
-                </tr>
-              </tfoot>
-            </table></div>
+            <div class="table-responsive" style="overflow-x:hidden;">
+              <table class="table-jsu-compact">
+                <thead>
+                  <tr class="th-navy-main">
+                    <th rowspan="3" style="text-align:left; width:195px; padding-left:6px !important;">WORK ACTIVITIES (WA)</th>
+                    <th rowspan="3" style="width:38px;">BIL.</th>
+                    <th colspan="3">ARAS KESUKARAN</th>
+                    <th colspan="9">PENILAIAN PENGETAHUAN (KETERAMPILAN)</th>
+                    <th colspan="2" style="background:#172554; color:white;">PRESTASI</th>
+                  </tr>
+                  <tr>
+                    <th rowspan="2" style="background:#334155; color:white; width:34px; font-size:0.65rem;">R (50%)</th>
+                    <th rowspan="2" style="background:#334155; color:white; width:34px; font-size:0.65rem;">S (30%)</th>
+                    <th rowspan="2" style="background:#334155; color:white; width:34px; font-size:0.65rem;">T (20%)</th>
+                    <th colspan="3" style="background:#d97706; color:white; font-size:0.68rem;">PROSEDUR</th>
+                    <th colspan="3" style="background:#be185d; color:white; font-size:0.68rem;">FAKTA / TEORI</th>
+                    <th colspan="3" style="background:#6d28d9; color:white; font-size:0.68rem;">SIKAP / KESELAMATAN</th>
+                    <th rowspan="2" style="width:36px; font-size:0.65rem; background:#1e3a8a;">P1</th>
+                    <th rowspan="2" style="width:36px; font-size:0.65rem; background:#1e3a8a;">P2</th>
+                  </tr>
+                  <tr style="background:#1e293b; color:white; font-size:0.65rem;">
+                    <th style="width:42px;">R</th><th style="width:42px;">S</th><th style="width:42px;">T</th>
+                    <th style="width:42px;">R</th><th style="width:42px;">S</th><th style="width:42px;">T</th>
+                    <th style="width:42px;">R</th><th style="width:42px;">S</th><th style="width:42px;">T</th>
+                  </tr>
+                </thead>
+                <tbody id="jsu-rows-${cuIdx}"></tbody>
+                <tfoot>
+                  <tr style="background:#fef08a; font-weight:800; color:#854d0e;">
+                    <td style="text-align:right; padding-right:6px !important;">JUMLAH:</td>
+                    <td id="jsu-sum-q-${cuIdx}">${tgt}</td>
+                    <td id="jsu-sum-r-${cuIdx}">0</td>
+                    <td id="jsu-sum-s-${cuIdx}">0</td>
+                    <td id="jsu-sum-t-${cuIdx}">0</td>
+                    <td colspan="3" style="background:#fed7aa;" id="jsu-sum-pros-${cuIdx}">0</td>
+                    <td colspan="3" style="background:#fbcfe8;" id="jsu-sum-fak-${cuIdx}">0</td>
+                    <td colspan="3" style="background:#ddd6fe;" id="jsu-sum-sik-${cuIdx}">0</td>
+                    <td id="jsu-sum-perf1-${cuIdx}">0</td>
+                    <td id="jsu-sum-perf2-${cuIdx}">0</td>
+                  </tr>
+                  <tr style="background:#bbf7d0; font-weight:800; color:#14532d; font-size:0.7rem;">
+                    <td colspan="2">TEMPOH PENILAIAN:</td>
+                    <td colspan="12">60 MINIT (PENGETAHUAN OBJEKTIF)</td>
+                    <td colspan="2">3 JAM (PRESTASI)</td>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
 
             <!-- BAHAGIAN B: JSU SUBJEKTIF -->
-            <div style="margin-top:20px; padding-top:16px; border-top:2px dashed #cbd5e1;">
+            <div style="margin-top:16px; padding-top:14px; border-top:2px dashed #cbd5e1;">
               ${!isLanjutan ? `
                 <div style="padding:10px 14px; background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; color:#64748b; font-size:0.75rem; font-weight:600;">
                   ℹ️ Mengikut <strong>Jadual 12 JPK</strong>, penilaian pengetahuan bagi program <strong>${stat}</strong> hanya melibatkan bentuk soalan <strong>Objektif Sahaja</strong> (Subjektif tidak terpakai).
                 </div>
               ` : `
-                <div style="font-weight:800; color:#0d9488; font-size:0.82rem; margin-bottom:8px; display:flex; justify-content:space-between; align-items:center;">
+                <div style="font-weight:800; color:#0d9488; font-size:0.8rem; margin-bottom:6px; display:flex; justify-content:space-between; align-items:center;">
                   <span>📝 BAHAGIAN B: PENILAIAN STANDARD (SUBJEKTIF: STRUKTUR & ESEI)</span>
-                  <span style="font-size:0.72rem; color:#0f766e; font-weight:700;">Syarat: Sub-soalan mesti merangkumi ketiga-tiga Aras (R, S, T)</span>
+                  <span style="font-size:0.7rem; color:#0f766e; font-weight:700;">Syarat: Sub-soalan mesti merangkumi ketiga-tiga Aras (R, S, T)</span>
                 </div>
                 
-                <div class="table-responsive"><table class="data-table" style="font-size:0.75rem;">
-                  <thead>
-                    <tr class="th-navy-main">
-                      <th rowspan="2" style="width:260px; text-align:left;">WORK ACTIVITIES (WA)</th>
-                      <th rowspan="2" style="width:75px;">WA WEIGHTAGE</th>
-                      ${showStruktur1 ? `<th colspan="4" style="background:#d97706; color:white;">STRUKTUR 1</th>` : ''}
-                      ${showStruktur2 ? `<th colspan="4" style="background:#0d9488; color:white;">STRUKTUR 2</th>` : ''}
-                      ${showEsei ? `<th rowspan="2" style="background:#6d28d9; color:white; width:75px;">ESEI 1 (T)</th>` : ''}
-                    </tr>
-                    <tr style="background:#1e293b; color:white; font-size:0.7rem;">
-                      ${showStruktur1 ? `<th>a</th><th>b</th><th>c</th><th>d</th>` : ''}
-                      ${showStruktur2 ? `<th>a</th><th>b</th><th>c</th><th>d</th>` : ''}
-                    </tr>
-                  </thead>
-                  <tbody id="jsu-subj-rows-${cuIdx}"></tbody>
-                  <tfoot>
-                    <tr style="background:#f1f5f9; font-weight:800;" id="jsu-subj-status-row-${cuIdx}"></tr>
-                    <tr style="background:#cffafe; font-weight:800; color:#0e7490;">
-                      <td colspan="2">TEMPOH PENILAIAN SUBJEKTIF:</td>
-                      <td colspan="${(showStruktur1?4:0) + (showStruktur2?4:0) + (showEsei?1:0)}">${subjMasaText}</td>
-                    </tr>
-                  </tfoot>
-                </table></div>
+                <div class="table-responsive" style="overflow-x:hidden;">
+                  <table class="table-jsu-compact">
+                    <thead>
+                      <tr class="th-navy-main">
+                        <th rowspan="2" style="width:260px; text-align:left; padding-left:6px !important;">WORK ACTIVITIES (WA)</th>
+                        <th rowspan="2" style="width:75px;">WA WEIGHTAGE</th>
+                        ${showStruktur1 ? `<th colspan="4" style="background:#d97706; color:white;">STRUKTUR 1</th>` : ''}
+                        ${showStruktur2 ? `<th colspan="4" style="background:#0d9488; color:white;">STRUKTUR 2</th>` : ''}
+                        ${showEsei ? `<th rowspan="2" style="background:#6d28d9; color:white; width:75px;">ESEI 1 (T)</th>` : ''}
+                      </tr>
+                      <tr style="background:#1e293b; color:white; font-size:0.68rem;">
+                        ${showStruktur1 ? `<th>a</th><th>b</th><th>c</th><th>d</th>` : ''}
+                        ${showStruktur2 ? `<th>a</th><th>b</th><th>c</th><th>d</th>` : ''}
+                      </tr>
+                    </thead>
+                    <tbody id="jsu-subj-rows-${cuIdx}"></tbody>
+                    <tfoot>
+                      <tr style="background:#f1f5f9; font-weight:800;" id="jsu-subj-status-row-${cuIdx}"></tr>
+                      <tr style="background:#cffafe; font-weight:800; color:#0e7490; font-size:0.7rem;">
+                        <td colspan="2">TEMPOH PENILAIAN SUBJEKTIF:</td>
+                        <td colspan="${(showStruktur1?4:0) + (showStruktur2?4:0) + (showEsei?1:0)}">${subjMasaText}</td>
+                      </tr>
+                    </tfoot>
+                  </table>
+                </div>
               `}
             </div>
 
@@ -1391,7 +1538,6 @@
       renderJsuTab();
     }
 
-    /* RENDER BAHAGIAN A (OBJEKTIF) DENGAN KUNCI KUOTA */
     function renderJsuTableRows(cu, cI, wL, qPW) {
       const tb = document.getElementById(`jsu-rows-${cI}`); if (!tb) return; tb.innerHTML = '';
       let tQ=0, tR=0, tS=0, tT=0, tPr=0, tFk=0, tSk=0, tPf1=0, tPf2=0;
@@ -1400,7 +1546,6 @@
         let q = qPW[wI] || 4, r = Math.round(q*0.5), s = Math.round(q*0.3), t = Math.max(0, q-r-s);
         let kP = `${cu.code}_${wI}`;
 
-        // Auto-pecahan seimbang jika belum disunting secara manual
         let splitR = getDomainSplit(r, true);
         let splitS = getDomainSplit(s, true);
         let splitT = getDomainSplit(t, false);
@@ -1428,7 +1573,6 @@
         let isTck1 = jsuPerformanceTicks[`${kP}_p1`] ?? true; if (isTck1) tPf1++;
         let isTck2 = jsuPerformanceTicks[`${kP}_p2`] ?? true; if (isTck2) tPf2++;
 
-        // Status Imbangan Baris
         let bgR = curR === r ? '#f1f5f9' : (curR < r ? '#fee2e2' : '#fca5a5');
         let colR = curR === r ? '#1e293b' : '#b91c1c';
         let bgS = curS === s ? '#f1f5f9' : (curS < s ? '#fee2e2' : '#fca5a5');
@@ -1438,7 +1582,7 @@
 
         tb.innerHTML += `
           <tr>
-            <td style="text-align:left; font-weight:600;"><span class="code-badge code-badge-blue">CU${cI+1}-WA${wI+1}</span> ${w.namaWa}</td>
+            <td style="text-align:left; font-weight:600; padding-left:6px !important;"><span class="code-badge code-badge-blue">CU${cI+1}-WA${wI+1}</span> ${w.namaWa}</td>
             <td style="font-weight:800; background:#f8fafc;">${curR + curS + curT}</td>
             <td style="background:${bgR}; color:${colR}; font-weight:800;">${curR}/${r}</td>
             <td style="background:${bgS}; color:${colS}; font-weight:800;">${curS}/${s}</td>
@@ -1452,8 +1596,8 @@
             <td>${renderJsuCell(kP, 'sR', sR, curR >= r)}</td>
             <td>${renderJsuCell(kP, 'sS', sS, curS >= s)}</td>
             <td>${renderJsuCell(kP, 'sT', sT, curT >= t)}</td>
-            <td><input type="checkbox" ${isTck1?'checked':''} onchange="onJsuPerfCheck('${kP}_p1', this.checked)" style="cursor:pointer; transform:scale(1.15);"></td>
-            <td><input type="checkbox" ${isTck2?'checked':''} onchange="onJsuPerfCheck('${kP}_p2', this.checked)" style="cursor:pointer; transform:scale(1.15);"></td>
+            <td><input type="checkbox" ${isTck1?'checked':''} onchange="onJsuPerfCheck('${kP}_p1', this.checked)" style="cursor:pointer; transform:scale(1.1);"></td>
+            <td><input type="checkbox" ${isTck2?'checked':''} onchange="onJsuPerfCheck('${kP}_p2', this.checked)" style="cursor:pointer; transform:scale(1.1);"></td>
           </tr>
         `;
       });
@@ -1471,10 +1615,10 @@
 
     function renderJsuCell(kP, f, v, isMaxLimit) {
       let isMin = v <= 0;
-      return `<div class="stepper-widget ${v>0?'has-value':''}">
-        <button class="btn-step no-print" ${isMin?'disabled':''} onclick="stepJsuVal('${kP}_${f}', -1)">−</button>
-        <span class="step-display-val">${v}</span>
-        <button class="btn-step no-print" ${isMaxLimit?'disabled':''} onclick="stepJsuVal('${kP}_${f}', 1)">+</button>
+      return `<div class="jsu-stepper-widget ${v>0?'has-value':''}">
+        <button class="btn-step-jsu no-print" ${isMin?'disabled':''} onclick="stepJsuVal('${kP}_${f}', -1)">−</button>
+        <span class="step-display-jsu">${v}</span>
+        <button class="btn-step-jsu no-print" ${isMaxLimit?'disabled':''} onclick="stepJsuVal('${kP}_${f}', 1)">+</button>
       </div>`;
     }
 
@@ -1488,7 +1632,6 @@
       renderJsuTab(); 
     }
 
-    /* RENDER BAHAGIAN B (SUBJEKTIF) DENGAN SEMAKAN ARAS (R, S, T) */
     function renderJsuSubjRows(cu, cI, wL, showS1, showS2, showEsei) {
       const tb = document.getElementById(`jsu-subj-rows-${cI}`); if (!tb) return; tb.innerHTML = '';
       
@@ -1496,7 +1639,6 @@
       let s2Levels = { a: '', b: '', c: '', d: '' };
       let eseiCount = 0;
 
-      // Auto-default jika baru
       if (!jsuSubjSelections[`${cu.code}_s1_a`]) {
         jsuSubjSelections[`${cu.code}_s1_a_0`] = 'R';
         jsuSubjSelections[`${cu.code}_s1_b_${Math.min(1, wL.length-1)}`] = 'S';
@@ -1518,11 +1660,10 @@
         let tr = document.createElement('tr');
         
         let html = `
-          <td style="text-align:left; font-weight:600;"><span class="code-badge code-badge-blue">CU${cI+1}-WA${wI+1}</span> ${w.namaWa}</td>
+          <td style="text-align:left; font-weight:600; padding-left:6px !important;"><span class="code-badge code-badge-blue">CU${cI+1}-WA${wI+1}</span> ${w.namaWa}</td>
           <td style="font-weight:700;">${wp}%</td>
         `;
 
-        // STRUKTUR 1
         if (showS1) {
           ['a', 'b', 'c', 'd'].forEach(sub => {
             let val = jsuSubjSelections[`${cu.code}_s1_${sub}_${wI}`] || '';
@@ -1531,7 +1672,6 @@
           });
         }
 
-        // STRUKTUR 2
         if (showS2) {
           ['a', 'b', 'c', 'd'].forEach(sub => {
             let val = jsuSubjSelections[`${cu.code}_s2_${sub}_${wI}`] || '';
@@ -1540,7 +1680,6 @@
           });
         }
 
-        // ESEI 1
         if (showEsei) {
           let isEsei = jsuSubjSelections[`${cu.code}_esei_${wI}`] ?? false;
           if (isEsei) eseiCount++;
@@ -1551,10 +1690,9 @@
         tb.appendChild(tr);
       });
 
-      // SEMAKAN KELENGKAPAN ARAS R, S, T UNTUK STRUKTUR
       const statusRow = document.getElementById(`jsu-subj-status-row-${cI}`);
       if (statusRow) {
-        let statusHtml = `<td colspan="2" style="text-align:right; font-weight:800; color:#334155;">STATUS PENJAMINAN KUALITI :</td>`;
+        let statusHtml = `<td colspan="2" style="text-align:right; font-weight:800; color:#334155; padding-right:6px !important;">STATUS PENJAMINAN KUALITI :</td>`;
         
         if (showS1) {
           let s1Vals = Object.values(s1Levels).filter(v => v !== '');
@@ -1599,7 +1737,6 @@
     }
 
     function onSubjSelectChange(cCode, group, sub, wI, val) {
-      // Pastikan sub-soalan tersebut tidak bertindih pada WA lain dalam soalan struktur yang sama
       if (val !== '') {
         for (let i = 0; i < 20; i++) {
           if (i !== wI) delete jsuSubjSelections[`${cCode}_${group}_${sub}_${i}`];
