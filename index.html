@@ -954,8 +954,9 @@
       document.getElementById('kreditJumlah').innerText = struct.total;
 
       const jamTeras = struct.teras * 40; document.getElementById('jamTeras').innerText = jamTeras.toLocaleString();
-      let plPct = 30, syPct = 70;
-      if (mod === 'ADI') { [plPct, syPct] = (document.getElementById('pelaksanaanHidden')?.value || "30-70").split('-').map(Number); } else { plPct = 100; syPct = 0; }
+      const [rkPct, rsPct] = (document.getElementById('pelaksanaanHidden')?.value || "30-70").split('-').map(Number);
+      let plPct = rkPct, syPct = rsPct;
+      if (mod !== 'ADI') { plPct = 100; syPct = 0; }
       
       const plTerasVal = Math.round(jamTeras * (plPct / 100)), syTerasVal = Math.round(jamTeras * (syPct / 100));
       document.getElementById('plTeras').innerText = plTerasVal.toLocaleString();
@@ -1050,7 +1051,7 @@
               const jamDijajarWA = Math.round((jamAsalDb / totOrigWaJam) * fVal);
               const jamAkhir = Math.max(0, jamDijajarWA + offset);
 
-              const cRK = Math.round(jamAkhir * (plPct / 100));
+              const cRK = Math.round(jamAkhir * (rkPct / 100));
               const cRS = jamAkhir - cRK;
               const sRK = Math.round(cRK * (sVal / 100));
               const sRS = Math.round(cRS * (sVal / 100));
